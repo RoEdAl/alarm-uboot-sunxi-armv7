@@ -1,0 +1,49 @@
+# After modifying, run ./mkscr
+
+setenv load_addr "0x44000000"
+
+if test -n ${distro_bootpart}; then
+    setenv bootpart ${distro_bootpart}
+else
+    setenv bootpart 1
+fi
+
+part uuid ${devtype} ${devnum}:${bootpart} uuid
+setenv bootargs console=${console} root=PARTUUID=${uuid} rw rootwait elevator=noop
+
+if test -e ${devtype} ${devnum}:${bootpart} /boot/overlays.txt; then
+    load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/overlays.txt
+    env import -t ${load_addr} ${filesize}
+fi
+
+if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/Image; then
+    if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
+        if test -n ${overlay_prefix}; then
+            echo "Applying additional DT overlay(s)"
+
+            fdt addr ${fdt_addr_r}
+            fdt resize 65536
+
+            for overlay_file in ${overlays}; do
+	        if load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/dtbs/overlay/${overlay_prefix}-${overlay_file}.dtbo; then
+                    echo "Applying DT overlay: ${overlay_prefix}-${overlay_file}.dtbo"
+                    fdt apply ${load_addr} || setenv overlay_error "true"
+	        fi
+            done
+
+            if test "${overlay_error}" = "true"; then
+                echo "Error applying DT overlays, restoring original DT"
+                load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}
+            elif load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/dtbs/overlay/${overlay_prefix}-fixup.scr; then
+                echo "Applying DT fixup script: ${overlay_prefix}-fixup.scr"
+                source ${load_addr}
+            fi
+        fi
+
+        if load ${devtype} ${devnum}:${bootpart} ${ramdisk_addr_r} /boot/initramfs-linux.img; then
+            booti ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}
+        else
+            booti ${kernel_addr_r} - ${fdt_addr_r}
+        fi
+    fi
+fi
