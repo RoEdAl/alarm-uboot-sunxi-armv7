@@ -1,0 +1,68 @@
+#
+# Additional DTBs for Allwinner SOC's
+#
+
+_rcver=4.15
+_rcrel=7
+_rcnrel=armv7-x0
+
+_cfgrel=e90c3f3b255e52aba558025ae53f758a427cefb7
+_srcname=linux-${_rcver}-rc${_rcrel}
+
+pkgbase='sun8i-h3-dtbs'
+pkgname=('orangepi-dtbs' 'nanopi_dtbs')
+pkgver=${_rcver}.rc${_rcrel}
+pkgrel=3
+arch=('armv7h')
+url="http://www.kernel.org/"
+license=('GPL2')
+depends=("linux-armv7-rc>=${pkgver}")
+makedepends=('bc' 'git')
+options=('!strip')
+
+source=("http://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+        "http://rcn-ee.com/deb/sid-armhf/v${_rcver}.0-rc${_rcrel}-${_rcnrel}/patch-${_rcver}-rc${_rcrel}-${_rcnrel}.diff.gz"
+	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7-rc/config")
+md5sums=('c94fe83caa8956ca6e751511d56513ba'
+         'b683135f0c921993a93352f2c0cbafaf'
+         'acf068dc66ef7ac1fb625a2d5337336d')
+
+prepare() {
+  cd "${srcdir}/${_srcname}"
+
+  # RCN patch
+  git apply ../patch-${_rcver}-rc${_rcrel}-${_rcnrel}.diff
+  rm -f scripts/bin2c
+
+  cat "${srcdir}/config" > ./.config
+
+  # add pkgrel to extraversion
+  sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile
+}
+
+build() {
+  cd "${srcdir}/${_srcname}"
+
+  export DTC_FLAGS=--symbols
+
+  make prepare
+  make dtbs
+}
+
+package_orangepi-dtbs() {
+  pkgdesc='Additional DTBs for Orange Pi boards'
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot/dtbs"
+  cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs/sun8i-h2-plus-orangepi-zero_.dtb"
+}
+
+package_nanopi_dtbs() {
+  pkgdesc='Additional DTBs for NanoPi boards'
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot/dtbs"
+  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs/sun8i-h3-nanopi-neo_.dtb"
+}
