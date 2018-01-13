@@ -16,7 +16,7 @@ if test -e ${devtype} ${devnum}:${bootpart} /boot/overlays.txt; then
     env import -t ${load_addr} ${filesize}
 fi
 
-if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/Image; then
+if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
     if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
         if test -n ${overlay_prefix}; then
             echo "Applying additional DT overlay(s)"
@@ -41,9 +41,9 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/Image; then
         fi
 
         if load ${devtype} ${devnum}:${bootpart} ${ramdisk_addr_r} /boot/initramfs-linux.img; then
-            booti ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}
+            bootz ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}
         else
-            booti ${kernel_addr_r} - ${fdt_addr_r}
+            bootz ${kernel_addr_r} - ${fdt_addr_r}
         fi
     fi
 fi
