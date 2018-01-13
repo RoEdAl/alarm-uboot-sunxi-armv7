@@ -10,7 +10,7 @@ _cfgrel=e90c3f3b255e52aba558025ae53f758a427cefb7
 _srcname=linux-${_rcver}-rc${_rcrel}
 
 pkgbase='sun8i-h3-dtbs'
-pkgname=('orangepi-dtbs' 'nanopi_dtbs')
+pkgname=('orangepi-dtbs' 'nanopi-dtbs')
 pkgver=${_rcver}.rc${_rcrel}
 pkgrel=3
 arch=('armv7h')
@@ -58,7 +58,7 @@ package_orangepi-dtbs() {
   cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs/sun8i-h2-plus-orangepi-zero_.dtb"
 }
 
-package_nanopi_dtbs() {
+package_nanopi-dtbs() {
   pkgdesc='Additional DTBs for NanoPi boards'
 
   cd "${srcdir}/${_srcname}"
