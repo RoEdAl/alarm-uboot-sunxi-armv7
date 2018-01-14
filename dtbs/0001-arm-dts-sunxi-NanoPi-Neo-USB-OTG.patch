@@ -1,6 +1,6 @@
-From ac41944294b5289076d50e97f3b965fa47880ce2 Mon Sep 17 00:00:00 2001
+From 96885e2fff7fa76b5a52640ce092d3b2391ecc13 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sun, 14 Jan 2018 11:28:25 +0000
+Date: Sun, 14 Jan 2018 11:47:26 +0000
 Subject: [PATCH] arm: dts: sunxi: NanoPi Neo - USB OTG
 
 Status LED without heartbeating
@@ -27,7 +27,7 @@ index d0381e9ca..f0bdbae46 100644
  	sun8i-h3-orangepi-lite.dtb \
 diff --git a/arch/arm/boot/dts/sun8i-h3-nanopi-neo_.dts b/arch/arm/boot/dts/sun8i-h3-nanopi-neo_.dts
 new file mode 100644
-index 000000000..74670498d
+index 000000000..4f26cd691
 --- /dev/null
 +++ b/arch/arm/boot/dts/sun8i-h3-nanopi-neo_.dts
 @@ -0,0 +1,69 @@
@@ -93,7 +93,7 @@ index 000000000..74670498d
 +};
 +
 +&usb_otg {
-+	dr_mode = "peripheral";
++	dr_mode = "otg";
 +	status = "okay";
 +};
 +
