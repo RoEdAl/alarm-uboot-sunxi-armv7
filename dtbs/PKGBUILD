@@ -12,7 +12,7 @@ _srcname=linux-${_rcver}-rc${_rcrel}
 pkgbase='sun8i-h3-dtbs'
 pkgname=('orangepi-dtbs' 'nanopi-dtbs')
 pkgver=${_rcver}.rc${_rcrel}
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,11 +22,15 @@ options=('!strip')
 
 source=("http://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
         "http://rcn-ee.com/deb/sid-armhf/v${_rcver}.0-rc${_rcrel}-${_rcnrel}/patch-${_rcver}-rc${_rcrel}-${_rcnrel}.diff.gz"
-	'0001-arm-dts-sunxi-NanoPi-Neo-USB-OTG.patch'
+	'0001-arm-dts-sunxi-NanoPi-Neo-add-USB-OTG-support.patch'
+	'0002-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
+	'0003-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7-rc/config")
 md5sums=('ad8277e87079747f0e352f1fba151d38'
          '51d94dedeccf5cd50b730f7a74095508'
-         '08b492d3ae901d92ba7014d906d594d3'
+         'a7b8a540a0c389197e437329014657e3'
+         '198d05b2d30aac4662b0bf2ea246e978'
+         '6ed95e852527c9b9f31d6d4f7c2d81ad'
          '6dba81bd6483c3d06e2a594b60fe4589')
 
 prepare() {
@@ -37,7 +41,9 @@ prepare() {
   rm -f scripts/bin2c
 
   # custom patches
-  git apply --verbose ../0001-arm-dts-sunxi-NanoPi-Neo-USB-OTG.patch
+  git apply ../0001-arm-dts-sunxi-NanoPi-Neo-add-USB-OTG-support.patch
+  git apply ../0002-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch
+  git apply ../0003-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch
 
   cat "${srcdir}/config" > ./.config
 
@@ -69,5 +75,5 @@ package_nanopi-dtbs() {
   cd "${srcdir}/${_srcname}"
 
   mkdir -p "${pkgdir}/boot/dtbs"
-  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo_.dtb "${pkgdir}/boot/dtbs/sun8i-h3-nanopi-neo_.dtb"
+  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs/sun8i-h3-nanopi-neo_.dtb"
 }

@@ -1,0 +1,26 @@
+From 879cbfc7ed016fffef0d89036f79bc93c1cacac6 Mon Sep 17 00:00:00 2001
+From: Edmunt Pienkowsky <roed@onet.eu>
+Date: Sun, 21 Jan 2018 14:15:10 +0000
+Subject: [PATCH 2/3] arm: dts: sunxi: NanoPi Neo - status LED without
+ defaulted heartbeating
+
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
+---
+ arch/arm/boot/dts/sun8i-h3-nanopi.dtsi | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi b/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi
+index 7646e331b..4c7db3ffa 100644
+--- a/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi
++++ b/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi
+@@ -65,7 +65,6 @@
+ 		status {
+ 			label = "nanopi:blue:status";
+ 			gpios = <&pio 0 10 GPIO_ACTIVE_HIGH>;
+-			linux,default-trigger = "heartbeat";
+ 		};
+ 
+ 		pwr {
+-- 
+2.15.1
+

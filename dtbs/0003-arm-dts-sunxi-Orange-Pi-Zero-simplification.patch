@@ -1,0 +1,87 @@
+From e68e24ed330c2de0967a6238bd537a2ef21518d5 Mon Sep 17 00:00:00 2001
+From: Edmunt Pienkowsky <roed@onet.eu>
+Date: Sun, 21 Jan 2018 14:15:36 +0000
+Subject: [PATCH 3/3] arm: dts: sunxi: Orange Pi Zero - simplification
+
+Do not acitvate ohci0 - USB OTG do not need this.
+Remove already disabled resources.
+Normalize names of LED nodes.
+Remove (disabled) flash configuration.
+
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
+---
+ arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts | 35 ++---------------------
+ 1 file changed, 3 insertions(+), 32 deletions(-)
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index 6713d0f2b..e2ee6e8a0 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -68,13 +68,13 @@
+ 	leds {
+ 		compatible = "gpio-leds";
+ 
+-		pwr_led {
++		pwr {
+ 			label = "orangepi:green:pwr";
+ 			gpios = <&r_pio 0 10 GPIO_ACTIVE_HIGH>;
+ 			default-state = "on";
+ 		};
+ 
+-		status_led {
++		status {
+ 			label = "orangepi:red:status";
+ 			gpios = <&pio 0 17 GPIO_ACTIVE_HIGH>;
+ 		};
+@@ -143,47 +143,18 @@
+ 	bias-pull-up;
+ };
+ 
+-&ohci0 {
+-	status = "okay";
+-};
+-
+ &ohci1 {
+ 	status = "okay";
+ };
+ 
+-&spi0 {
+-	/* Disable SPI NOR by default: it optional on Orange Pi Zero boards */
+-	status = "disabled";
+-
+-	flash@0 {
+-		#address-cells = <1>;
+-		#size-cells = <1>;
+-		compatible = "mxicy,mx25l1606e", "winbond,w25q128";
+-		reg = <0>;
+-		spi-max-frequency = <40000000>;
+-	};
+-};
+-
+ &uart0 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&uart0_pins_a>;
+ 	status = "okay";
+ };
+ 
+-&uart1 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&uart1_pins>;
+-	status = "disabled";
+-};
+-
+-&uart2 {
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&uart2_pins>;
+-	status = "disabled";
+-};
+-
+ &usb_otg {
+-	dr_mode = "peripheral";
++	dr_mode = "otg";
+ 	status = "okay";
+ };
+ 
+-- 
+2.15.1
+
