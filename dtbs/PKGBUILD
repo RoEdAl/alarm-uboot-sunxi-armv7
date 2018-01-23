@@ -3,16 +3,16 @@
 #
 
 _rcver=4.15
-_rcrel=8
+_rcrel=9
 _rcnrel=armv7-x0
 
 _cfgrel=ade04f7c8945ce4ab2409d6d8299fc6a82665729
 _srcname=linux-${_rcver}-rc${_rcrel}
 
-pkgbase='sun8i-h3-dtbs'
-pkgname=('orangepi-dtbs' 'nanopi-dtbs')
+pkgbase='sunxi-dtbs'
+pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
 pkgver=${_rcver}.rc${_rcrel}
-pkgrel=2
+pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -25,12 +25,14 @@ source=("http://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 	'0001-arm-dts-sunxi-NanoPi-Neo-add-USB-OTG-support.patch'
 	'0002-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0003-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
+	'0004-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7-rc/config")
-md5sums=('ad8277e87079747f0e352f1fba151d38'
-         '51d94dedeccf5cd50b730f7a74095508'
+md5sums=('e2fab4831e54e1a188a68d431e63f540'
+         'a4e873983a34620a0bfef176699182bd'
          'a7b8a540a0c389197e437329014657e3'
          '198d05b2d30aac4662b0bf2ea246e978'
          '6ed95e852527c9b9f31d6d4f7c2d81ad'
+         '04a0de3626515ffe03ffb6098ab3f131'
          '6dba81bd6483c3d06e2a594b60fe4589')
 
 prepare() {
@@ -44,6 +46,7 @@ prepare() {
   git apply ../0001-arm-dts-sunxi-NanoPi-Neo-add-USB-OTG-support.patch
   git apply ../0002-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch
   git apply ../0003-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch
+  git apply ../0004-ARM-dts-sun4i-Correct-pinctrl-nodes.patch
 
   cat "${srcdir}/config" > ./.config
 
@@ -62,6 +65,8 @@ build() {
 
 package_orangepi-dtbs() {
   pkgdesc='Additional DTBs for Orange Pi boards'
+  provides=('sunxi-dtbs')
+  conflicts=('sunxi-dtbs')
 
   cd "${srcdir}/${_srcname}"
 
@@ -71,9 +76,22 @@ package_orangepi-dtbs() {
 
 package_nanopi-dtbs() {
   pkgdesc='Additional DTBs for NanoPi boards'
+  provides=('sunxi-dtbs')
+  conflicts=('sunxi-dtbs')
 
   cd "${srcdir}/${_srcname}"
 
   mkdir -p "${pkgdir}/boot/dtbs"
   cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs/sun8i-h3-nanopi-neo_.dtb"
+}
+
+package_olinuxino-lime-dtbs() {
+  pkgdesc='Additional DTBs for oLinuXino Lime boards'
+  provides=('sunxi-dtbs')
+  conflicts=('sunxi-dtbs')
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot/dtbs"
+  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dts "${pkgdir}/boot/dtbs/sun4i-a10-olinuxino-lime_.dts"
 }

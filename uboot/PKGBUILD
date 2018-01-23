@@ -1,9 +1,9 @@
 # U-Boot: sunXi (OrangePi/NanoPi)
 
-pkgbase='uboot-sun8i-h3'
-pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo')
+pkgbase='uboot-sunxi-dto'
+pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto')
 pkgver=2018.01
-pkgrel=4
+pkgrel=5
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url="http://git.denx.de/u-boot.git/"
@@ -13,22 +13,23 @@ makedepends=('bc' 'dtc' 'python2' 'swig')
 backup=(
 	'boot/boot.txt'
 	'boot/boot.scr')
-optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'boot.txt'
 	'flash-uboot.sh'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
 	'orangepi_zero_defconfig'
-	'nanopi_neo_defconfig')
+	'nanopi_neo_defconfig'
+	'A10-OLinuXino-Lime_defconfig')
 md5sums=('b42e45813369f4ae84490a481e531768'
          '0d3396477ed84ebb147475acdd0e337c'
          '4a520897a21351e83b55a7ed8d12b6cb'
          '021623a04afd29ac3f368977140cfbfd'
          'e0131bdea1c554796e242d616238e5d9'
-         'c11863316b7761768aa3aa727eca0144')
+         'c11863316b7761768aa3aa727eca0144'
+         'e9535d40c468612db90ee1aaf24ef2b2')
 
-boards=('orangepi_zero' 'nanopi_neo')
+boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime')
 
 prepare() {
   cd u-boot-${pkgver}
@@ -38,6 +39,9 @@ prepare() {
 
   cp ${srcdir}/nanopi_neo_defconfig configs
   cp arch/arm/dts/sun8i-h3-nanopi-neo.dts arch/arm/dts/sun8i-h3-nanopi-neo_.dts
+
+  cp ${srcdir}/A10-OLinuXino-Lime_defconfig configs
+  cp arch/arm/dts/sun4i-a10-olinuxino-lime.dts arch/arm/dts/sun4i-a10-olinuxino-lime_.dts
 }
 
 build() {
@@ -59,11 +63,12 @@ build() {
 }
 
 package_uboot-orangepi-zero() {
-  pkgdesc='U-Boot for Orange Pi Zero'
+  pkgdesc='U-Boot for Orange Pi Zero (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
   depends=('linux-armv7-rc' 'orangepi-dtbs')
+  optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot"
   install -Dm644 bin_orangepi_zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot"
@@ -75,11 +80,12 @@ package_uboot-orangepi-zero() {
 }
 
 package_uboot-nanopi-neo() {
-  pkgdesc='U-Boot for NanoPi Neo'
+  pkgdesc='U-Boot for NanoPi Neo (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
   depends=('linux-armv7-rc' 'nanopi-dtbs')
+  optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot"
   install -Dm644 bin_nanopi_neo/u-boot-sunxi-with-spl.bin "${pkgdir}/boot"
@@ -89,3 +95,21 @@ package_uboot-nanopi-neo() {
   install -Dm755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
 }
+
+package_uboot-a10-olinuxino-lime-dto() {
+  pkgdesc='U-Boot for A10 OLinuXino Lime (with device tree overlays support)'
+  install=${pkgbase}.install
+  provides=('uboot-sunxi')
+  conflicts=('uboot-sunxi')
+  depends=('linux-armv7-rc' 'olinuxino-lime-dtbs')
+  optdepends=('uboot-tools' 'sun4i-a10-dt-overlays')
+
+  install -d "${pkgdir}/boot"
+  install -Dm644 bin_A10-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot"
+
+  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+}
+
