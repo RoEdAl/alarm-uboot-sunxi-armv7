@@ -93,5 +93,5 @@ package_olinuxino-lime-dtbs() {
   cd "${srcdir}/${_srcname}"
 
   mkdir -p "${pkgdir}/boot/dtbs"
-  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dts "${pkgdir}/boot/dtbs/sun4i-a10-olinuxino-lime_.dts"
+  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs/sun4i-a10-olinuxino-lime_.dtb"
 }
