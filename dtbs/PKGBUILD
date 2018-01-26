@@ -12,7 +12,7 @@ _srcname=linux-${_rcver}-rc${_rcrel}
 pkgbase='sunxi-dtbs'
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
 pkgver=${_rcver}.rc${_rcrel}
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -94,4 +94,5 @@ package_olinuxino-lime-dtbs() {
 
   mkdir -p "${pkgdir}/boot/dtbs"
   cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs/sun4i-a10-olinuxino-lime_.dtb"
+  cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs/sun7i-a20-olinuxino-lime_.dtb"
 }

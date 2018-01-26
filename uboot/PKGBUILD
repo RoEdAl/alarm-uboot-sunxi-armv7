@@ -1,14 +1,13 @@
 # U-Boot: sunXi (OrangePi/NanoPi)
 
 pkgbase='uboot-sunxi-dto'
-pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto')
+pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto')
 pkgver=2018.01
-pkgrel=5
+pkgrel=6
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
-url="http://git.denx.de/u-boot.git/"
+url='http://git.denx.de/u-boot.git/'
 license=('GPL')
-options=('!strip')
 makedepends=('bc' 'dtc' 'python2' 'swig')
 backup=(
 	'boot/boot.txt'
@@ -17,19 +16,23 @@ backup=(
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'boot.txt'
 	'flash-uboot.sh'
+	'config-fragment'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
 	'orangepi_zero_defconfig'
 	'nanopi_neo_defconfig'
-	'A10-OLinuXino-Lime_defconfig')
-md5sums=('b42e45813369f4ae84490a481e531768'
-         '0d3396477ed84ebb147475acdd0e337c'
-         '4a520897a21351e83b55a7ed8d12b6cb'
-         '021623a04afd29ac3f368977140cfbfd'
-         'e0131bdea1c554796e242d616238e5d9'
-         'c11863316b7761768aa3aa727eca0144'
-         'e9535d40c468612db90ee1aaf24ef2b2')
+	'A10-OLinuXino-Lime_defconfig'
+	'A20-OLinuXino-Lime_defconfig')
+sha1sums=('a4689e07aa09adaea351946ff6156ca11aec1345'
+          '033b7eb4ab939d92e5eee94d2a9290b92b830955'
+          'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
+          '41bbf43f35b4cb41a2ea4bcf18d0f6bb75819c40'
+          '008b9ce4fcf64c939868148ca387fa733c8b7e69'
+          '947d792d3417ac00e501d11f05a5735f9f29e554'
+          '81d6e94fdb987e1e8fbfccb126af9e68f47b84bc'
+          'be3691e32768dc0a9487f988088de2b7eb7daa28'
+          'd89567602216069b7add97231a88521a2c725d0b')
 
-boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime')
+boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime')
 
 prepare() {
   cd u-boot-${pkgver}
@@ -42,6 +45,9 @@ prepare() {
 
   cp ${srcdir}/A10-OLinuXino-Lime_defconfig configs
   cp arch/arm/dts/sun4i-a10-olinuxino-lime.dts arch/arm/dts/sun4i-a10-olinuxino-lime_.dts
+
+  cp ${srcdir}/A20-OLinuXino-Lime_defconfig configs
+  cp arch/arm/dts/sun7i-a20-olinuxino-lime.dts arch/arm/dts/sun7i-a20-olinuxino-lime_.dts
 }
 
 build() {
@@ -53,8 +59,7 @@ build() {
     mkdir ../bin_${i}
     make distclean
     make ${i}_config
-    echo 'CONFIG_IDENT_STRING=" Arch Linux ARM"' >> .config
-    echo 'CONFIG_OF_LIBFDT_OVERLAY=y' >> .config
+    scripts/kconfig/merge_config.sh .config ${srcdir}/config-fragment
     make EXTRAVERSION=-${pkgrel} PYTHON=python2 DTC=/usr/bin/dtc
     mv u-boot-sunxi-with-spl.bin ../bin_${i}
   done
@@ -113,3 +118,19 @@ package_uboot-a10-olinuxino-lime-dto() {
   install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
 }
 
+package_uboot-a20-olinuxino-lime-dto() {
+  pkgdesc='U-Boot for A20 OLinuXino Lime (with device tree overlays support)'
+  install=${pkgbase}.install
+  provides=('uboot-sunxi')
+  conflicts=('uboot-sunxi')
+  depends=('linux-armv7-rc' 'olinuxino-lime-dtbs')
+  optdepends=('uboot-tools' 'sun7i-a20-dt-overlays')
+
+  install -d "${pkgdir}/boot"
+  install -Dm644 bin_A20-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot"
+
+  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+}
