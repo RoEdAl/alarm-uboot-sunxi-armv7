@@ -3,12 +3,12 @@
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto')
 pkgver=2018.01
-pkgrel=6
+pkgrel=7
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
-makedepends=('bc' 'dtc' 'python2' 'swig')
+makedepends=('bc' 'python2' 'swig')
 backup=(
 	'boot/boot.txt'
 	'boot/boot.scr')
@@ -60,7 +60,7 @@ build() {
     make distclean
     make ${i}_config
     scripts/kconfig/merge_config.sh .config ${srcdir}/config-fragment
-    make EXTRAVERSION=-${pkgrel} PYTHON=python2 DTC=/usr/bin/dtc
+    make EXTRAVERSION=-${pkgrel} PYTHON=python2 V=0
     mv u-boot-sunxi-with-spl.bin ../bin_${i}
   done
 
@@ -72,7 +72,7 @@ package_uboot-orangepi-zero() {
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
-  depends=('linux-armv7-rc' 'orangepi-dtbs')
+  depends=('orangepi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot"
@@ -89,7 +89,7 @@ package_uboot-nanopi-neo() {
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
-  depends=('linux-armv7-rc' 'nanopi-dtbs')
+  depends=('nanopi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot"
@@ -106,7 +106,7 @@ package_uboot-a10-olinuxino-lime-dto() {
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
-  depends=('linux-armv7-rc' 'olinuxino-lime-dtbs')
+  depends=('olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun4i-a10-dt-overlays')
 
   install -d "${pkgdir}/boot"
@@ -123,7 +123,7 @@ package_uboot-a20-olinuxino-lime-dto() {
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
-  depends=('linux-armv7-rc' 'olinuxino-lime-dtbs')
+  depends=('olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun7i-a20-dt-overlays')
 
   install -d "${pkgdir}/boot"
