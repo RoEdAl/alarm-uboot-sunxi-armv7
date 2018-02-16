@@ -6,7 +6,7 @@ pkgbase='sunxi-dtbs'
 _srcname=linux-4.15
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
 pkgver=4.15
-pkgrel=1
+pkgrel=2
 rcnrel=armv7-x0
 arch=('armv7h')
 url="http://www.kernel.org/"
@@ -14,7 +14,7 @@ license=('GPL2')
 depends=("linux>=${pkgver}.0")
 makedepends=('bc' 'git')
 options=('!strip')
-_cfgrel=9416b81629a30f2fae1434cbcdb287b4d032edfc
+_cfgrel=2651a3f9d5215792ed7b71742511959e42664019
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://rcn-ee.com/deb/sid-armhf/v${pkgver}.0-${rcnrel}/patch-${pkgver}-${rcnrel}.diff.gz"
@@ -22,6 +22,7 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0002-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0003-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
 	'0004-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
+	'0005-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('0d701ac1e2a67d47ce7127432df2c32b'
          '668d1c13bae50edde29f35bb34f55581'
@@ -29,7 +30,8 @@ md5sums=('0d701ac1e2a67d47ce7127432df2c32b'
          '198d05b2d30aac4662b0bf2ea246e978'
          '6ed95e852527c9b9f31d6d4f7c2d81ad'
          '04a0de3626515ffe03ffb6098ab3f131'
-         'd74c03593eafdad8a6e644c8658deb45')
+         '11d2b4484570a62c12bbb9f5136ede5b'
+         '6507580aca806cae927320d1ddbd279a')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -42,6 +44,7 @@ prepare() {
   git apply ../0002-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch
   git apply ../0003-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch
   git apply ../0004-ARM-dts-sun4i-Correct-pinctrl-nodes.patch
+  git apply ../0005-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch
 
   cat "${srcdir}/config" > ./.config
 
