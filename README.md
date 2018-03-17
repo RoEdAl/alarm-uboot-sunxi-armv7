@@ -18,6 +18,5 @@ All bootloaders requires Linux kernel version *4.15.0* or above.
 
 Build issues:
 
-* U-Boot: Build fail when `dtc` package is installed.
 * Due to `git-apply` behaviour packages must be built **outside** a git repository - 
   specify **BUILDIR** in [`~/.makepkg.conf`](http://www.archlinux.org/pacman/makepkg.conf.5.html) file.
