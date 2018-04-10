@@ -1,7 +1,7 @@
-From 793d137eb5f3aece32c17ca210b11ef0501d0d21 Mon Sep 17 00:00:00 2001
+From 42a6d7a502dc355f2d84c848933271adc9867aa5 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Tue, 23 Jan 2018 11:52:20 +0100
-Subject: [PATCH] ARM: dts: sun4i: Correct pinctrl nodes
+Subject: [PATCH 3/4] ARM: dts: sun4i: Correct pinctrl nodes
 
 spi2_cs0_pc_pins -> spi2_cs0_pc_pin
 
@@ -11,7 +11,7 @@ Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/sun4i-a10.dtsi b/arch/arm/boot/dts/sun4i-a10.dtsi
-index 4f2f2eea0..da6153a53 100644
+index 4f2f2eea0755..da6153a53c71 100644
 --- a/arch/arm/boot/dts/sun4i-a10.dtsi
 +++ b/arch/arm/boot/dts/sun4i-a10.dtsi
 @@ -740,7 +740,7 @@
@@ -24,5 +24,5 @@ index 4f2f2eea0..da6153a53 100644
  				function = "spi2";
  			};
 -- 
-2.16.1
+2.16.2
 
