@@ -17,7 +17,13 @@ if test -e ${devtype} ${devnum}:${bootpart} /boot/overlays.txt; then
 fi
 
 if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
-    if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
+    if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}_; then
+        setenv fdtfile_loaded "${fdtfile}_"
+    elif load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
+        setenv fdtfile_loaded "${fdtfile}"
+    fi
+
+    if test -n "${fdtfile_loaded}"; then
         if test -n ${overlay_prefix}; then
             echo "Applying additional DT overlay(s)"
 
@@ -33,7 +39,7 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
 
             if test "${overlay_error}" = "true"; then
                 echo "Error applying DT overlays, restoring original DT"
-                load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}
+                load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile_loaded}
             elif load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/dtbs/overlay/${overlay_prefix}-fixup.scr; then
                 echo "Applying DT fixup script: ${overlay_prefix}-fixup.scr"
                 source ${load_addr}
