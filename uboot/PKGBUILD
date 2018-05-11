@@ -1,9 +1,9 @@
-# U-Boot: sunXi (OrangePi/NanoPi)
+# Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto')
 pkgver=2018.05
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
@@ -22,7 +22,7 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'A10-OLinuXino-Lime_defconfig'
 	'A20-OLinuXino-Lime_defconfig')
 sha1sums=('605543501f7450ffa4e9c7fd98d2f36dbc0657b0'
-          '2f237516fd4d2f6a3fd7b8c9bafa8a9346432ddb'
+          'a09e1db9025ae6fb8737a25fe3a86e6fe5b8f247'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '41bbf43f35b4cb41a2ea4bcf18d0f6bb75819c40'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'

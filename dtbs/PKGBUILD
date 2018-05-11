@@ -1,12 +1,10 @@
-#
-# Additional DTBs for Allwinner SOC's
-#
+# Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='sunxi-dtbs'
 _srcname=linux-4.16
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
 pkgver=4.16
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -66,8 +64,8 @@ package_orangepi-dtbs() {
 
   cd "${srcdir}/${_srcname}"
 
-  mkdir -p "${pkgdir}/boot/dtbs"
-  cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs/sun8i-h2-plus-orangepi-zero_.dtb"
+  mkdir -p "${pkgdir}/boot/dtbs-extra"
+  cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs-extra"
 }
 
 package_nanopi-dtbs() {
@@ -77,8 +75,8 @@ package_nanopi-dtbs() {
 
   cd "${srcdir}/${_srcname}"
 
-  mkdir -p "${pkgdir}/boot/dtbs"
-  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs/sun8i-h3-nanopi-neo_.dtb"
+  mkdir -p "${pkgdir}/boot/dtbs-extra"
+  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs-extra"
 }
 
 package_olinuxino-lime-dtbs() {
@@ -88,7 +86,7 @@ package_olinuxino-lime-dtbs() {
 
   cd "${srcdir}/${_srcname}"
 
-  mkdir -p "${pkgdir}/boot/dtbs"
-  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs/sun4i-a10-olinuxino-lime_.dtb"
-  cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs/sun7i-a20-olinuxino-lime_.dtb"
+  mkdir -p "${pkgdir}/boot/dtbs-extra"
+  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra"
+  cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra"
 }
