@@ -7,8 +7,8 @@
 * [A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware) - `uboot-a10-olinuxino-lime-dt` (optionally uses tweaked DTB from `olinuxino-lime-dtbs`)
 * [A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware) - `uboot-a20-olinuxino-lime-dt` (optionally uses tweaked DTB from `olinuxino-lime-dtbs`)
 
-Theese bootloaders are ready to apply additional DT overlays from [Armbian's Device Tree overlays for sunxi devices](http://github.com/armbian/sunxi-DT-overlays).
-See [this](http://github.com/RoEdAl/alarm-sunxi-dt-overlays-armv7) repository for more info.
+Theese bootloaders are ready to apply additional DT overlays from [Armbian's Device Tree overlays for sunxi devices](//github.com/armbian/sunxi-DT-overlays).
+See [this](//github.com/RoEdAl/alarm-sunxi-dt-overlays-armv7) repository for more info.
 
 All bootloaders requires Linux kernel version >=*4.15.0*.
 
@@ -70,9 +70,7 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    ```
    pacman -U pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/<brand-name>-dtbs-x.yy-r-armv7h.pkg.tar.xz
    ```
----
-
-Build issues:
+## Build issues:
 
 * Due to `git-apply` behaviour packages must be built **outside** a git repository - 
-  specify **BUILDDIR** in [`~/.makepkg.conf`](http://www.archlinux.org/pacman/makepkg.conf.5.html) file.
+  specify **BUILDDIR** in [`~/.makepkg.conf`](//www.archlinux.org/pacman/makepkg.conf.5.html) file.
