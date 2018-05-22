@@ -8,19 +8,26 @@ else
     setenv bootpart 1
 fi
 
-part uuid ${devtype} ${devnum}:${bootpart} uuid
+if test -e ${devtype} ${devnum}:${bootpart} /root-is-on-2nd-partition; then
+    setenv rootpart 2
+else
+    setenv rootpart ${bootpart}
+    setenv bootdir "/boot"
+fi
+
+part uuid ${devtype} ${devnum}:${rootpart} uuid
 setenv bootargs console=${console} root=PARTUUID=${uuid} rw rootwait elevator=noop
 
-if test -e ${devtype} ${devnum}:${bootpart} /boot/overlays.txt; then
-    load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/overlays.txt
+if test -e ${devtype} ${devnum}:${bootpart} ${bootdir}/overlays.txt; then
+    load ${devtype} ${devnum}:${bootpart} ${load_addr} ${bootdir}/overlays.txt
     env import -t ${load_addr} ${filesize}
 fi
 
-if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
-    if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs-extra/${fdtfile}; then
-        setenv fdtfile_loaded "/boot/dtbs-extra/${fdtfile}"
-    elif load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} /boot/dtbs/${fdtfile}; then
-        setenv fdtfile_loaded "/boot/dtbs/${fdtfile}"
+if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} ${bootdir}/zImage; then
+    if load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} ${bootdir}/dtbs-extra/${fdtfile}; then
+        setenv fdtfile_loaded "${bootdir}/dtbs-extra/${fdtfile}"
+    elif load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} ${bootdir}/dtbs/${fdtfile}; then
+        setenv fdtfile_loaded "${bootdir}/dtbs/${fdtfile}"
     fi
 
     if test -n "${fdtfile_loaded}"; then
@@ -31,7 +38,7 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
             fdt resize 65536
 
             for overlay_file in ${overlays}; do
-	        if load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/dtbs/overlay/${overlay_prefix}-${overlay_file}.dtbo; then
+	        if load ${devtype} ${devnum}:${bootpart} ${load_addr} ${bootdir}/dtbs/overlay/${overlay_prefix}-${overlay_file}.dtbo; then
                     echo "Applying DT overlay: ${overlay_prefix}-${overlay_file}.dtbo"
                     fdt apply ${load_addr} || setenv overlay_error "true"
 	        fi
@@ -40,13 +47,13 @@ if load ${devtype} ${devnum}:${bootpart} ${kernel_addr_r} /boot/zImage; then
             if test "${overlay_error}" = "true"; then
                 echo "Error applying DT overlays, restoring original DT"
                 load ${devtype} ${devnum}:${bootpart} ${fdt_addr_r} ${fdtfile_loaded}
-            elif load ${devtype} ${devnum}:${bootpart} ${load_addr} /boot/dtbs/overlay/${overlay_prefix}-fixup.scr; then
+            elif load ${devtype} ${devnum}:${bootpart} ${load_addr} ${bootdir}/dtbs/overlay/${overlay_prefix}-fixup.scr; then
                 echo "Applying DT fixup script: ${overlay_prefix}-fixup.scr"
                 source ${load_addr}
             fi
         fi
 
-        if load ${devtype} ${devnum}:${bootpart} ${ramdisk_addr_r} /boot/initramfs-linux.img; then
+        if load ${devtype} ${devnum}:${bootpart} ${ramdisk_addr_r} ${bootdir}/initramfs-linux.img; then
             bootz ${kernel_addr_r} ${ramdisk_addr_r}:${filesize} ${fdt_addr_r}
         else
             bootz ${kernel_addr_r} - ${fdt_addr_r}
