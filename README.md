@@ -142,9 +142,9 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    ```
 1. Optionally configure *systemd-journald* service to store log data only in memory:
    ```
-   mkdir -p root//usr/lib/systemd/journald.conf.d
-   echo '[Journal]' > root//usr/lib/systemd/journald.conf.d/storage-volatile.conf
-   echo 'Storage=volatile' >> root//usr/lib/systemd/journald.conf.d/storage-volatile.conf
+   mkdir -p root/usr/lib/systemd/journald.conf.d
+   echo '[Journal]' > root/usr/lib/systemd/journald.conf.d/storage-volatile.conf
+   echo 'Storage=volatile' >> root/usr/lib/systemd/journald.conf.d/storage-volatile.conf
    ```
 1. Umount the partitions:
    ```
