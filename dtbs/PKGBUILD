@@ -1,10 +1,10 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='sunxi-dtbs'
-_srcname=linux-4.16
+_srcname=linux-4.17
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
-pkgver=4.16
-pkgrel=2
+pkgver=4.17
+pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -13,28 +13,28 @@ makedepends=('bc' 'git')
 options=('!strip')
 
 _rcnrel=armv7-x0
-_cfgrel=88ed719293e141e6b5bb0b3d1f9f68789be5351f
+_cfgrel=3c45d51cc7444781131865571c64547a9b4223cd
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-	"http://rcn-ee.com/deb/sid-armhf/v${pkgver}.1-${_rcnrel}/patch-${pkgver%}.1-${_rcnrel}.diff.gz"
+	"http://rcn-ee.com/deb/sid-armhf/v${pkgver}.0-${_rcnrel}/patch-${pkgver%}-${_rcnrel}.diff.gz"
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
 	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
 	'0004-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('1357fb4ee7c288fdeac5d4e0048f5c18'
-         'a25c6c74c5e7ffd78408a1d3960a8a27'
-         'e09ae942ae43476c8b86aaaf8f26fb32'
-         '9e377c377df54d0b083a706d2c9ac98d'
-         '17ab94208d65a41a9d0a9cda5cedbfd7'
-         'a283cad32e5f41562e3b2d9c862aec89'
-         '1a7b42917c194b12fc265b6b2ad38a3e')
+md5sums=('5bb13a03274b66b56c85b26682e407d7'
+         'b9e5c7fbb3025d4ec02b61319a1a9fad'
+         'd7ad84714cb4bad12adfc8f0b58b602c'
+         '86700240a463db91a06141522e926dcc'
+         '594b3083cb8ef009be2af523fb5a8da4'
+         '132ef81c12fa96528b1a13328ca93e8d'
+         'bed4ffb7600b1d746699d9d807de9527')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
 
   # RCN patch
-  git apply ../patch-${pkgver%}.1-${_rcnrel}.diff
+  git apply ../patch-${pkgver%}-${_rcnrel}.diff
 
   # custom patches
   git apply ../0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch

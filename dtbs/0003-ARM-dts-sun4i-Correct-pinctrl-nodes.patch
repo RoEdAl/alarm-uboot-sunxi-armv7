@@ -1,4 +1,4 @@
-From 42a6d7a502dc355f2d84c848933271adc9867aa5 Mon Sep 17 00:00:00 2001
+From 740c9e888043d4c04ad1dc4aac04c9fc17a657ef Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Tue, 23 Jan 2018 11:52:20 +0100
 Subject: [PATCH 3/4] ARM: dts: sun4i: Correct pinctrl nodes
@@ -11,10 +11,10 @@ Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/arch/arm/boot/dts/sun4i-a10.dtsi b/arch/arm/boot/dts/sun4i-a10.dtsi
-index 4f2f2eea0755..da6153a53c71 100644
+index 3a1c6b45c9a1..33f918925fc7 100644
 --- a/arch/arm/boot/dts/sun4i-a10.dtsi
 +++ b/arch/arm/boot/dts/sun4i-a10.dtsi
-@@ -740,7 +740,7 @@
+@@ -738,7 +738,7 @@
  				function = "spi2";
  			};
  
@@ -24,5 +24,5 @@ index 4f2f2eea0755..da6153a53c71 100644
  				function = "spi2";
  			};
 -- 
-2.16.2
+2.17.1
 
