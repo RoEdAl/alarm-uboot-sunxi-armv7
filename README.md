@@ -93,7 +93,7 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    1. Type **o**. This will clear out any partitions on the drive.
    1. Type **p** to list partitions. There should be no partitions left.
    1. Type **n**, then **p** for primary, **1** for the first partition on the drive, **2048** for the first sector, and then type **+256M** for the last sector.
-   1. Now type **n**, then **p** for primary, **2** for the first partition on the drive and then press *ENTER* twice to accept the default first and last sector.
+   1. Now type **n**, then **p** for primary, **2** for the first partition on the drive and then press **ENTER** twice to accept the default first and last sector.
    1. Write the partition table and exit by typing **w**.
 1. Create the boot filesystem:
    ```
