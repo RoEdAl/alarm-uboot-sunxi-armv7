@@ -68,7 +68,12 @@ Replace **sdX** in the following instructions with the device name for the SD ca
 1. Use the serial console or SSH to the IP address given to the board by your router.
    - Login as the default user *alarm* with the password *alarm*.
    - The default *root* password is *root*.
-1. After logging into the system install U-Boot and DTBS packages:
+1. After logging into the system initialize the pacman keyring and populate the Arch Linux ARM [package signing](//archlinuxarm.org/about/package-signing) keys:
+   ```
+   pacman-key --init
+   pacman-key --populate archlinuxarm
+   ```
+1. Install also *U-Boot* and *DTBS* packages:
    ```
    pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/<brand-name>-dtbs-x.yy-r-armv7h.pkg.tar.xz
    ```
@@ -154,7 +159,12 @@ Replace **sdX** in the following instructions with the device name for the SD ca
 1. Use the serial console or SSH to the IP address given to the board by your router.
    - Login as the default user *alarm* with the password *alarm*.
    - The default *root* password is *root*.
-1. After logging into the system install U-Boot and DTBS packages:
+1. After logging into the system initialize the pacman keyring and populate the Arch Linux ARM [package signing](//archlinuxarm.org/about/package-signing) keys:
+   ```
+   pacman-key --init
+   pacman-key --populate archlinuxarm
+   ```
+1. Install also *U-Boot* and *DTBS* packages:
    ```
    pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/<brand-name>-dtbs-x.yy-r-armv7h.pkg.tar.xz
    ```
