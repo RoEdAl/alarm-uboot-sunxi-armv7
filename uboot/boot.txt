@@ -16,7 +16,7 @@ else
 fi
 
 part uuid ${devtype} ${devnum}:${rootpart} uuid
-setenv bootargs console=${console} root=PARTUUID=${uuid} rw rootwait elevator=noop
+setenv bootargs console=${console} root=PARTUUID=${uuid} rw rootwait elevator=noop audit=0
 
 if test -e ${devtype} ${devnum}:${bootpart} ${bootdir}/overlays.txt; then
     load ${devtype} ${devnum}:${bootpart} ${load_addr} ${bootdir}/overlays.txt
