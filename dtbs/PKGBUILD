@@ -1,9 +1,9 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='sunxi-dtbs'
-_srcname=linux-4.17
+_srcname=linux-4.18
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
-pkgver=4.17
+pkgver=4.18
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
@@ -12,8 +12,8 @@ depends=("linux>=${pkgver}.0")
 makedepends=('bc' 'git')
 options=('!strip')
 
-_rcnrel=armv7-x0
-_cfgrel=3c45d51cc7444781131865571c64547a9b4223cd
+_rcnrel=armv7-x2
+_cfgrel=92e274f8fe9d016041057754e61b86f7d08dfe0a
 
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://rcn-ee.com/deb/sid-armhf/v${pkgver}.0-${_rcnrel}/patch-${pkgver%}-${_rcnrel}.diff.gz"
@@ -22,13 +22,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
 	'0004-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('5bb13a03274b66b56c85b26682e407d7'
-         'b9e5c7fbb3025d4ec02b61319a1a9fad'
-         'd7ad84714cb4bad12adfc8f0b58b602c'
-         '86700240a463db91a06141522e926dcc'
-         '594b3083cb8ef009be2af523fb5a8da4'
-         '132ef81c12fa96528b1a13328ca93e8d'
-         'bed4ffb7600b1d746699d9d807de9527')
+md5sums=('bee5fe53ee1c3142b8f0c12c0d3348f9'
+         '8feb37c8b5788c2cdf1ca31f7d981661'
+         '9437ececbc5e83e6076b074ca5bfcb06'
+         'd2cce4e885f4527f40e682d90cb2405c'
+         '4706839e773023a3b14d2098b8c7a3c6'
+         '73485b7b701407cd6765035e7626612b'
+         'c28ae95a8fe4a4d4f5bea9229820cde8')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -59,7 +59,7 @@ build() {
 
 package_orangepi-dtbs() {
   pkgdesc='Additional DTBs for Orange Pi boards'
-  provides=('sunxi-dtbs')
+  provides=("sunxi-dtbs=${pkgver}")
   conflicts=('sunxi-dtbs')
 
   cd "${srcdir}/${_srcname}"
@@ -70,7 +70,7 @@ package_orangepi-dtbs() {
 
 package_nanopi-dtbs() {
   pkgdesc='Additional DTBs for NanoPi boards'
-  provides=('sunxi-dtbs')
+  provides=("sunxi-dtbs=${pkgver}")
   conflicts=('sunxi-dtbs')
 
   cd "${srcdir}/${_srcname}"
@@ -81,7 +81,7 @@ package_nanopi-dtbs() {
 
 package_olinuxino-lime-dtbs() {
   pkgdesc='Additional DTBs for oLinuXino Lime boards'
-  provides=('sunxi-dtbs')
+  provides=("sunxi-dtbs=${pkgver}")
   conflicts=('sunxi-dtbs')
 
   cd "${srcdir}/${_srcname}"

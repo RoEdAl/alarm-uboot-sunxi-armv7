@@ -1,7 +1,7 @@
-From 16b2f35f3728d19a534d9434a36e464353ca322e Mon Sep 17 00:00:00 2001
+From 0c8d30a1bbca55e1a4d21bf5aa1b7e030bd0e22e Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 21 Jan 2018 14:15:36 +0000
-Subject: [PATCH 2/4] arm: dts: sunxi: Orange Pi Zero - simplification
+Subject: [PATCH 2/3] arm: dts: sunxi: Orange Pi Zero - simplification
 
 Do not acitvate ohci0 - USB OTG do not need this.
 Remove already disabled resources.
@@ -14,7 +14,7 @@ Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
  1 file changed, 3 insertions(+), 32 deletions(-)
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 0bc031fe4c56..3799278b0a9a 100644
+index 84cd9c061227..a8905051a314 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -68,13 +68,13 @@
@@ -33,7 +33,7 @@ index 0bc031fe4c56..3799278b0a9a 100644
  			label = "orangepi:red:status";
  			gpios = <&pio 0 17 GPIO_ACTIVE_HIGH>;
  		};
-@@ -134,47 +134,18 @@
+@@ -155,47 +155,18 @@
  	};
  };
  
@@ -83,5 +83,5 @@ index 0bc031fe4c56..3799278b0a9a 100644
  };
  
 -- 
-2.17.1
+2.19.0
 
