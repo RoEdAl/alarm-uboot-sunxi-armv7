@@ -2,35 +2,28 @@
 
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto')
-pkgver=2018.05
-pkgrel=5
+pkgver=2018.09
+pkgrel=1
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
 makedepends=('bc' 'python2' 'swig' 'dtc')
-backup=(
-	'boot/boot.txt'
+backup=('boot/boot.txt'
 	'boot/boot.scr')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'boot.txt'
 	'flash-uboot.sh'
 	'config-fragment'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
-	'orangepi_zero_defconfig'
-	'nanopi_neo_defconfig'
-	'A10-OLinuXino-Lime_defconfig'
-	'A20-OLinuXino-Lime_defconfig')
-sha1sums=('605543501f7450ffa4e9c7fd98d2f36dbc0657b0'
+	'orangepi_zero_defconfig')
+sha1sums=('e43d4fc09395f8cde29d655d35b2bb773e89b444'
           '4088ae725c22b5468deece9c72eff6b0470a3128'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '41bbf43f35b4cb41a2ea4bcf18d0f6bb75819c40'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          'd6f8cd8040d5edd55062485ac4f3500aae3ccdb7'
-          'd2b99f2e991b59b619c4e4da7378cc69446b1207'
-          'c003e7cf72864b9447052c42aec287766b6cbd39'
-          '92bb20006b7b7a3396dd29bb93b4326151c35def')
+          'c89b2738dd66097f088693834901dd771e5d7413')
 
 _boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime')
 
@@ -38,15 +31,13 @@ prepare() {
   cd u-boot-${pkgver}
 
   cp ${srcdir}/orangepi_zero_defconfig configs
-  cp ${srcdir}/nanopi_neo_defconfig configs
-  cp ${srcdir}/A10-OLinuXino-Lime_defconfig configs
-  cp ${srcdir}/A20-OLinuXino-Lime_defconfig configs
 }
 
 build() {
   cd u-boot-${pkgver}
 
   for i in ${_boards[@]}; do
+    msg2 ${i}
     mkdir ../bin_${i} || true
     make distclean
     make ${i}_config
