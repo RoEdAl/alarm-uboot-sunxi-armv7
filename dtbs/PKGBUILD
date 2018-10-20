@@ -4,7 +4,7 @@ pkgbase='sunxi-dtbs'
 _srcname=linux-4.18
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
 pkgver=4.18
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -24,10 +24,10 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('bee5fe53ee1c3142b8f0c12c0d3348f9'
          '8feb37c8b5788c2cdf1ca31f7d981661'
-         '9437ececbc5e83e6076b074ca5bfcb06'
-         'd2cce4e885f4527f40e682d90cb2405c'
-         '4706839e773023a3b14d2098b8c7a3c6'
-         '73485b7b701407cd6765035e7626612b'
+         '4e73d703d2ac783cbbdc7f53e9e4ed18'
+         '92c563eb56e5f18e10a3005b52906927'
+         '0866db455df38417c7b1aec15564ae48'
+         'd47b3319843828948b9821045c012019'
          'c28ae95a8fe4a4d4f5bea9229820cde8')
 
 prepare() {

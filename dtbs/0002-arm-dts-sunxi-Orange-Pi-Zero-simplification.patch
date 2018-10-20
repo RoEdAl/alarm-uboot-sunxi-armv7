@@ -1,7 +1,7 @@
-From 0c8d30a1bbca55e1a4d21bf5aa1b7e030bd0e22e Mon Sep 17 00:00:00 2001
+From 486c2f3ee6ee3e34f34dbcbbb0e2317ca889b75b Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 21 Jan 2018 14:15:36 +0000
-Subject: [PATCH 2/3] arm: dts: sunxi: Orange Pi Zero - simplification
+Subject: [PATCH 2/4] arm: dts: sunxi: Orange Pi Zero - simplification
 
 Do not acitvate ohci0 - USB OTG do not need this.
 Remove already disabled resources.
@@ -83,5 +83,5 @@ index 84cd9c061227..a8905051a314 100644
  };
  
 -- 
-2.19.0
+2.19.1
 

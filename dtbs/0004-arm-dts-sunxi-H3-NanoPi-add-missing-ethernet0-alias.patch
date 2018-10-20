@@ -1,4 +1,4 @@
-From 636f65f8683f9767ba5d89ab7ce2d6eb98d2f6ed Mon Sep 17 00:00:00 2001
+From 97f59c728f76db8c9a38364e3f85e2e2a4871aa1 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Tue, 10 Apr 2018 09:53:34 +0200
 Subject: [PATCH 4/4] arm: dts: sunxi: H3 NanoPi - add missing ethernet0 alias
@@ -21,5 +21,5 @@ index ccb286aa5947..509e0282666c 100644
  
  	chosen {
 -- 
-2.19.0
+2.19.1
 
