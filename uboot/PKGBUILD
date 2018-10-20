@@ -3,7 +3,7 @@
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto')
 pkgver=2018.09
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
@@ -17,12 +17,14 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'flash-uboot.sh'
 	'config-fragment'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
+	'0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
 	'orangepi_zero_defconfig')
 sha1sums=('e43d4fc09395f8cde29d655d35b2bb773e89b444'
           '4088ae725c22b5468deece9c72eff6b0470a3128'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '41bbf43f35b4cb41a2ea4bcf18d0f6bb75819c40'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
+          '82c70b1c119dbd2a6a4cfca07eb35e62e17fe9aa'
           'c89b2738dd66097f088693834901dd771e5d7413')
 
 _boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime')
@@ -30,6 +32,7 @@ _boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime')
 prepare() {
   cd u-boot-${pkgver}
 
+  git apply ../0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch
   cp ${srcdir}/orangepi_zero_defconfig configs
 }
 
