@@ -1,40 +1,32 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='sunxi-dtbs'
-_srcname=linux-4.18
+_srcname=linux-4.19
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
-pkgver=4.18
-pkgrel=2
+pkgver=4.19
+pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
 depends=("linux>=${pkgver}.0")
 makedepends=('bc' 'git')
 options=('!strip')
-
-_rcnrel=armv7-x2
-_cfgrel=92e274f8fe9d016041057754e61b86f7d08dfe0a
-
+_cfgrel=13278c7fc5a06de728b37446bfec34fd9e6e85a0
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
-	"http://rcn-ee.com/deb/sid-armhf/v${pkgver}.0-${_rcnrel}/patch-${pkgver%}-${_rcnrel}.diff.gz"
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
 	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
 	'0004-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
-	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('bee5fe53ee1c3142b8f0c12c0d3348f9'
-         '8feb37c8b5788c2cdf1ca31f7d981661'
-         '4e73d703d2ac783cbbdc7f53e9e4ed18'
-         '92c563eb56e5f18e10a3005b52906927'
-         '0866db455df38417c7b1aec15564ae48'
-         'd47b3319843828948b9821045c012019'
-         'c28ae95a8fe4a4d4f5bea9229820cde8')
+	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
+md5sums=('740a90cf810c2105df8ee12e5d0bb900'
+         '8f04072da5f943d122a4125c43a900d5'
+         '8dfc2c98e7dde0c50c61edd04258a399'
+         '3d13b71c4776d131b3fb5be75d2c7cbe'
+         '3fc0ad1e2f1ca66dc0be545500d910b9'
+         'e7d793a9a2b813a58392a4fae7e414c3')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
-
-  # RCN patch
-  git apply ../patch-${pkgver%}-${_rcnrel}.diff
 
   # custom patches
   git apply ../0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch
@@ -42,7 +34,7 @@ prepare() {
   git apply ../0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch
   git apply ../0004-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch
 
-  cat "${srcdir}/config" > ./.config
+  cat "${srcdir}/config-${pkgver}" > ./.config
 
   # add pkgrel to extraversion
   sed -ri "s|^(EXTRAVERSION =)(.*)|\1 \2-${pkgrel}|" Makefile

@@ -1,4 +1,4 @@
-From 97f59c728f76db8c9a38364e3f85e2e2a4871aa1 Mon Sep 17 00:00:00 2001
+From de3542b101329831a4e30c5ebdcab88bc19c0b42 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Tue, 10 Apr 2018 09:53:34 +0200
 Subject: [PATCH 4/4] arm: dts: sunxi: H3 NanoPi - add missing ethernet0 alias
