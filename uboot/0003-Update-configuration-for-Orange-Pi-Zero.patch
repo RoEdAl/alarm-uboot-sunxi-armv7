@@ -1,0 +1,26 @@
+From 1d742a46ee06c156320049777452bea29788acd8 Mon Sep 17 00:00:00 2001
+From: Edmunt Pienkowsky <roed@onet.eu>
+Date: Wed, 31 Oct 2018 07:10:24 +0000
+Subject: [PATCH 3/3] Update configuration for Orange Pi Zero
+
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
+---
+ configs/orangepi_zero_defconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
+index 0da9c65093..c0d501e2c3 100644
+--- a/configs/orangepi_zero_defconfig
++++ b/configs/orangepi_zero_defconfig
+@@ -2,7 +2,7 @@ CONFIG_ARM=y
+ CONFIG_ARCH_SUNXI=y
+ CONFIG_SPL=y
+ CONFIG_MACH_SUN8I_H3=y
+-CONFIG_DRAM_CLK=624
++CONFIG_DRAM_CLK=408
+ CONFIG_DRAM_ZQ=3881979
+ CONFIG_DRAM_ODT_EN=y
+ # CONFIG_VIDEO_DE2 is not set
+-- 
+2.19.1
+
