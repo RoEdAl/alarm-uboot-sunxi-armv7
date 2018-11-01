@@ -2,9 +2,9 @@
 
 pkgbase='sunxi-dtbs'
 _srcname=linux-4.19
-pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs')
+pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 pkgver=4.19
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -16,13 +16,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
 	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
-	'0004-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
+	'0004-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch'
+	'0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch'
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '8f04072da5f943d122a4125c43a900d5'
-         '8dfc2c98e7dde0c50c61edd04258a399'
-         '3d13b71c4776d131b3fb5be75d2c7cbe'
-         '3fc0ad1e2f1ca66dc0be545500d910b9'
+         'd5b1e063c7b3806088769b1bc0d45bea'
+         '6fa8bf97d061df1a103146add5219f0d'
+         '6378bc79dc6d35c5ab710c8886c5ab82'
+         '39420e22ab2436544c42ce9a9c544da6'
+         'eba8dc9f70dded6cf178e7e9d1572a25'
          'e7d793a9a2b813a58392a4fae7e414c3')
 
 prepare() {
@@ -32,7 +34,8 @@ prepare() {
   git apply ../0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch
   git apply ../0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch
   git apply ../0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch
-  git apply ../0004-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch
+  git apply ../0004-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch
+  git apply ../0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch
 
   cat "${srcdir}/config-${pkgver}" > ./.config
 
@@ -81,4 +84,15 @@ package_olinuxino-lime-dtbs() {
   mkdir -p "${pkgdir}/boot/dtbs-extra"
   cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra"
   cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra"
+}
+
+package_bananapi-dtbs() {
+  pkgdesc='Additional DTBs for Banana Pi boards'
+  provides=("sunxi-dtbs=${pkgver}")
+  conflicts=('sunxi-dtbs')
+
+  cd "${srcdir}/${_srcname}"
+
+  mkdir -p "${pkgdir}/boot/dtbs-extra"
+  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/boot/dtbs-extra"
 }
