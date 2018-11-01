@@ -2,10 +2,11 @@
 
 ## Supported boards:
 
-* [OrangePi Zero](http://www.orangepi.org/orangepizero/) - `uboot-orangepi-zero` (optionally uses tweaked DTB from `orangepi-dtbs`)
-* [NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132) - `uboot-nanopi-neo` (optionally uses tweaked DTB from `nanopi-dtbs`)
-* [A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware) - `uboot-a10-olinuxino-lime-dt` (optionally uses tweaked DTB from `olinuxino-lime-dtbs`)
-* [A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware) - `uboot-a20-olinuxino-lime-dt` (optionally uses tweaked DTB from `olinuxino-lime-dtbs`)
+* [OrangePi Zero](http://www.orangepi.org/orangepizero/) - `uboot-orangepi-zero` (optionally uses tweaked DTB from `orangepi-dtbs` package)
+* [NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132) - `uboot-nanopi-neo` (optionally uses tweaked DTB from `nanopi-dtbs` package)
+* [A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware) - `uboot-a10-olinuxino-lime-dt` (optionally uses tweaked DTB from `olinuxino-lime-dtbs` package)
+* [A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware) - `uboot-a20-olinuxino-lime-dt` (optionally uses tweaked DTB from `olinuxino-lime-dtbs` package)
+* [BananaPi M2 Zero](http://www.banana-pi.org/bpi-zero.html) - `uboot-bananapi-m2-zero` (optionally uses tweaked DTB from `bananapi-dtbs` package)
 
 Theese bootloaders are ready to apply additional DT overlays from [Armbian's Device Tree overlays for sunxi devices](//github.com/armbian/sunxi-DT-overlays).
 See [this](//github.com/RoEdAl/alarm-sunxi-dt-overlays-armv7) repository for more info.
