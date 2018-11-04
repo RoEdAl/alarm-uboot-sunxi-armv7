@@ -1,0 +1,63 @@
+From a5bc359f4da85af069cd28196132c6f97302272a Mon Sep 17 00:00:00 2001
+From: Edmunt Pienkowsky <roed@onet.eu>
+Date: Sun, 4 Nov 2018 09:16:09 +0000
+Subject: [PATCH 4/4] ARM: dts: sun8i: Enable HDMI on Banana Pi M2 Zero board
+
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
+---
+ .../dts/sun8i-h2-plus-bananapi-m2-zero.dts    | 25 +++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+index 5770240a82..956287c5f5 100644
+--- a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
++++ b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+@@ -27,6 +27,17 @@
+ 		stdout-path = "serial0:115200n8";
+ 	};
+ 
++	connector {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
++	};
++
+ 	leds {
+ 		compatible = "gpio-leds";
+ 		pinctrl-names = "default";
+@@ -77,6 +88,10 @@
+ 	cpu-supply = <&reg_vdd_cpux>;
+ };
+ 
++&de {
++	status = "okay";
++};
++
+ &ehci0 {
+ 	status = "okay";
+ };
+@@ -88,6 +103,16 @@
+ 	status = "okay";
+ };
+ 
++&hdmi {
++	status = "okay";
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
+ &mmc0 {
+ 	vmmc-supply = <&reg_vcc3v3>;
+ 	bus-width = <4>;
+-- 
+2.19.1
+

@@ -1,7 +1,7 @@
 From 05d463e9f386fac080c00991d670a0c1f1cdd016 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Thu, 1 Nov 2018 11:43:41 +0000
-Subject: [PATCH 4/5] arm: dts: sunxi: NanoPi (Neo) - add missing ethernet0
+Subject: [PATCH 4/6] arm: dts: sunxi: NanoPi (Neo) - add missing ethernet0
  alias
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>

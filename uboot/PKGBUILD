@@ -3,7 +3,7 @@
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero')
 pkgver=2018.09
-pkgrel=3
+pkgrel=4
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
@@ -19,15 +19,17 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
 	'0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
 	'0002-Add-support-for-Banana-Pi-M2-Zero-board.patch'
-	'0003-Update-configuration-for-Orange-Pi-Zero.patch')
+	'0003-Update-configuration-for-Orange-Pi-Zero.patch'
+	'0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch')
 sha1sums=('e43d4fc09395f8cde29d655d35b2bb773e89b444'
           '4088ae725c22b5468deece9c72eff6b0470a3128'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '41bbf43f35b4cb41a2ea4bcf18d0f6bb75819c40'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          '21d8d9ab84d147270a136724436ec4eaf5428c36'
-          'c678706f3ac829633e59c1ce9ef3f922337fa3da'
-          '3380433d530b00b867dc7fb95d530f34f5e14cb7')
+          '5a9c601426426deb06b740e0239ef61fb3b16f88'
+          'cac37b7a9cdb4f25ec7dcc38f3f81f1645011beb'
+          'c5d9a5c8e7b4860468909a0115bf976b1e2fbc46'
+          '88d31d101ed9fb996c684450676c9f3baa1988f7')
 
 _boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'Sinovoip_BPI_M2_Zero')
 
@@ -37,6 +39,7 @@ prepare() {
   git apply ../0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch
   git apply ../0002-Add-support-for-Banana-Pi-M2-Zero-board.patch
   git apply ../0003-Update-configuration-for-Orange-Pi-Zero.patch
+  git apply ../0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch
 }
 
 build() {

@@ -4,7 +4,7 @@ pkgbase='sunxi-dtbs'
 _srcname=linux-4.19
 pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 pkgver=4.19
-pkgrel=2
+pkgrel=3
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -18,13 +18,15 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
 	'0004-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch'
 	'0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch'
+	'0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         'd5b1e063c7b3806088769b1bc0d45bea'
-         '6fa8bf97d061df1a103146add5219f0d'
-         '6378bc79dc6d35c5ab710c8886c5ab82'
-         '39420e22ab2436544c42ce9a9c544da6'
-         'eba8dc9f70dded6cf178e7e9d1572a25'
+         '849eb02454112e6b879ca1b44a5a3cdd'
+         '7f7e7f1c5bf63e69d7fc2c5e57d1dd7e'
+         'd52a5d4dae15b07054ee42e368fd2e91'
+         '74ef62f35f30c6aef16b8eeb92421456'
+         '64af42c18d18e9a54f87647241304236'
+         '36a6a9a40181ebfd05e1ae00c01fa278'
          'e7d793a9a2b813a58392a4fae7e414c3')
 
 prepare() {
@@ -36,6 +38,7 @@ prepare() {
   git apply ../0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch
   git apply ../0004-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch
   git apply ../0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch
+  git apply ../0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch
 
   cat "${srcdir}/config-${pkgver}" > ./.config
 
