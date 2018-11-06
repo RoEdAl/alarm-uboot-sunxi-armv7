@@ -21,12 +21,12 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '849eb02454112e6b879ca1b44a5a3cdd'
-         '7f7e7f1c5bf63e69d7fc2c5e57d1dd7e'
-         'd52a5d4dae15b07054ee42e368fd2e91'
-         '74ef62f35f30c6aef16b8eeb92421456'
-         '64af42c18d18e9a54f87647241304236'
-         '36a6a9a40181ebfd05e1ae00c01fa278'
+         'c46af7e04118f7bc561f648bf30b6e42'
+         'db4cd60a9f0c6daa493ea525271a345e'
+         '69db9bdc8d3169c39fc74d500522fa38'
+         '28bfffd8d7de3bd1acfe47aec03be3a9'
+         '7837061ca1a15ab72329ed6cea785c72'
+         '5f467f3f47251fb5aa9ef91354a282fd'
          'e7d793a9a2b813a58392a4fae7e414c3')
 
 prepare() {
