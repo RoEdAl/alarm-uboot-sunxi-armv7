@@ -1,22 +1,15 @@
-From 64cc600f8e36dde57c2da286372b83e8e8fb190b Mon Sep 17 00:00:00 2001
+From ca4b3087cb0c61bc9d9f44c23a640be3c0f97a27 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Thu, 1 Nov 2018 11:16:13 +0000
 Subject: [PATCH 2/4] Add support for Banana Pi M2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
----
- arch/arm/dts/Makefile                         |   1 +
- .../dts/sun8i-h2-plus-bananapi-m2-zero.dts    | 150 ++++++++++++++++++
- configs/Sinovoip_BPI_M2_Zero_defconfig        |  19 +++
- 3 files changed, 170 insertions(+)
- create mode 100644 arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
- create mode 100644 configs/Sinovoip_BPI_M2_Zero_defconfig
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index 31d9256a3e..8628d5e670 100644
+index d36447d18d..3093c1185e 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
-@@ -363,6 +363,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
+@@ -365,6 +365,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
  	sun8i-a83t-cubietruck-plus.dtb \
  	sun8i-a83t-tbs-a711.dts
  dtb-$(CONFIG_MACH_SUN8I_H3) += \

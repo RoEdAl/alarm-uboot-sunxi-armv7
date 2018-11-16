@@ -1,12 +1,9 @@
-From c8287331f58010f48ecaa9c1e23a313df4431e3c Mon Sep 17 00:00:00 2001
+From 84a6c8daab66b45d8e7433b4dd3986445930f0c2 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sat, 20 Oct 2018 07:21:10 +0000
 Subject: [PATCH 1/4] arm: dts: sunxi: H3 NanoPi - add missing ethernet0 alias
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
----
- arch/arm/dts/sun8i-h3-nanopi.dtsi | 1 +
- 1 file changed, 1 insertion(+)
 
 diff --git a/arch/arm/dts/sun8i-h3-nanopi.dtsi b/arch/arm/dts/sun8i-h3-nanopi.dtsi
 index f110ee3822..1abadcb215 100644

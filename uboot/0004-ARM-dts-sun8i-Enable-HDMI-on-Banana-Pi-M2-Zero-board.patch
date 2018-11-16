@@ -1,12 +1,9 @@
-From a5bc359f4da85af069cd28196132c6f97302272a Mon Sep 17 00:00:00 2001
+From bddb18d3e965ec86759177f31bb1086f24954a4b Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 4 Nov 2018 09:16:09 +0000
 Subject: [PATCH 4/4] ARM: dts: sun8i: Enable HDMI on Banana Pi M2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
----
- .../dts/sun8i-h2-plus-bananapi-m2-zero.dts    | 25 +++++++++++++++++++
- 1 file changed, 25 insertions(+)
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
 index 5770240a82..956287c5f5 100644
