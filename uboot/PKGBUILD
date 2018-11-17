@@ -1,7 +1,7 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='uboot-sunxi-dto'
-pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero')
+pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
 pkgver=2018.11
 pkgrel=1
 arch=('armv7h')
@@ -20,18 +20,20 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
 	'0002-Add-support-for-Banana-Pi-M2-Zero-board.patch'
 	'0003-Update-configuration-for-Orange-Pi-Zero.patch'
-	'0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch')
+	'0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
+	'0005-Add-support-for-Banana-Pi-P2-Zero-board.patch')
 sha1sums=('e58e86c633ad3e2613196e0c0b0a7760ae5966d6'
           '4088ae725c22b5468deece9c72eff6b0470a3128'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '41bbf43f35b4cb41a2ea4bcf18d0f6bb75819c40'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          '2c16fdd80930a671460867691d8d867ebf62e773'
-          '7feb2c8aeb2fa5354b1020ec3098012896c9a687'
-          '936f5b7e5fae401eb6edf3944786d82eea92e404'
-          'a95d5ae945fb864d71f7dbe01cb34fc83a04f0f8')
+          'c7583bd9cc4ca551082da7236ef7c75081877749'
+          '74b951dca9087c4901a498b6294bdc6c37a02dbd'
+          '14e078c9f07eee36ea85875767c559c150e50be1'
+          '56570d4ae63961b3f99370de981a04b829a4567a'
+          'dbc86490a3e87b5601df70d22a2a4f4f549dbcc3')
 
-_boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'Sinovoip_BPI_M2_Zero')
+_boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'Sinovoip_BPI_M2_Zero' 'Sinovoip_BPI_P2_Zero')
 
 prepare() {
   cd u-boot-${pkgver}
@@ -40,6 +42,7 @@ prepare() {
   git apply ../0002-Add-support-for-Banana-Pi-M2-Zero-board.patch
   git apply ../0003-Update-configuration-for-Orange-Pi-Zero.patch
   git apply ../0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch
+  git apply ../0005-Add-support-for-Banana-Pi-P2-Zero-board.patch
 }
 
 build() {
@@ -127,7 +130,7 @@ package_uboot-bananapi-m2-zero() {
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi')
-  optdepends=('orangepi-dtbs' 'uboot-tools' 'sun8i-h3-dt-overlays')
+  optdepends=('bananapi-dtbs' 'uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot"
   install -Dm644 bin_Sinovoip_BPI_M2_Zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot"
@@ -137,3 +140,21 @@ package_uboot-bananapi-m2-zero() {
   install -Dm755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
 }
+
+package_uboot-bananapi-p2-zero() {
+  pkgdesc='U-Boot for Banana Pi P2 Zero (with device tree overlays support)'
+  install=${pkgbase}.install
+  provides=('uboot-sunxi')
+  conflicts=('uboot-sunxi')
+  depends=('bananapi-dtbs')
+  optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
+
+  install -d "${pkgdir}/boot"
+  install -Dm644 bin_Sinovoip_BPI_P2_Zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot"
+
+  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+}
+

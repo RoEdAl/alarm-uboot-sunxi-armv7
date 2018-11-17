@@ -1,34 +1,35 @@
-From ca4b3087cb0c61bc9d9f44c23a640be3c0f97a27 Mon Sep 17 00:00:00 2001
+From c02f7d185b7ae28a385b7278f12bd9959c0ffb72 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Thu, 1 Nov 2018 11:16:13 +0000
-Subject: [PATCH 2/5] Add support for Banana Pi M2 Zero board
+Date: Fri, 16 Nov 2018 19:42:08 +0000
+Subject: [PATCH 7/7] arm: dts: sunxi: Add Banana Pi P2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
-diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index d36447d18d..3093c1185e 100644
---- a/arch/arm/dts/Makefile
-+++ b/arch/arm/dts/Makefile
-@@ -365,6 +365,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index b5bd3de87c33..9d93c5c66b7a 100644
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -1029,6 +1029,7 @@ dtb-$(CONFIG_MACH_SUN8I) += \
  	sun8i-a83t-cubietruck-plus.dtb \
- 	sun8i-a83t-tbs-a711.dts
- dtb-$(CONFIG_MACH_SUN8I_H3) += \
-+	sun8i-h2-plus-bananapi-m2-zero.dtb \
+ 	sun8i-a83t-tbs-a711.dtb \
+ 	sun8i-h2-plus-bananapi-m2-zero.dtb \
++	sun8i-h2-plus-bananapi-p2-zero.dtb \
  	sun8i-h2-plus-libretech-all-h3-cc.dtb \
  	sun8i-h2-plus-orangepi-r1.dtb \
  	sun8i-h2-plus-orangepi-zero.dtb \
-diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dts
 new file mode 100644
-index 0000000000..5770240a82
+index 000000000000..ce121dec3dfe
 --- /dev/null
-+++ b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
-@@ -0,0 +1,150 @@
++++ b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dts
+@@ -0,0 +1,181 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
-+ * Copyright (C) 2017 Icenowy Zheng <icenowy@aosc.io>
++ * Based on sun8i-h2-plus-bananapi-m2-zero.dts, which is:
++ *   Copyright (C) 2017 Icenowy Zheng <icenowy@aosc.io>
 + *
-+ * Based on sun8i-h3-bananapi-m2-plus.dts, which is:
-+ *   Copyright (C) 2016 Chen-Yu Tsai <wens@csie.org>
++ *   Based on sun8i-h3-bananapi-m2-plus.dts, which is:
++ *     Copyright (C) 2016 Chen-Yu Tsai <wens@csie.org>
 + */
 +
 +/dts-v1/;
@@ -39,13 +40,24 @@ index 0000000000..5770240a82
 +#include <dt-bindings/input/input.h>
 +
 +/ {
-+	model = "Banana Pi BPI-M2-Zero";
-+	compatible = "sinovoip,bpi-m2-zero", "allwinner,sun8i-h2-plus";
++	model = "Banana Pi BPI-P2-Zero";
++	compatible = "sinovoip,bpi-p2-zero", "allwinner,sun8i-h2-plus";
 +
 +	aliases {
 +		serial0 = &uart0;
 +		serial1 = &uart1;
 +		ethernet0 = &emac;
++	};
++
++	connector {
++		compatible = "hdmi-connector";
++		type = "a";
++
++		port {
++			hdmi_con_in: endpoint {
++				remote-endpoint = <&hdmi_out_con>;
++			};
++		};
 +	};
 +
 +	chosen {
@@ -102,6 +114,10 @@ index 0000000000..5770240a82
 +	cpu-supply = <&reg_vdd_cpux>;
 +};
 +
++&de {
++	status = "okay";
++};
++
 +&ehci0 {
 +	status = "okay";
 +};
@@ -113,15 +129,20 @@ index 0000000000..5770240a82
 +	status = "okay";
 +};
 +
++&hdmi {
++	status = "okay";
++};
++
++&hdmi_out {
++	hdmi_out_con: endpoint {
++		remote-endpoint = <&hdmi_con_in>;
++	};
++};
++
 +&mmc0 {
 +	vmmc-supply = <&reg_vcc3v3>;
 +	bus-width = <4>;
-+	/*
-+	 * On the production batch of this board the card detect GPIO is
-+	 * high active (card inserted), although on the early samples it's
-+	 * low active.
-+	 */
-+	cd-gpios = <&pio 5 6 GPIO_ACTIVE_HIGH>; /* PF6 */
++	cd-gpios = <&pio 5 6 GPIO_ACTIVE_LOW>; /* PF6 */
 +	status = "okay";
 +};
 +
@@ -140,6 +161,16 @@ index 0000000000..5770240a82
 +		interrupts = <6 10 IRQ_TYPE_LEVEL_LOW>; /* PG10 / EINT10 */
 +		interrupt-names = "host-wake";
 +	};
++};
++
++&mmc2 {
++	pinctrl-names = "default";
++	pinctrl-0 = <&mmc2_8bit_pins>;
++	vmmc-supply = <&reg_vcc3v3>;
++	vqmmc-supply = <&reg_vcc3v3>;
++	bus-width = <8>;
++	non-removable;
++	status = "okay";
 +};
 +
 +&ohci0 {
@@ -173,31 +204,6 @@ index 0000000000..5770240a82
 +	 */
 +	status = "okay";
 +};
-diff --git a/configs/Sinovoip_BPI_M2_Zero_defconfig b/configs/Sinovoip_BPI_M2_Zero_defconfig
-new file mode 100644
-index 0000000000..8572360e85
---- /dev/null
-+++ b/configs/Sinovoip_BPI_M2_Zero_defconfig
-@@ -0,0 +1,19 @@
-+CONFIG_ARM=y
-+CONFIG_ARCH_SUNXI=y
-+CONFIG_SPL=y
-+CONFIG_MACH_SUN8I_H3=y
-+CONFIG_DRAM_CLK=408
-+CONFIG_DRAM_ZQ=3881979
-+CONFIG_DRAM_ODT_EN=y
-+CONFIG_NR_DRAM_BANKS=1
-+# CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
-+CONFIG_CONSOLE_MUX=y
-+# CONFIG_CMD_FLASH is not set
-+# CONFIG_SPL_DOS_PARTITION is not set
-+# CONFIG_SPL_ISO_PARTITION is not set
-+# CONFIG_SPL_EFI_PARTITION is not set
-+CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-bananapi-m2-zero"
-+CONFIG_SUN8I_EMAC=y
-+CONFIG_USB_EHCI_HCD=y
-+CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
-+CONFIG_MMC0_CD_PIN=""
 -- 
 2.19.1
 
