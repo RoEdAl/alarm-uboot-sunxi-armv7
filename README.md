@@ -2,14 +2,14 @@
 
 ## Supported boards:
 
-Board | U-Boot package | Dependencies | Optional Dependencies
-:----:|:--------------:|:------------:|:---------------------:
-[OrangePi Zero](http://www.orangepi.org/orangepizero/)|`uboot-orangepi-zero`||`orangepi-dtbs`
-[NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132)|`uboot-nanopi-neo`||`nanopi-dtbs`
-[A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware)|`uboot-a10-olinuxino-lime-dt`||`olinuxino-lime-dtbs`
-[A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware)|`uboot-a20-olinuxino-lime-dt`||`olinuxino-lime-dtbs`
-[BananaPi M2 Zero](http://www.banana-pi.org/bpi-zero.html)|`uboot-bananapi-m2-zero`||`bananapi-dtbs`
-[BananaPi P2 Zero](http://www.banana-pi.org/p2-zero.html)|`uboot-bananapi-p2-zero`|`bananapi-dtbs`|
+Board | U-Boot package
+:----:|:-------------:
+[OrangePi Zero](http://www.orangepi.org/orangepizero/)|`uboot-orangepi-zero`
+[NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132)|`uboot-nanopi-neo`
+[A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware)|`uboot-a10-olinuxino-lime-dt`
+[A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware)|`uboot-a20-olinuxino-lime-dt`
+[BananaPi M2 Zero](http://www.banana-pi.org/bpi-zero.html)|`uboot-bananapi-m2-zero`
+[BananaPi P2 Zero](http://www.banana-pi.org/p2-zero.html)|`uboot-bananapi-p2-zero`
 
 Theese bootloaders are ready to apply additional DT overlays from [Armbian's Device Tree overlays for sunxi devices](//github.com/armbian/sunxi-DT-overlays).
 See [this](//github.com/RoEdAl/alarm-sunxi-dt-overlays-armv7) repository for more info.
@@ -77,9 +77,9 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    pacman-key --init
    pacman-key --populate archlinuxarm
    ```
-1. Install also *U-Boot* and *DTBS* packages:
+1. Install also *U-Boot* package:
    ```
-   pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/<brand-name>-dtbs-x.yy-r-armv7h.pkg.tar.xz
+   pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
    ```
 ### Separate boot (ext4) and root (f2fs) partitions
 
@@ -168,9 +168,9 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    pacman-key --init
    pacman-key --populate archlinuxarm
    ```
-1. Install also *U-Boot* and *DTBS* packages:
+1. Install also *U-Boot* package:
    ```
-   pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/<brand-name>-dtbs-x.yy-r-armv7h.pkg.tar.xz
+   pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
    ```
 1. Install `f2fs-tools` package and rebuild *initcpio*:
    ```
