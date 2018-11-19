@@ -1,4 +1,4 @@
-From 1aa2989947ec7fe4b55379bbee023771f372c885 Mon Sep 17 00:00:00 2001
+From 1e0df6d70e8a4681f004d63b76f33011f2af92eb Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Fri, 16 Nov 2018 20:23:17 +0000
 Subject: [PATCH 5/5] Add support for Banana Pi P2 Zero board

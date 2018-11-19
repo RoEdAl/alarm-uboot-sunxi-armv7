@@ -1,10 +1,12 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
-pkgbase='sunxi-dtbs'
+pkgname='sunxi-dtbs'
 _srcname=linux-4.19
-pkgname=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=4.19
-pkgrel=4
+pkgdesc='Additional DTBs for Allwinder-based boards'
+conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
+replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
+pkgver=4.19.0
+pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -22,13 +24,13 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch'
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         'b9c49541fcc962e1dc9a91d9be3c7205'
-         '009a4a0063e2cf92aed73d20176c58eb'
-         'f716557ef268cc81b1af08c6cfafee8f'
-         '0a73e66f3cb9da44d1988815308ccca7'
-         'e2957b4922879af871d50ee776731eb6'
-         '13a5c514d4e45a3dca9ce82ade05d89c'
-         '60526674a9ea7c753f485a936989ba03'
+         '0c868268654fa7d49e94a546760c9ad8'
+         'd8976700cabc184392754cc771f804de'
+         '802d82412e3a9142e8a0e3068185bf7d'
+         'd43a270c82f62c3522362eaeda519923'
+         'bc53edd528386e7c6b150e90a14ccf3a'
+         '91dd1813917f1254d844a03d226a1712'
+         '0da757efef39d04f5468fa759efe531b'
          'e7d793a9a2b813a58392a4fae7e414c3')
 
 prepare() {
@@ -52,54 +54,20 @@ prepare() {
 build() {
   cd "${srcdir}/${_srcname}"
 
-  export DTC_FLAGS=--symbols
-
   make prepare
-  make dtbs
+  env DTC_FLAGS=--symbols make dtbs
 }
 
-package_orangepi-dtbs() {
-  pkgdesc='Additional DTBs for Orange Pi boards'
-  provides=("sunxi-dtbs=${pkgver}")
-  conflicts=('sunxi-dtbs')
-
+package() {
   cd "${srcdir}/${_srcname}"
 
-  mkdir -p "${pkgdir}/boot/dtbs-extra"
-  cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs-extra"
-}
+  local _dstdir=usr/share/${pkgname}
+  mkdir -p "${pkgdir}/${_dstdir}"
 
-package_nanopi-dtbs() {
-  pkgdesc='Additional DTBs for NanoPi boards'
-  provides=("sunxi-dtbs=${pkgver}")
-  conflicts=('sunxi-dtbs')
-
-  cd "${srcdir}/${_srcname}"
-
-  mkdir -p "${pkgdir}/boot/dtbs-extra"
-  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs-extra"
-}
-
-package_olinuxino-lime-dtbs() {
-  pkgdesc='Additional DTBs for oLinuXino Lime boards'
-  provides=("sunxi-dtbs=${pkgver}")
-  conflicts=('sunxi-dtbs')
-
-  cd "${srcdir}/${_srcname}"
-
-  mkdir -p "${pkgdir}/boot/dtbs-extra"
-  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra"
-  cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra"
-}
-
-package_bananapi-dtbs() {
-  pkgdesc='Additional DTBs for Banana Pi boards'
-  provides=("sunxi-dtbs=${pkgver}")
-  conflicts=('sunxi-dtbs')
-
-  cd "${srcdir}/${_srcname}"
-
-  mkdir -p "${pkgdir}/boot/dtbs-extra"
-  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/boot/dtbs-extra"
-  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dtb "${pkgdir}/boot/dtbs-extra"
+  cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/${_dstdir}"
+  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/${_dstdir}"
+  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/${_dstdir}"
+  cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/${_dstdir}"
+  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/${_dstdir}"
+  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dtb "${pkgdir}/${_dstdir}"
 }
