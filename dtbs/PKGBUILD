@@ -10,7 +10,7 @@ pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=("linux>=${pkgver}.0")
+depends=("linux>=${pkgver}")
 makedepends=('bc' 'git')
 options=('!strip')
 _cfgrel=13278c7fc5a06de728b37446bfec34fd9e6e85a0

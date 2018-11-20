@@ -65,7 +65,7 @@ package_uboot-orangepi-zero() {
   pkgdesc='U-Boot for Orange Pi Zero (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('orangepi-dtbs')
+  conflicts=('uboot-sunxi' 'orangepi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot/dtbs-extra"
@@ -81,7 +81,7 @@ package_uboot-nanopi-neo() {
   pkgdesc='U-Boot for NanoPi Neo (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('nanopi-dtbs')
+  conflicts=('uboot-sunxi' 'nanopi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot/dtbs-extra"
@@ -97,7 +97,7 @@ package_uboot-a10-olinuxino-lime-dto() {
   pkgdesc='U-Boot for A10 OLinuXino Lime (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('olinuxino-lime-dtbs')
+  conflicts=('uboot-sunxi' 'olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun4i-a10-dt-overlays')
 
   install -d "${pkgdir}/boot/dtbs-extra"
@@ -113,7 +113,7 @@ package_uboot-a20-olinuxino-lime-dto() {
   pkgdesc='U-Boot for A20 OLinuXino Lime (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('olinuxino-lime-dtbs')
+  conflicts=('uboot-sunxi' 'olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun7i-a20-dt-overlays')
 
   install -d "${pkgdir}/boot/dtbs-extra"
@@ -129,7 +129,7 @@ package_uboot-bananapi-m2-zero() {
   pkgdesc='U-Boot for Banana Pi M2 Zero (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('bananapi-dtbs')
+  conflicts=('uboot-sunxi' 'bananapi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot/dtbs-extra"
@@ -145,7 +145,7 @@ package_uboot-bananapi-p2-zero() {
   pkgdesc='U-Boot for Banana Pi P2 Zero (with device tree overlays support)'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('bananapi-dtbs')
+  conflicts=('uboot-sunxi' 'bananapi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
   install -d "${pkgdir}/boot/dtbs-extra"
