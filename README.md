@@ -61,12 +61,16 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    ```
    bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
    ```
+   For *BananaPi P2 Zero* board you must also extract DTB:
+   ```
+   bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/dtbs-extra
+   ```
 1. Install the U-Boot bootloader:
    ```
-   dd if=boot/u-boot-sunxi-with-spl.bin of=/dev/sdX bs=1024 seek=8
-   cp boot/boot.scr root/boot
+   mv boot/boot.scr root/boot
+   [ -d boot/dtbs-extra ] && mv boot/dtbs-extra root/boot
    umount root
-   sync
+   dd if=boot/u-boot-sunxi-with-spl.bin of=/dev/sdX bs=1024 seek=8
    ```
 1. Insert the micro SD card into the board, connect ethernet, and apply 5V power.
 1. Use the serial console or SSH to the IP address given to the board by your router.
@@ -134,6 +138,10 @@ Replace **sdX** in the following instructions with the device name for the SD ca
 1. Extract required U-Boot binary and compiled script from package:
    ```
    bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
+   ```
+   For *BananaPi P2 Zero* board you must also extract DTB:
+   ```
+   bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/dtbs-extra
    ```
 1. Install the U-Boot bootloader:
    ```
