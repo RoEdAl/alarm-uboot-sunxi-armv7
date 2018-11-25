@@ -1,0 +1,84 @@
+From c4af01d8d8e48a77daff73be8cfdf0a8da53c5b6 Mon Sep 17 00:00:00 2001
+From: Edmunt Pienkowsky <roed@onet.eu>
+Date: Wed, 21 Nov 2018 14:37:19 +0100
+Subject: [PATCH 8/8] arm: dts: sunxi: OrangePi Zero - improve WiFi bindings
+
+Based on DTC from http://github.com/fifteenhex/xradio
+
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
+
+diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+index a8905051a314..eaa098b27092 100644
+--- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
++++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
+@@ -70,23 +70,24 @@
+ 
+ 		pwr {
+ 			label = "orangepi:green:pwr";
+-			gpios = <&r_pio 0 10 GPIO_ACTIVE_HIGH>;
++			gpios = <&r_pio 0 10 GPIO_ACTIVE_HIGH>; /* PL10 */
+ 			default-state = "on";
+ 		};
+ 
+ 		status {
+ 			label = "orangepi:red:status";
+-			gpios = <&pio 0 17 GPIO_ACTIVE_HIGH>;
++			gpios = <&pio 0 17 GPIO_ACTIVE_HIGH>; /* PA17 */
+ 		};
+ 	};
+ 
+-	reg_vcc_wifi: reg_vcc_wifi {
++	reg_vcc_wifi: vcc-wifi-regulator {
+ 		compatible = "regulator-fixed";
+-		regulator-min-microvolt = <3300000>;
+-		regulator-max-microvolt = <3300000>;
+ 		regulator-name = "vcc-wifi";
++		regulator-min-microvolt = <1800000>;
++		regulator-max-microvolt = <1800000>;
++		gpio = <&pio 0 20 GPIO_ACTIVE_HIGH>; /* PA20 */
++		startup-delay-us = <70000>;
+ 		enable-active-high;
+-		gpio = <&pio 0 20 GPIO_ACTIVE_HIGH>;
+ 	};
+ 
+ 	reg_vdd_cpux: vdd-cpux-regulator {
+@@ -108,7 +109,8 @@
+ 
+ 	wifi_pwrseq: wifi_pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+-		reset-gpios = <&r_pio 0 7 GPIO_ACTIVE_LOW>;
++		pinctrl-names = "default";
++		reset-gpios = <&r_pio 0 7 GPIO_ACTIVE_LOW>; /* PL7 */
+ 		post-power-on-delay-ms = <200>;
+ 	};
+ };
+@@ -140,9 +142,11 @@
+ };
+ 
+ &mmc1 {
+-	vmmc-supply = <&reg_vcc_wifi>;
++	vmmc-supply = <&reg_vcc3v3>;
++	vqmmc-supply = <&reg_vcc_wifi>;
+ 	mmc-pwrseq = <&wifi_pwrseq>;
+ 	bus-width = <4>;
++	max-frequency = <16000000>;
+ 	non-removable;
+ 	status = "okay";
+ 
+@@ -150,8 +154,12 @@
+ 	 * Explicitly define the sdio device, so that we can add an ethernet
+ 	 * alias for it (which e.g. makes u-boot set a mac-address).
+ 	 */
+-	xr819: sdio_wifi@1 {
++	xr819: wifi@1 {
+ 		reg = <1>;
++		compatible = "xradio,xr819";
++		interrupt-parent = <&pio>;
++		interrupts = <6 10 IRQ_TYPE_EDGE_RISING>; /* PG10 / EINT10 */
++		interrupt-names = "host-wake";
+ 	};
+ };
+ 
+-- 
+2.19.2
+

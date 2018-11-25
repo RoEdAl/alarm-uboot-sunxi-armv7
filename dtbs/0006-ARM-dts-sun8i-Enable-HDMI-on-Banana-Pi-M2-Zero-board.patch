@@ -1,7 +1,7 @@
-From 8ce312bd431aa9b2fdd8908162e27190061d9b72 Mon Sep 17 00:00:00 2001
+From 65835f4b3fdf05cba34a6425743f047c0dae630d Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 4 Nov 2018 08:45:38 +0000
-Subject: [PATCH 6/7] ARM: dts: sun8i: Enable HDMI on Banana Pi M2 Zero board
+Subject: [PATCH 6/8] ARM: dts: sun8i: Enable HDMI on Banana Pi M2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
@@ -56,5 +56,5 @@ index 7187262cb9c0..0f811c07f71e 100644
  	vmmc-supply = <&reg_vcc3v3>;
  	bus-width = <4>;
 -- 
-2.19.1
+2.19.2
 

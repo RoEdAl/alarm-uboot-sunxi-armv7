@@ -5,12 +5,12 @@ _srcname=linux-4.19
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=4.19.0
+pkgver=4.19.1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=("linux>=${pkgver}")
+depends=('linux>=4.19.0')
 makedepends=('bc' 'git')
 options=('!strip')
 _cfgrel=13278c7fc5a06de728b37446bfec34fd9e6e85a0
@@ -22,15 +22,17 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch'
 	'0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
 	'0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch'
+	'0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch'
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '0c868268654fa7d49e94a546760c9ad8'
-         'd8976700cabc184392754cc771f804de'
-         '802d82412e3a9142e8a0e3068185bf7d'
-         'd43a270c82f62c3522362eaeda519923'
-         'bc53edd528386e7c6b150e90a14ccf3a'
-         '91dd1813917f1254d844a03d226a1712'
-         '0da757efef39d04f5468fa759efe531b'
+         '90ae4cd5d7c805a8c1ac896f5907e78d'
+         '15f3b45d49cce39d5ff66fdace0c20b5'
+         '252b901f9c310427e9852f4644fb54ad'
+         '22e8384c222e2e088e426823aaa3b865'
+         'cbbe3d43b28706589b0e5a81cc92f573'
+         'bf9c96de19bde0b9f86d053ac7b7177b'
+         '677aac79b2a93939292fdbaa601c0919'
+         '07d02246a373d7047de5e0fd0896af17'
          'e7d793a9a2b813a58392a4fae7e414c3')
 
 prepare() {
@@ -44,6 +46,7 @@ prepare() {
   git apply ../0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch
   git apply ../0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch
   git apply ../0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch
+  git apply ../0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch
 
   cat "${srcdir}/config-${pkgver}" > ./.config
 

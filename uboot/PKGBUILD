@@ -3,13 +3,13 @@
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
 pkgver=2018.11
-pkgrel=2
+pkgrel=3
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs>4.19')
+makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs>=4.19.1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
