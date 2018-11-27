@@ -9,19 +9,23 @@ _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs>=4.19.1')
+makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=4.19.p1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
+_patches=(
+	'0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
+	'0002-Add-support-for-Banana-Pi-M2-Zero-board.patch'
+	'0003-Update-configuration-for-Orange-Pi-Zero.patch'
+	'0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
+	'0005-Add-support-for-Banana-Pi-P2-Zero-board.patch'
+)
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'boot.txt'
 	'flash-uboot.sh'
 	'config-fragment'
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
-	'0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch'
-	'0002-Add-support-for-Banana-Pi-M2-Zero-board.patch'
-	'0003-Update-configuration-for-Orange-Pi-Zero.patch'
-	'0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
-	'0005-Add-support-for-Banana-Pi-P2-Zero-board.patch')
+	${_patches[@]}
+)
 sha1sums=('e58e86c633ad3e2613196e0c0b0a7760ae5966d6'
           '4088ae725c22b5468deece9c72eff6b0470a3128'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
@@ -38,11 +42,10 @@ _boards=('orangepi_zero' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 
 prepare() {
   cd u-boot-${pkgver}
 
-  git apply ../0001-arm-dts-sunxi-H3-NanoPi-add-missing-ethernet0-alias.patch
-  git apply ../0002-Add-support-for-Banana-Pi-M2-Zero-board.patch
-  git apply ../0003-Update-configuration-for-Orange-Pi-Zero.patch
-  git apply ../0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch
-  git apply ../0005-Add-support-for-Banana-Pi-P2-Zero-board.patch
+  for i in ${_patches[@]}; do
+    # msg2 "Applying ${i}"
+    git apply ../${i}
+  done
 }
 
 build() {

@@ -5,16 +5,16 @@ _srcname=linux-4.19
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=4.19.1
+pkgver=4.19.p1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=('linux>=4.19.0')
+depends=('linux>4.19')
 makedepends=('bc' 'git')
 options=('!strip')
 _cfgrel=13278c7fc5a06de728b37446bfec34fd9e6e85a0
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+_patches=(
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
 	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
@@ -23,6 +23,9 @@ source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	'0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
 	'0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch'
 	'0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch'
+)
+source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('740a90cf810c2105df8ee12e5d0bb900'
          '90ae4cd5d7c805a8c1ac896f5907e78d'
@@ -39,14 +42,10 @@ prepare() {
   cd "${srcdir}/${_srcname}"
 
   # custom patches
-  git apply ../0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch
-  git apply ../0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch
-  git apply ../0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch
-  git apply ../0004-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch
-  git apply ../0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch
-  git apply ../0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch
-  git apply ../0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch
-  git apply ../0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch
+  for i in ${_patches[@]}; do
+    # msg2 "Applying ${i}"
+    git apply ../${i}
+  done
 
   cat "${srcdir}/config-${pkgver}" > ./.config
 
@@ -64,13 +63,20 @@ build() {
 package() {
   cd "${srcdir}/${_srcname}"
 
+  local -a _dtbs=(
+    'sun8i-h2-plus-orangepi-zero.dtb'
+    'sun8i-h3-nanopi-neo.dtb'
+    'sun4i-a10-olinuxino-lime.dtb'
+    'sun7i-a20-olinuxino-lime.dtb'
+    'sun8i-h2-plus-bananapi-m2-zero.dtb'
+    'sun8i-h2-plus-bananapi-p2-zero.dtb'
+  )
+
   local _dstdir=usr/share/${pkgname}
+
   mkdir -p "${pkgdir}/${_dstdir}"
 
-  cp arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/${_dstdir}"
-  cp arch/arm/boot/dts/sun8i-h3-nanopi-neo.dtb "${pkgdir}/${_dstdir}"
-  cp arch/arm/boot/dts/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/${_dstdir}"
-  cp arch/arm/boot/dts/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/${_dstdir}"
-  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/${_dstdir}"
-  cp arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dtb "${pkgdir}/${_dstdir}"
+  for i in ${_dtbs[@]}; do
+    cp arch/arm/boot/dts/${i} "${pkgdir}/${_dstdir}"
+  done
 }
