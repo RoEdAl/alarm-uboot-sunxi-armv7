@@ -1,4 +1,4 @@
-From d3dcb30de45d15bfc45e8f48a63a1bca446d7fd4 Mon Sep 17 00:00:00 2001
+From 6f79d1fbeb05abdcbbea579fcbff35597435bedd Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 21 Jan 2018 14:15:36 +0000
 Subject: [PATCH 2/8] arm: dts: sunxi: Orange Pi Zero - simplification
@@ -80,5 +80,5 @@ index 84cd9c061227..a8905051a314 100644
  };
  
 -- 
-2.19.2
+2.20.1
 

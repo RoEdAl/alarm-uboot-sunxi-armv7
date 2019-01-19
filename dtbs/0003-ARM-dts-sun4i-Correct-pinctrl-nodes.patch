@@ -1,4 +1,4 @@
-From 7209403a157696d457bbe5f6ab8f69fe77846435 Mon Sep 17 00:00:00 2001
+From ce9ffcba806b153c9e34b55908d72bf9d5004394 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Tue, 23 Jan 2018 11:52:20 +0100
 Subject: [PATCH 3/8] ARM: dts: sun4i: Correct pinctrl nodes
@@ -21,5 +21,5 @@ index 3d62a8950720..c40a274ce317 100644
  				function = "spi2";
  			};
 -- 
-2.19.2
+2.20.1
 

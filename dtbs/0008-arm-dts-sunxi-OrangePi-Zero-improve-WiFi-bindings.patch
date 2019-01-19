@@ -1,4 +1,4 @@
-From c4af01d8d8e48a77daff73be8cfdf0a8da53c5b6 Mon Sep 17 00:00:00 2001
+From f7a9b9e0f2f0b528fa93f60b7b4cdd880cea620d Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Wed, 21 Nov 2018 14:37:19 +0100
 Subject: [PATCH 8/8] arm: dts: sunxi: OrangePi Zero - improve WiFi bindings
@@ -80,5 +80,5 @@ index a8905051a314..eaa098b27092 100644
  };
  
 -- 
-2.19.2
+2.20.1
 

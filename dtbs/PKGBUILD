@@ -1,19 +1,19 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname='sunxi-dtbs'
-_srcname=linux-4.19
+_srcname=linux-4.20
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=4.19.p1
+pkgver=4.20.p1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=('linux>4.19')
+depends=('linux>4.20')
 makedepends=('bc' 'git')
 options=('!strip')
-_cfgrel=13278c7fc5a06de728b37446bfec34fd9e6e85a0
+_cfgrel=b21edcbede10e67392282471784faec6545f9bdc
 _patches=(
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
@@ -27,16 +27,16 @@ _patches=(
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('740a90cf810c2105df8ee12e5d0bb900'
-         '90ae4cd5d7c805a8c1ac896f5907e78d'
-         '15f3b45d49cce39d5ff66fdace0c20b5'
-         '252b901f9c310427e9852f4644fb54ad'
-         '22e8384c222e2e088e426823aaa3b865'
-         'cbbe3d43b28706589b0e5a81cc92f573'
-         'bf9c96de19bde0b9f86d053ac7b7177b'
-         '677aac79b2a93939292fdbaa601c0919'
-         '07d02246a373d7047de5e0fd0896af17'
-         'e7d793a9a2b813a58392a4fae7e414c3')
+md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
+         'f37c32c3dd4bb3be83a6f93fc78833c5'
+         'b003bcbaf43e5b2b14571e8b7724b489'
+         'fd5e79fc182681ccb3a374651b4ccc0c'
+         '350c59f4b878d180bcb9e18c3d28aafc'
+         '2e894d2376d90fe2fe1064fd2f7c8795'
+         '0b5cf1179362739ab2c9a1c1ec824415'
+         '80777a1b15531428c498d6e63b9f0e71'
+         'f6ceea8ce11e03220413b3e10dec2045'
+         '6b95ea40314c5531cea810e3a16e02f9')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
@@ -65,6 +65,8 @@ package() {
 
   local -a _dtbs=(
     'sun8i-h2-plus-orangepi-zero.dtb'
+    'sun8i-h3-orangepi-one.dtb'
+    'sun8i-h2-plus-orangepi-r1.dtb'
     'sun8i-h3-nanopi-neo.dtb'
     'sun4i-a10-olinuxino-lime.dtb'
     'sun7i-a20-olinuxino-lime.dtb'
