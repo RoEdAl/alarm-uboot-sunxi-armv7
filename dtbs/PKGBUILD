@@ -23,19 +23,21 @@ _patches=(
 	'0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
 	'0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch'
 	'0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch'
+	'0009-arm-dts-sunxi-OrangePi-R1-remove-correct-node.patch'
 )
 source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
 	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
 md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
-         'f37c32c3dd4bb3be83a6f93fc78833c5'
-         'b003bcbaf43e5b2b14571e8b7724b489'
-         'fd5e79fc182681ccb3a374651b4ccc0c'
-         '350c59f4b878d180bcb9e18c3d28aafc'
-         '2e894d2376d90fe2fe1064fd2f7c8795'
-         '0b5cf1179362739ab2c9a1c1ec824415'
-         '80777a1b15531428c498d6e63b9f0e71'
-         'f6ceea8ce11e03220413b3e10dec2045'
+         'ed6a4f35e1fbc1829fdeb5b6bbca1f56'
+         '8f11cead0f43ef197ca0e1dc6e3cc789'
+         'b4596bc482c768cbb586f8ce32fa6ae7'
+         '7ee4c7cb17db117f3f2943c81f9e4112'
+         '016874ee925059306b9e4bf2eab07a4f'
+         'd6deed4e009a59fe3e680e69fa83e5d0'
+         'aa7c9b88c0901038ec53d2eb8995327d'
+         'e3b46838546fa300eaf1e2ebd953689f'
+         '463869c2edabd416a51333312478c600'
          '6b95ea40314c5531cea810e3a16e02f9')
 
 prepare() {

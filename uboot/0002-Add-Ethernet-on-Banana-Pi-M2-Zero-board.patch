@@ -1,0 +1,88 @@
+From 8d3b64e030d4be28fc389d6c4b75a93fc297f70d Mon Sep 17 00:00:00 2001
+From: Edmunt Pienkowsky <roed@onet.eu>
+Date: Sat, 19 Jan 2019 17:20:43 +0000
+Subject: [PATCH 2/7] Add Ethernet on Banana Pi M2 Zero board
+
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
+
+diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+index 7d01f93226..5770240a82 100644
+--- a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
++++ b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
+@@ -20,6 +20,7 @@
+ 	aliases {
+ 		serial0 = &uart0;
+ 		serial1 = &uart1;
++		ethernet0 = &emac;
+ 	};
+ 
+ 	chosen {
+@@ -48,6 +49,23 @@
+ 		};
+ 	};
+ 
++	reg_vdd_cpux: vdd-cpux-regulator {
++		compatible = "regulator-gpio";
++		regulator-name = "vdd-cpux";
++		regulator-type = "voltage";
++		regulator-boot-on;
++		regulator-always-on;
++		regulator-min-microvolt = <1100000>;
++		regulator-max-microvolt = <1300000>;
++		regulator-ramp-delay = <50>; /* 4ms */
++
++		gpios = <&r_pio 0 1 GPIO_ACTIVE_HIGH>; /* PL1 */
++		enable-active-high;
++		gpios-states = <0x1>;
++		states = <1100000 0x0
++			  1300000 0x1>;
++	};
++
+ 	wifi_pwrseq: wifi_pwrseq {
+ 		compatible = "mmc-pwrseq-simple";
+ 		pinctrl-names = "default";
+@@ -55,10 +73,21 @@
+ 	};
+ };
+ 
++&cpu0 {
++	cpu-supply = <&reg_vdd_cpux>;
++};
++
+ &ehci0 {
+ 	status = "okay";
+ };
+ 
++&emac {
++	phy-handle = <&int_mii_phy>;
++	phy-mode = "mii";
++	allwinner,leds-active-low;
++	status = "okay";
++};
++
+ &mmc0 {
+ 	vmmc-supply = <&reg_vcc3v3>;
+ 	bus-width = <4>;
+diff --git a/configs/bananapi_m2_zero_defconfig b/configs/bananapi_m2_zero_defconfig
+index 91302eb49c..048b409568 100644
+--- a/configs/bananapi_m2_zero_defconfig
++++ b/configs/bananapi_m2_zero_defconfig
+@@ -5,9 +5,15 @@ CONFIG_MACH_SUN8I_H3=y
+ CONFIG_DRAM_CLK=408
+ CONFIG_DRAM_ZQ=3881979
+ CONFIG_DRAM_ODT_EN=y
++CONFIG_NR_DRAM_BANKS=1
+ CONFIG_MMC0_CD_PIN=""
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+ # CONFIG_CMD_FLASH is not set
+ # CONFIG_SPL_DOS_PARTITION is not set
++# CONFIG_SPL_ISO_PARTITION is not set
+ # CONFIG_SPL_EFI_PARTITION is not set
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-bananapi-m2-zero"
++CONFIG_CONSOLE_MUX=y
++CONFIG_SUN8I_EMAC=y
++CONFIG_USB_EHCI_HCD=y
++CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
+-- 
+2.20.1
+

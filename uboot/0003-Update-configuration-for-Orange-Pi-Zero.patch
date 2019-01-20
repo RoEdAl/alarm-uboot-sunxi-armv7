@@ -1,7 +1,7 @@
-From 9ba5e072921f7d95dd48a1510e47ad4e9314b345 Mon Sep 17 00:00:00 2001
+From 6d14c953a33ffab2eb464e4c811d88900a2b8531 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Wed, 31 Oct 2018 07:10:24 +0000
-Subject: [PATCH 3/5] Update configuration for Orange Pi Zero
+Subject: [PATCH 3/7] Update configuration for Orange Pi Zero
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
@@ -19,5 +19,5 @@ index 0da9c65093..c0d501e2c3 100644
  CONFIG_DRAM_ODT_EN=y
  # CONFIG_VIDEO_DE2 is not set
 -- 
-2.19.1
+2.20.1
 

@@ -1,7 +1,7 @@
 From 9b907deeeaef8d4c71935d59478311ed6bd3071b Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Fri, 16 Nov 2018 19:42:08 +0000
-Subject: [PATCH 7/8] arm: dts: sunxi: Add Banana Pi P2 Zero board
+Subject: [PATCH 7/9] arm: dts: sunxi: Add Banana Pi P2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
