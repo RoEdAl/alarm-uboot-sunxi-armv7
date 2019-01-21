@@ -1,4 +1,4 @@
-# Arch Linux ARM - U-Boot Bootloaders for Allwinner based boards
+# Arch Linux ARM - U-Boot bootloaders for Allwinner-based boards [32-bit]
 
 ## Supported boards:
 
@@ -83,9 +83,10 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    pacman-key --init
    pacman-key --populate archlinuxarm
    ```
-1. Install also *U-Boot* package:
+1. Install *U-Boot* package:
    ```
-   pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
+   wget https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
+   pacman -U uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
    ```
 ### Separate boot (ext4) and root (f2fs) partitions
 
@@ -178,9 +179,10 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    pacman-key --init
    pacman-key --populate archlinuxarm
    ```
-1. Install also *U-Boot* package:
+1. Install *U-Boot* package:
    ```
-   pacman -U https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
+   wget https://github.com/RoEdAl/alarm-uboot-sunxi-armv7/releases/download/vx-y/uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
+   pacman -U uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz
    ```
 1. Install `f2fs-tools` package and rebuild *initcpio*:
    ```
