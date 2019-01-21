@@ -4,7 +4,7 @@
 
  Board | U-Boot package | WiFi package(s) | Bootlog
 :-----:|:--------------:|:---------------:|:-------:
-[OrangePi Zero](http://www.orangepi.org/orangepizero/)|`uboot-orangepi-zero`|[`xradio-dkms`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/xradio-dkms)|[here](bootlog/orangepi-zero.log)
+[OrangePi Zero](http://www.orangepi.org/orangepizero/)|`uboot-orangepi-zero`|[`xradio-dkms`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/xradio-dkms), [`xradio-firmware`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/xradio-firmware)|[here](bootlog/orangepi-zero.log)
 [OrangePi One](http://www.orangepi.org/orangepione/)|`uboot-orangepi-one`|N/A|[here](bootlog/orangepi-one.log)
 [OrangePi R1](http://www.orangepi.org/OrangePiR1)|`uboot-orangepi-r1`|[TODO]|[here](bootlog/orangepi-r1.log)
 [NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132)|`uboot-nanopi-neo`|N/A|[here](bootlog/nanopi-neo.log)
