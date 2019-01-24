@@ -8,7 +8,7 @@
 [OrangePi One](http://www.orangepi.org/orangepione/)|`uboot-orangepi-one`|N/A|[here](bootlog/orangepi-one.log)
 [OrangePi R1](http://www.orangepi.org/OrangePiR1)|`uboot-orangepi-r1`|[TODO]|[here](bootlog/orangepi-r1.log)
 [NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132)|`uboot-nanopi-neo`|N/A|[here](bootlog/nanopi-neo.log)
-[A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware)|`uboot-a10-olinuxino-lime-dt`|N/A
+[A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware)|`uboot-a10-olinuxino-lime-dt`|N/A|[here](bootlog/a10-olinuxino-lime.log)
 [A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware)|`uboot-a20-olinuxino-lime-dt`|N/A|[here](bootlog/a20-olinuxino-lime.log)
 [BananaPi M2 Zero](http://www.banana-pi.org/bpi-zero.html)|`uboot-bananapi-m2-zero`|[`ap6212-wifi-firmware`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/ap6212-wifi-firmware)|[here](bootlog/bananapi-m2-zero.log)
 [BananaPi P2 Zero](http://www.banana-pi.org/p2-zero.html)|`uboot-bananapi-p2-zero`|[`ap6212-wifi-firmware`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/ap6212-wifi-firmware)|[here](bootlog/bananapi-p2-zero.log)

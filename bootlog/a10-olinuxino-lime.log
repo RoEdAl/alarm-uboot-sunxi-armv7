@@ -1,0 +1,399 @@
+U-Boot SPL 2019.01-1 (Jan 20 2019 - 10:15:50 +0000)
+DRAM: 512 MiB
+CPU: 912000000Hz, AXI/AHB/APB: 3/2/2
+Trying to boot from MMC1
+
+U-Boot 2019.01-1 (Jan 20 2019 - 10:15:50 +0000) Arch Linux ARM
+
+CPU:   Allwinner A10 (SUN4I)
+Model: Olimex A10-OLinuXino-LIME
+I2C:   ready
+DRAM:  512 MiB
+MMC:   mmc@1c0f000: 0
+In:    serial
+Out:   serial
+Err:   serial
+Net:   eth0: ethernet@1c0b000
+starting USB...
+USB0:   USB EHCI 1.00
+USB1:   USB OHCI 1.0
+USB2:   USB EHCI 1.00
+USB3:   USB OHCI 1.0
+scanning bus 0 for devices... 1 USB Device(s) found
+scanning bus 2 for devices... 1 USB Device(s) found
+       scanning usb for storage devices... 0 Storage Device(s) found
+Hit any key to stop autoboot:  2  1  0 
+switch to partitions #0, OK
+mmc0 is current device
+Scanning mmc 0:1...
+Found U-Boot script /boot/boot.scr
+2474 bytes read in 1 ms (2.4 MiB/s)
+## Executing script at 43100000
+6431336 bytes read in 569 ms (10.8 MiB/s)
+30165 bytes read in 5 ms (5.8 MiB/s)
+5221579 bytes read in 458 ms (10.9 MiB/s)
+## Flattened Device Tree blob at 43000000
+   Booting using the fdt blob at 0x43000000
+EHCI failed to shut down host controller.
+EHCI failed to shut down host controller.
+   Loading Ramdisk to 49b05000, end 49fffccb ... OK
+   Loading Device Tree to 49afa000, end 49b045d4 ... OK
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0
+[    0.000000] Linux version 4.20.2-2-ARCH (builduser@leming) (gcc version 8.2.1 20181127 (GCC)) #1 SMP PREEMPT Fri Jan 18 03:39:51 UTC 2019
+[    0.000000] CPU: ARMv7 Processor [413fc082] revision 2 (ARMv7), cr=10c5387d
+[    0.000000] CPU: PIPT / VIPT nonaliasing data cache, VIPT aliasing instruction cache
+[    0.000000] OF: fdt: Machine model: Olimex A10-OLinuXino-LIME
+[    0.000000] Memory policy: Data cache writeback
+[    0.000000] cma: Reserved 48 MiB at 0x5d000000
+[    0.000000] CPU: All CPU(s) started in SVC mode.
+[    0.000000] random: get_random_bytes called from start_kernel+0x8c/0x480 with crng_init=0
+[    0.000000] percpu: Embedded 17 pages/cpu @(ptrval) s38028 r8192 d23412 u69632
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 129920
+[    0.000000] Kernel command line: console=ttyS0,115200 root=PARTUUID=9f30f4d3-01 rw rootwait elevator=noop audit=0
+[    0.000000] audit: disabled (until reboot)
+[    0.000000] Dentry cache hash table entries: 65536 (order: 6, 262144 bytes)
+[    0.000000] Inode-cache hash table entries: 32768 (order: 5, 131072 bytes)
+[    0.000000] Memory: 442308K/524288K available (12288K kernel code, 1052K rwdata, 4996K rodata, 2048K init, 880K bss, 32828K reserved, 49152K cma-reserved, 0K highmem)
+[    0.000000] Virtual kernel memory layout:
+[    0.000000]     vector  : 0xffff0000 - 0xffff1000   (   4 kB)
+[    0.000000]     fixmap  : 0xffc00000 - 0xfff00000   (3072 kB)
+[    0.000000]     vmalloc : 0xe0800000 - 0xff800000   ( 496 MB)
+[    0.000000]     lowmem  : 0xc0000000 - 0xe0000000   ( 512 MB)
+[    0.000000]     pkmap   : 0xbfe00000 - 0xc0000000   (   2 MB)
+[    0.000000]     modules : 0xbf000000 - 0xbfe00000   (  14 MB)
+[    0.000000]       .text : 0x(ptrval) - 0x(ptrval)   (13280 kB)
+[    0.000000]       .init : 0x(ptrval) - 0x(ptrval)   (2048 kB)
+[    0.000000]       .data : 0x(ptrval) - 0x(ptrval)   (1053 kB)
+[    0.000000]        .bss : 0x(ptrval) - 0x(ptrval)   ( 881 kB)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=1, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=8 to nr_cpu_ids=1.
+[    0.000000] 	Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=1
+[    0.000000] NR_IRQS: 16, nr_irqs: 16, preallocated irqs: 16
+[    0.000019] sched_clock: 32 bits at 24MHz, resolution 41ns, wraps every 89478484971ns
+[    0.000047] clocksource: timer: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 79635851949 ns
+[    0.001226] Console: colour dummy device 80x30
+[    0.001287] Calibrating delay loop... 909.31 BogoMIPS (lpj=1818624)
+[    0.020126] pid_max: default: 32768 minimum: 301
+[    0.020419] LSM: Security Framework initializing
+[    0.020637] Mount-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.020654] Mountpoint-cache hash table entries: 1024 (order: 0, 4096 bytes)
+[    0.021667] CPU: Testing write buffer coherency: ok
+[    0.021717] CPU0: Spectre v2: firmware did not set auxiliary control register IBE bit, system vulnerable
+[    0.022105] CPU0: thread -1, cpu 0, socket -1, mpidr 0
+[    0.044185] Setting up static identity map for 0x40300000 - 0x403000a0
+[    0.052118] rcu: Hierarchical SRCU implementation.
+[    0.072114] smp: Bringing up secondary CPUs ...
+[    0.072130] smp: Brought up 1 node, 1 CPU
+[    0.072141] SMP: Total of 1 processors activated (909.31 BogoMIPS).
+[    0.072150] CPU: All CPU(s) started in SVC mode.
+[    0.073797] devtmpfs: initialized
+[    0.084297] VFP support v0.3: implementor 41 architecture 3 part 30 variant c rev 3
+[    0.084822] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.084848] futex hash table entries: 256 (order: 2, 16384 bytes)
+[    0.087818] xor: measuring software checksum speed
+[    0.124152]    arm4regs  :  1119.000 MB/sec
+[    0.164095]    8regs     :  1003.000 MB/sec
+[    0.204091]    32regs    :  1000.000 MB/sec
+[    0.244093]    neon      :  1570.000 MB/sec
+[    0.244103] xor: using function: neon (1570.000 MB/sec)
+[    0.244180] pinctrl core: initialized pinctrl subsystem
+[    0.245970] NET: Registered protocol family 16
+[    0.248759] DMA: preallocated 256 KiB pool for atomic coherent allocations
+[    0.250638] cpuidle: using governor menu
+[    0.250948] No ATAGs?
+[    0.250955] hw-breakpoint: debug architecture 0x4 unsupported.
+[    0.251845] Serial: AMBA PL011 UART driver
+[    0.356166] raid6: neonx8   gen()  1055 MB/s
+[    0.424125] raid6: neonx8   xor()   704 MB/s
+[    0.492152] raid6: neonx4   gen()   893 MB/s
+[    0.560128] raid6: neonx4   xor()   818 MB/s
+[    0.628108] raid6: neonx2   gen()  1741 MB/s
+[    0.696096] raid6: neonx2   xor()  1409 MB/s
+[    0.764134] raid6: neonx1   gen()  1313 MB/s
+[    0.832164] raid6: neonx1   xor()  1064 MB/s
+[    0.900231] raid6: int32x8  gen()   298 MB/s
+[    0.968141] raid6: int32x8  xor()   224 MB/s
+[    1.024100] random: fast init done
+[    1.036210] raid6: int32x4  gen()   329 MB/s
+[    1.104146] raid6: int32x4  xor()   229 MB/s
+[    1.172270] raid6: int32x2  gen()   314 MB/s
+[    1.240192] raid6: int32x2  xor()   261 MB/s
+[    1.308367] raid6: int32x1  gen()   222 MB/s
+[    1.376193] raid6: int32x1  xor()   217 MB/s
+[    1.376204] raid6: using algorithm neonx2 gen() 1741 MB/s
+[    1.376212] raid6: .... xor() 1409 MB/s, rmw enabled
+[    1.376221] raid6: using neon recovery algorithm
+[    1.382722] vgaarb: loaded
+[    1.383482] SCSI subsystem initialized
+[    1.384507] usbcore: registered new interface driver usbfs
+[    1.384564] usbcore: registered new interface driver hub
+[    1.384666] usbcore: registered new device driver usb
+[    1.385835] media: Linux media interface: v0.10
+[    1.385879] videodev: Linux video capture interface: v2.00
+[    1.386005] pps_core: LinuxPPS API ver. 1 registered
+[    1.386016] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    1.386040] PTP clock support registered
+[    1.386083] EDAC MC: Ver: 3.0.0
+[    1.392463] Advanced Linux Sound Architecture Driver Initialized.
+[    1.393045] NetLabel: Initializing
+[    1.393059] NetLabel:  domain hash size = 128
+[    1.393066] NetLabel:  protocols = UNLABELED CIPSOv4 CALIPSO
+[    1.393159] NetLabel:  unlabeled traffic allowed by default
+[    1.393681] clocksource: Switched to clocksource timer
+[    1.393950] VFS: Disk quotas dquot_6.6.0
+[    1.394043] VFS: Dquot-cache hash table entries: 1024 (order 0, 4096 bytes)
+[    1.404403] NET: Registered protocol family 2
+[    1.405207] tcp_listen_portaddr_hash hash table entries: 512 (order: 0, 6144 bytes)
+[    1.405247] TCP established hash table entries: 4096 (order: 2, 16384 bytes)
+[    1.405295] TCP bind hash table entries: 4096 (order: 3, 32768 bytes)
+[    1.405361] TCP: Hash tables configured (established 4096 bind 4096)
+[    1.405470] UDP hash table entries: 256 (order: 1, 8192 bytes)
+[    1.405497] UDP-Lite hash table entries: 256 (order: 1, 8192 bytes)
+[    1.405852] NET: Registered protocol family 1
+[    1.418658] RPC: Registered named UNIX socket transport module.
+[    1.418674] RPC: Registered udp transport module.
+[    1.418682] RPC: Registered tcp transport module.
+[    1.418690] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    1.419189] Unpacking initramfs...
+[    1.747256] Freeing initrd memory: 5100K
+[    1.774290] Initialise system trusted keyrings
+[    1.774651] workingset: timestamp_bits=14 max_order=17 bucket_order=3
+[    1.779985] zbud: loaded
+[    1.786674] NFS: Registering the id_resolver key type
+[    1.786711] Key type id_resolver registered
+[    1.786720] Key type id_legacy registered
+[    1.786739] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    2.089457] Key type asymmetric registered
+[    2.089478] Asymmetric key parser 'x509' registered
+[    2.089566] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 246)
+[    2.094033] io scheduler noop registered (default)
+[    2.094050] io scheduler deadline registered
+[    2.094281] io scheduler cfq registered
+[    2.094294] io scheduler mq-deadline registered
+[    2.094304] io scheduler kyber registered
+[    2.094525] io scheduler bfq registered
+[    2.103402] sun4i-pinctrl 1c20800.pinctrl: initialized sunXi PIO driver
+[    2.122738] Serial: 8250/16550 driver, 6 ports, IRQ sharing enabled
+[    2.126121] printk: console [ttyS0] disabled
+[    2.146336] 1c28000.serial: ttyS0 at MMIO 0x1c28000 (irq = 33, base_baud = 1500000) is a U6_16550A
+[    2.913312] printk: console [ttyS0] enabled
+[    2.918652] Serial: AMBA driver
+[    2.934210] loop: module loaded
+[    2.938522] Loading iSCSI transport class v2.0-870.
+[    2.948030] iscsi: registered transport (tcp)
+[    2.957389] libphy: Fixed MDIO Bus: probed
+[    2.964893] ehci_hcd: USB 2.0 'Enhanced' Host Controller (EHCI) Driver
+[    2.971485] ehci-pci: EHCI PCI platform driver
+[    2.975999] ehci-platform: EHCI generic platform driver
+[    2.981803] ehci-mxc: Freescale On-Chip EHCI Host driver
+[    2.987257] ehci-omap: OMAP-EHCI Host Controller driver
+[    2.992636] ehci-orion: EHCI orion driver
+[    2.996805] ehci-exynos: EHCI EXYNOS driver
+[    3.001123] tegra-ehci: Tegra EHCI driver
+[    3.005286] ohci_hcd: USB 1.1 'Open' Host Controller (OHCI) Driver
+[    3.011525] ohci-pci: OHCI PCI platform driver
+[    3.016050] ohci-platform: OHCI generic platform driver
+[    3.021796] ohci-exynos: OHCI EXYNOS driver
+[    3.026541] usbcore: registered new interface driver uas
+[    3.031947] usbcore: registered new interface driver usb-storage
+[    3.038008] usbcore: registered new interface driver ums-cypress
+[    3.044064] usbcore: registered new interface driver ums_eneub6250
+[    3.050292] usbcore: registered new interface driver ums-freecom
+[    3.056357] usbcore: registered new interface driver ums-isd200
+[    3.062327] usbcore: registered new interface driver ums-usbat
+[    3.073570] sunxi-rtc 1c20d00.rtc: registered as rtc0
+[    3.078691] sunxi-rtc 1c20d00.rtc: RTC enabled
+[    3.083603] i2c /dev entries driver
+[    3.088757] axp20x-i2c 0-0034: AXP20x variant AXP209 found
+[    3.102315] axp20x-regulator axp20x-regulator: regulators node not found
+[    3.109104] ldo1: supplied by regulator-dummy
+[    3.113803] ldo2: supplied by regulator-dummy
+[    3.119333] ldo3: supplied by regulator-dummy
+[    3.124413] ldo4: supplied by regulator-dummy
+[    3.129030] ldo5: supplied by regulator-dummy
+[    3.134528] dcdc2: supplied by regulator-dummy
+[    3.139680] dcdc3: supplied by regulator-dummy
+[    3.146433] axp20x-i2c 0-0034: AXP20X driver loaded
+[    3.154034] at24 1-0050: 2048 byte 24c16 EEPROM, writable, 16 bytes/write
+[    3.168714] sdhci: Secure Digital Host Controller Interface driver
+[    3.174979] sdhci: Copyright(c) Pierre Ossman
+[    3.180348] Synopsys Designware Multimedia Card Interface Driver
+[    3.187124] VUB300 Driver rom wait states = 1C irqpoll timeout = 0400
+[    3.199913] usbcore: registered new interface driver vub300
+[    3.212060] usbcore: registered new interface driver ushc
+[    3.218277] sunxi-mmc 1c0f000.mmc: Linked as a consumer to regulator.2
+[    3.225620] sunxi-mmc 1c0f000.mmc: Got CD GPIO
+[    3.255863] sunxi-mmc 1c0f000.mmc: initialized, max. request size: 2048 KB
+[    3.263490] sdhci-pltfm: SDHCI platform and OF driver helper
+[    3.271741] ledtrig-cpu: registered to indicate activity on CPUs
+[    3.278305] hidraw: raw HID events driver (C) Jiri Kosina
+[    3.284197] usbcore: registered new interface driver usbhid
+[    3.289853] usbhid: USB HID core driver
+[    3.299533] NET: Registered protocol family 10
+[    3.326661] mmc0: host does not support reading read-only switch, assuming write-enable
+[    3.344814] mmc0: new high speed SDHC card at address aaaa
+[    3.355557] mmcblk0: mmc0:aaaa SB16G 14.8 GiB 
+[    3.371463] Segment Routing with IPv6
+[    3.375522]  mmcblk0: p1 p2
+[    3.379883] mip6: Mobile IPv6
+[    3.383072] NET: Registered protocol family 17
+[    3.391939] Key type dns_resolver registered
+[    3.396446] ThumbEE CPU extension supported.
+[    3.400766] Registering SWP/SWPB emulation handler
+[    3.406396] registered taskstats version 1
+[    3.410539] Loading compiled-in X.509 certificates
+[    3.415452] zswap: loaded using pool lzo/zbud
+[    3.422105] Btrfs loaded, crc32c=crc32c-generic
+[    3.444292] sun4i-usb-phy 1c13400.phy: Linked as a consumer to regulator.12
+[    3.451619] sun4i-usb-phy 1c13400.phy: Linked as a consumer to regulator.13
+[    3.458855] sun4i-usb-phy 1c13400.phy: Linked as a consumer to regulator.14
+[    3.467302] ahci-sunxi 1c18000.sata: Linked as a consumer to regulator.11
+[    3.529734] ahci-sunxi 1c18000.sata: controller can't do PMP, turning off CAP_PMP
+[    3.537246] ahci-sunxi 1c18000.sata: forcing PORTS_IMPL to 0x1
+[    3.543158] ahci-sunxi 1c18000.sata: AHCI 0001.0100 32 slots 1 ports 3 Gbps 0x1 impl platform mode
+[    3.552139] ahci-sunxi 1c18000.sata: flags: ncq sntf pm led clo only pio slum part ccc 
+[    3.565426] scsi host0: ahci-sunxi
+[    3.569244] ata1: SATA max UDMA/133 mmio [mem 0x01c18000-0x01c18fff] port 0x100 irq 27
+[    3.578889] ehci-platform 1c14000.usb: EHCI Host Controller
+[    3.584557] ehci-platform 1c14000.usb: new USB bus registered, assigned bus number 1
+[    3.592655] ehci-platform 1c14000.usb: irq 23, io mem 0x01c14000
+[    3.613726] ehci-platform 1c14000.usb: USB 2.0 started, EHCI 1.00
+[    3.620103] usb usb1: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 4.20
+[    3.628396] usb usb1: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.635635] usb usb1: Product: EHCI Host Controller
+[    3.640531] usb usb1: Manufacturer: Linux 4.20.2-2-ARCH ehci_hcd
+[    3.646553] usb usb1: SerialNumber: 1c14000.usb
+[    3.651813] hub 1-0:1.0: USB hub found
+[    3.655706] hub 1-0:1.0: 1 port detected
+[    3.661470] ehci-platform 1c1c000.usb: EHCI Host Controller
+[    3.667243] ehci-platform 1c1c000.usb: new USB bus registered, assigned bus number 2
+[    3.675354] ehci-platform 1c1c000.usb: irq 28, io mem 0x01c1c000
+[    3.693723] ehci-platform 1c1c000.usb: USB 2.0 started, EHCI 1.00
+[    3.700090] usb usb2: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 4.20
+[    3.708383] usb usb2: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.715622] usb usb2: Product: EHCI Host Controller
+[    3.720517] usb usb2: Manufacturer: Linux 4.20.2-2-ARCH ehci_hcd
+[    3.726540] usb usb2: SerialNumber: 1c1c000.usb
+[    3.731723] hub 2-0:1.0: USB hub found
+[    3.735620] hub 2-0:1.0: 1 port detected
+[    3.741403] ohci-platform 1c14400.usb: Generic Platform OHCI controller
+[    3.748194] ohci-platform 1c14400.usb: new USB bus registered, assigned bus number 3
+[    3.756289] ohci-platform 1c14400.usb: irq 24, io mem 0x01c14400
+[    3.825932] usb usb3: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 4.20
+[    3.834249] usb usb3: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.841509] usb usb3: Product: Generic Platform OHCI controller
+[    3.847474] usb usb3: Manufacturer: Linux 4.20.2-2-ARCH ohci_hcd
+[    3.853521] usb usb3: SerialNumber: 1c14400.usb
+[    3.858764] hub 3-0:1.0: USB hub found
+[    3.862636] hub 3-0:1.0: 1 port detected
+[    3.868444] ohci-platform 1c1c400.usb: Generic Platform OHCI controller
+[    3.875261] ohci-platform 1c1c400.usb: new USB bus registered, assigned bus number 4
+[    3.883496] ohci-platform 1c1c400.usb: irq 29, io mem 0x01c1c400
+[    3.894690] ata1: SATA link down (SStatus 0 SControl 300)
+[    3.949986] usb usb4: New USB device found, idVendor=1d6b, idProduct=0001, bcdDevice= 4.20
+[    3.958277] usb usb4: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    3.965515] usb usb4: Product: Generic Platform OHCI controller
+[    3.971452] usb usb4: Manufacturer: Linux 4.20.2-2-ARCH ohci_hcd
+[    3.977474] usb usb4: SerialNumber: 1c1c400.usb
+[    3.982672] hub 4-0:1.0: USB hub found
+[    3.986556] hub 4-0:1.0: 1 port detected
+[    3.992443] usb_phy_generic usb_phy_generic.0.auto: usb_phy_generic.0.auto supply vcc not found, using dummy regulator
+[    4.003410] usb_phy_generic usb_phy_generic.0.auto: Linked as a consumer to regulator.0
+[    4.012141] musb-hdrc musb-hdrc.1.auto: MUSB HDRC host driver
+[    4.017954] musb-hdrc musb-hdrc.1.auto: new USB bus registered, assigned bus number 5
+[    4.026059] usb usb5: New USB device found, idVendor=1d6b, idProduct=0002, bcdDevice= 4.20
+[    4.034351] usb usb5: New USB device strings: Mfr=3, Product=2, SerialNumber=1
+[    4.041589] usb usb5: Product: MUSB HDRC host driver
+[    4.046577] usb usb5: Manufacturer: Linux 4.20.2-2-ARCH musb-hcd
+[    4.052600] usb usb5: SerialNumber: musb-hdrc.1.auto
+[    4.058233] hub 5-0:1.0: USB hub found
+[    4.062113] hub 5-0:1.0: 1 port detected
+[    4.067695] sunxi-rtc 1c20d00.rtc: setting system clock to 2010-01-01 00:00:14 UTC (1262304014)
+[    4.076718] sr_init: No PMIC hook to init smartreflex
+[    4.082512] vcc3v0: disabling
+[    4.085490] vcc5v0: disabling
+[    4.088521] usb0-vbus: disabling
+[    4.091785] ALSA device list:
+[    4.094964]   No soundcards found.
+[    4.101659] Freeing unused kernel memory: 2048K
+[    4.110445] Run /init as init process
+[    6.421814] BTRFS: device fsid cf724a4d-530f-4b54-b699-18972fbf0879 devid 1 transid 990 /dev/mmcblk0p2
+[    7.173918] EXT4-fs (mmcblk0p1): mounted filesystem with ordered data mode. Opts: (null)
+[    7.848002] systemd[1]: System time before build time, advancing clock.
+[    7.986249] systemd[1]: systemd 240 running in system mode. (+PAM +AUDIT -SELINUX -IMA -APPARMOR +SMACK -SYSVINIT +UTMP +LIBCRYPTSETUP +GCRYPT +GNUTLS +ACL +XZ +LZ4 +SECCOMP +BLKID +ELFUTILS +KMOD +IDN2 -IDN +PCRE2 default-hierarchy=hybrid)
+[    8.008354] systemd[1]: Detected architecture arm.
+[    8.053904] systemd[1]: Set hostname to <OLinuXinoPBX>.
+[    8.796688] systemd[1]: /usr/lib/systemd/system/auditd.service:12: PIDFile= references path below legacy directory /var/run/, updating /var/run/auditd.pid → /run/auditd.pid; please update the unit file accordingly.
+[    9.169475] random: systemd: uninitialized urandom read (16 bytes read)
+[    9.191557] random: systemd: uninitialized urandom read (16 bytes read)
+[    9.204320] systemd[1]: Created slice system-serial\x2dgetty.slice.
+[    9.222019] random: systemd: uninitialized urandom read (16 bytes read)
+[    9.259773] systemd[1]: Listening on Process Core Dump Socket.
+[    9.278576] systemd[1]: Started Dispatch Password Requests to Console Directory Watch.
+[    9.306022] systemd[1]: Reached target Remote File Systems.
+[    9.322948] systemd[1]: Listening on Network Service Netlink Socket.
+[    9.343983] systemd[1]: Created slice User and Session Slice.
+[   14.282456] IPv6: ADDRCONF(NETDEV_UP): br-lan: link is not ready
+[   14.675110] sun4i-mdio 1c0b080.mdio: 1c0b080.mdio supply phy not found, using dummy regulator
+[   14.733860] sun4i-emac 1c0b000.ethernet: eth0: at (ptrval), IRQ 18 MAC: 02:8f:05:80:8c:da
+[   14.801048] sun4i-mdio 1c0b080.mdio: Linked as a consumer to regulator.0
+[   14.875132] libphy: sun4i_mii_bus: probed
+[   14.880001] sun4i-ss 1c15000.crypto-engine: Die ID 7
+[   15.255467] sunxi-wdt 1c20c90.watchdog: Watchdog enabled (timeout=16 sec, nowayout=1)
+[   15.794448] systemd-journald[209]: Received request to flush runtime journal from PID 1
+[   15.992685] sun4i-backend 1e60000.display-backend: Couldn't find matching frontend, frontend features disabled
+[   16.027592] input: axp20x-pek as /devices/platform/soc/1c2ac00.i2c/i2c-0/0-0034/axp20x-pek/input/input0
+[   16.102418] sun4i-drm display-engine: bound 1e60000.display-backend (ops sun4i_backend_ops [sun4i_backend])
+[   16.202138] sun4i-backend 1e40000.display-backend: Couldn't find matching frontend, frontend features disabled
+[   16.286403] sun4i-drm display-engine: bound 1e40000.display-backend (ops sun4i_backend_ops [sun4i_backend])
+[   16.410485] sun4i-drm display-engine: No panel or bridge found... RGB output disabled
+[   16.493031] BTRFS info (device mmcblk0p2): setting nodatacow, compression disabled
+[   16.509862] BTRFS info (device mmcblk0p2): use no compression, level 0
+[   16.521832] BTRFS info (device mmcblk0p2): disk space caching is enabled
+[   16.529115] sun4i-drm display-engine: bound 1c0c000.lcd-controller (ops sun4i_tcon_ops [sun4i_tcon])
+[   16.540033] BTRFS info (device mmcblk0p2): has skinny extents
+[   16.592021] sun4i-drm display-engine: No panel or bridge found... RGB output disabled
+[   16.652976] sun4i-drm display-engine: bound 1c0d000.lcd-controller (ops sun4i_tcon_ops [sun4i_tcon])
+[   16.711537] BTRFS info (device mmcblk0p2): enabling ssd optimizations
+[   16.740514] sun4i-drm display-engine: bound 1c16000.hdmi (ops sun4i_hdmi_ops [sun4i_drm_hdmi])
+[   16.833958] [drm] Supports vblank timestamp caching Rev 2 (21.10.2013).
+[   17.072379] [drm] No driver support for vblank timestamp query.
+[   17.713856] [drm] Cannot find any crtc or sizes
+[   17.897150] [drm] Initialized sun4i-drm 1.0.0 20150629 for display-engine on minor 0
+[   18.800145] br-lan: port 1(eth0) entered blocking state
+[   18.837836] br-lan: port 1(eth0) entered disabled state
+[   18.868533] device eth0 entered promiscuous mode
+[   18.994121] IPv6: ADDRCONF(NETDEV_UP): eth0: link is not ready
+[   19.620745] using random self ethernet address
+[   19.636242] using random host ethernet address
+[   19.759119] using random self ethernet address
+[   19.765839] using random host ethernet address
+[   19.887931] usb0: HOST MAC 7e:f0:98:80:b8:0f
+[   19.901808] [drm] Cannot find any crtc or sizes
+[   19.910864] usb0: MAC ea:cd:5f:33:8c:0c
+[   19.941470] usb1: HOST MAC 1a:c7:f3:d2:43:4e
+[   19.963389] usb1: MAC 72:8c:7a:02:2a:ff
+[   20.625428] br-lan: port 2(usb0) entered blocking state
+[   20.653811] br-lan: port 2(usb0) entered disabled state
+[   20.687248] device usb0 entered promiscuous mode
+[   20.723921] IPv6: ADDRCONF(NETDEV_UP): usb0: link is not ready
+[   20.806023] br-lan: port 3(usb1) entered blocking state
+[   20.825895] br-lan: port 3(usb1) entered disabled state
+[   20.846673] device usb1 entered promiscuous mode
+[   20.883632] IPv6: ADDRCONF(NETDEV_UP): usb1: link is not ready
+[   20.913757] br-lan: port 3(usb1) entered blocking state
+[   20.919055] br-lan: port 3(usb1) entered forwarding state
+[   20.998226] br-lan: port 3(usb1) entered disabled state
+[   22.281793] sun4i-emac 1c0b000.ethernet eth0: Link is Up - 100Mbps/Full - flow control rx/tx
+[   22.297782] IPv6: ADDRCONF(NETDEV_CHANGE): eth0: link becomes ready
+[   22.314670] br-lan: port 1(eth0) entered blocking state
+[   22.319987] br-lan: port 1(eth0) entered forwarding state
+[   22.362829] IPv6: ADDRCONF(NETDEV_CHANGE): br-lan: link becomes ready
+[   23.850400] random: crng init done
+[   23.853873] random: 7 urandom warning(s) missed due to ratelimiting
