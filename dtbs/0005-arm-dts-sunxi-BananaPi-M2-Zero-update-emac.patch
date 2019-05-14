@@ -1,4 +1,4 @@
-From e8687bbe235ec87ae6f3488d01fe4d7867da21d1 Mon Sep 17 00:00:00 2001
+From 280e66262e2209ca64f5f006359d83b42075e7a4 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Thu, 1 Nov 2018 11:39:47 +0000
 Subject: [PATCH 5/9] arm: dts: sunxi: BananaPi M2 Zero - update emac

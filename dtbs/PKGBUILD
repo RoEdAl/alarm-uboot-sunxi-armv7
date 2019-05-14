@@ -1,19 +1,19 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname='sunxi-dtbs'
-_srcname=linux-5.0
+_srcname=linux-5.1
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=5.0.p1
+pkgver=5.1.p1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=('linux>5.0')
+depends=('linux>5.1')
 makedepends=('bc' 'git')
 options=('!strip')
-_cfgrel=e5e0438d33df7ec3f758001aedcb08b96b703b48
+_cfgrel=20cf7ffd1cee13794f20edd26dfa26c73c8ee979
 _patches=(
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
@@ -28,17 +28,17 @@ _patches=(
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('7381ce8aac80a01448e065ce795c19c0'
-         '5d213765499c0d378fccf115a70dd737'
-         '3e41f41f6a9365e419c173ea52ce4dc7'
-         'b9a88e09878c7ae134bed59bcaefba4b'
-         '031eedb603af7181cade2cf96b73e148'
-         'ffc742476d01ca8329ea42c0ab5664f9'
-         '5ce3c5b2d504305a876f924a27a787ab'
-         '1aff4f788482fc09438400b9ba9d7ffe'
-         '4e086407ff0ee4d99204dfd748c6d57c'
-         'ed5f91a09919070158c060740c3e7817'
-         'b89208f0b9fd4df6e31ce5f11f6d1837')
+md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
+         '57bad2a103e08d1fae62bee7251debc9'
+         'ada97e1c172cb7e69bec7d274aab0198'
+         '88f7cae8ed7fa1d0f1a18fce99393f83'
+         'cb451fc3f79e4a57d198e214e697350e'
+         'a56e5cbd9c5a30e2743d74abe3979cbf'
+         'f6571335a1ad583f338e5a26e5d22bab'
+         '2862eac7854c45eca80295d6687b1324'
+         '76c8323cf7cf5d02af02807149b8d1e7'
+         'af32c64222d811e8f72354d19d34f9f3'
+         '174a565035583b04f6aeb8971a2a825d')
 
 prepare() {
   cd "${srcdir}/${_srcname}"
