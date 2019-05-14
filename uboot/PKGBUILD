@@ -2,14 +2,14 @@
 
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
-pkgver=2019.01
+pkgver=2019.04
 pkgrel=1
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=4.20.p1')
+makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=5.0.p1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 _patches=(
@@ -28,18 +28,18 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
 	${_patches[@]}
 )
-sha1sums=('3c4d22eea02032488e1a4cc5da202bb2469cf6fa'
-          '4088ae725c22b5468deece9c72eff6b0470a3128'
+sha1sums=('aad882bb66e77ff7d8caca63d977e1b59ba217d2'
+          '9f5d51937b0dde70b21f84dc93a2f770f3488226'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           'ec687528b35f159c68d9d44cf481d223a895ebb8'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          'b35d097af7d176a938e29c74b8c1139df0f748c5'
-          '1e181de1ab0e4f357c9f311393b9de645ee244ee'
-          'c1568d49cdf37b4c3fa34bbe139822652c476d5a'
-          'ffc05b3da5df482617d0bd0c127c99743bab7b15'
-          'c958189dc892289c76f5e9bb2d4c73a7b241dd90'
-          '81c52d07aca667da9fd88571937e66761c74bef3'
-          '3f3fe359657e0059081c80c32b7c866d7d979010')
+          '03e030b1a397cc8ac55bc91be062ee1931d40f1b'
+          'fee01a555d23120deb5c7214549e527254ad248f'
+          '9a021e3b2c731799e9abf7b59990c837e69e6128'
+          '8059bbc935fe8132f493aaaba610087a0ec09cba'
+          '6b3cd93852e4a5c6eea1547534971635d3781cd8'
+          'fe7bcef617942be009d122a78328a79c00e1f176'
+          'eb791f8c93a3097f6d150ae275927a104961adb3')
 
 _boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero' 'Sinovoip_BPI_P2_Zero')
 

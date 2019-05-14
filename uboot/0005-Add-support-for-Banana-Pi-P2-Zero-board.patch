@@ -1,4 +1,4 @@
-From 3d456f3f76f944d599a63d345cd9ec7fd716cb61 Mon Sep 17 00:00:00 2001
+From d4b27aa84ac34c032ed9244b7f8460ab014c3721 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Fri, 16 Nov 2018 20:23:17 +0000
 Subject: [PATCH 5/7] Add support for Banana Pi P2 Zero board
@@ -6,11 +6,11 @@ Subject: [PATCH 5/7] Add support for Banana Pi P2 Zero board
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index dda4e59491..5138a063cf 100644
+index 0e2ffdb87f..781f51dd62 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
-@@ -373,6 +373,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
- 	sun8i-a83t-tbs-a711.dts
+@@ -435,6 +435,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
+ 	sun8i-a83t-tbs-a711.dtb
  dtb-$(CONFIG_MACH_SUN8I_H3) += \
  	sun8i-h2-plus-bananapi-m2-zero.dtb \
 +	sun8i-h2-plus-bananapi-p2-zero.dtb \
@@ -230,5 +230,5 @@ index 0000000000..c8206d9d93
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
 -- 
-2.20.1
+2.21.0
 

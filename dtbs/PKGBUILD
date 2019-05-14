@@ -1,19 +1,19 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname='sunxi-dtbs'
-_srcname=linux-4.20
+_srcname=linux-5.0
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=4.20.p1
+pkgver=5.0.p1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=('linux>4.20')
+depends=('linux>5.0')
 makedepends=('bc' 'git')
 options=('!strip')
-_cfgrel=b21edcbede10e67392282471784faec6545f9bdc
+_cfgrel=e5e0438d33df7ec3f758001aedcb08b96b703b48
 _patches=(
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
@@ -25,20 +25,20 @@ _patches=(
 	'0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch'
 	'0009-arm-dts-sunxi-OrangePi-R1-remove-correct-node.patch'
 )
-source=("http://www.kernel.org/pub/linux/kernel/v4.x/${_srcname}.tar.xz"
+source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('d39dd4ba2d5861c54b90d49be19eaf31'
-         'ed6a4f35e1fbc1829fdeb5b6bbca1f56'
-         '8f11cead0f43ef197ca0e1dc6e3cc789'
-         'b4596bc482c768cbb586f8ce32fa6ae7'
-         '7ee4c7cb17db117f3f2943c81f9e4112'
-         '016874ee925059306b9e4bf2eab07a4f'
-         'd6deed4e009a59fe3e680e69fa83e5d0'
-         'aa7c9b88c0901038ec53d2eb8995327d'
-         'e3b46838546fa300eaf1e2ebd953689f'
-         '463869c2edabd416a51333312478c600'
-         '6b95ea40314c5531cea810e3a16e02f9')
+md5sums=('7381ce8aac80a01448e065ce795c19c0'
+         '5d213765499c0d378fccf115a70dd737'
+         '3e41f41f6a9365e419c173ea52ce4dc7'
+         'b9a88e09878c7ae134bed59bcaefba4b'
+         '031eedb603af7181cade2cf96b73e148'
+         'ffc742476d01ca8329ea42c0ab5664f9'
+         '5ce3c5b2d504305a876f924a27a787ab'
+         '1aff4f788482fc09438400b9ba9d7ffe'
+         '4e086407ff0ee4d99204dfd748c6d57c'
+         'ed5f91a09919070158c060740c3e7817'
+         'b89208f0b9fd4df6e31ce5f11f6d1837')
 
 prepare() {
   cd "${srcdir}/${_srcname}"

@@ -1,4 +1,4 @@
-From 8d3b64e030d4be28fc389d6c4b75a93fc297f70d Mon Sep 17 00:00:00 2001
+From b30743b109ecf696b2df94c27ee0d3479a5f0bb2 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sat, 19 Jan 2019 17:20:43 +0000
 Subject: [PATCH 2/7] Add Ethernet on Banana Pi M2 Zero board
@@ -84,5 +84,5 @@ index 91302eb49c..048b409568 100644
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
 -- 
-2.20.1
+2.21.0
 

@@ -1,4 +1,4 @@
-From 9cd8712c53fcb0c2419f6b19a8808e9b1b9453a3 Mon Sep 17 00:00:00 2001
+From c7aa7bfef8e5e448831f63bb3cdcda67a7e870f8 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 20 Jan 2019 08:10:17 +0000
 Subject: [PATCH 6/7] Orange Pi One - update configuration
@@ -6,7 +6,7 @@ Subject: [PATCH 6/7] Orange Pi One - update configuration
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/configs/orangepi_one_defconfig b/configs/orangepi_one_defconfig
-index 003f2cc7cb..73621c95b2 100644
+index 404fdd9119..c9f83fc34d 100644
 --- a/configs/orangepi_one_defconfig
 +++ b/configs/orangepi_one_defconfig
 @@ -2,7 +2,7 @@ CONFIG_ARM=y
@@ -19,5 +19,5 @@ index 003f2cc7cb..73621c95b2 100644
  CONFIG_DRAM_ODT_EN=y
  CONFIG_NR_DRAM_BANKS=1
 -- 
-2.20.1
+2.21.0
 
