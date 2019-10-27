@@ -1,4 +1,4 @@
-From 32bebd76e340842999309f249b0981401b5ee296 Mon Sep 17 00:00:00 2001
+From ceac51446669c9efa49f4f85f73283b635aabcb7 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Tue, 23 Jan 2018 11:52:20 +0100
 Subject: [PATCH 3/9] ARM: dts: sun4i: Correct pinctrl nodes
@@ -8,10 +8,10 @@ spi2_cs0_pc_pins -> spi2_cs0_pc_pin
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/boot/dts/sun4i-a10.dtsi b/arch/arm/boot/dts/sun4i-a10.dtsi
-index 73c3ac42095f..0e8b3db168ca 100644
+index e88daa4ef1af..2450498eacfc 100644
 --- a/arch/arm/boot/dts/sun4i-a10.dtsi
 +++ b/arch/arm/boot/dts/sun4i-a10.dtsi
-@@ -780,7 +780,7 @@
+@@ -779,7 +779,7 @@
  				function = "spi2";
  			};
  
@@ -21,5 +21,5 @@ index 73c3ac42095f..0e8b3db168ca 100644
  				function = "spi2";
  			};
 -- 
-2.21.0
+2.23.0
 

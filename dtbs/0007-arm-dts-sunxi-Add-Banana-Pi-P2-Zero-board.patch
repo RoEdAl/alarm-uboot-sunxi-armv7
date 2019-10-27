@@ -1,15 +1,15 @@
-From 9d2a6e3c4b3ca7caf5581d5b7cd39cde95bc1572 Mon Sep 17 00:00:00 2001
+From dbe9e3fd05b88c74e550e5d1f17475dfbfbc4b33 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Fri, 16 Nov 2018 19:42:08 +0000
+Date: Sun, 29 Sep 2019 09:33:22 +0200
 Subject: [PATCH 7/9] arm: dts: sunxi: Add Banana Pi P2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index f4f5aeaf3298..e5c8cfc99999 100644
+index 9159fa2cea90..289e2d0e97a1 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
-@@ -1071,6 +1071,7 @@ dtb-$(CONFIG_MACH_SUN8I) += \
+@@ -1088,6 +1088,7 @@ dtb-$(CONFIG_MACH_SUN8I) += \
  	sun8i-a83t-cubietruck-plus.dtb \
  	sun8i-a83t-tbs-a711.dtb \
  	sun8i-h2-plus-bananapi-m2-zero.dtb \
@@ -19,7 +19,7 @@ index f4f5aeaf3298..e5c8cfc99999 100644
  	sun8i-h2-plus-orangepi-zero.dtb \
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dts
 new file mode 100644
-index 000000000000..ce121dec3dfe
+index 000000000000..bcc5ab3535b0
 --- /dev/null
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-p2-zero.dts
 @@ -0,0 +1,181 @@
@@ -68,7 +68,7 @@ index 000000000000..ce121dec3dfe
 +		compatible = "gpio-leds";
 +		pinctrl-names = "default";
 +
-+		pwr_led {
++		pwr {
 +			label = "bananapi-m2-zero:red:pwr";
 +			gpios = <&r_pio 0 10 GPIO_ACTIVE_HIGH>; /* PL10 */
 +			default-state = "on";
@@ -179,7 +179,7 @@ index 000000000000..ce121dec3dfe
 +
 +&uart0 {
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_pins_a>;
++	pinctrl-0 = <&uart0_pa_pins>;
 +	status = "okay";
 +};
 +
@@ -205,5 +205,5 @@ index 000000000000..ce121dec3dfe
 +	status = "okay";
 +};
 -- 
-2.21.0
+2.23.0
 

@@ -1,11 +1,11 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname='sunxi-dtbs'
-_srcname=linux-5.1
+_srcname=linux-5.3
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=5.1.p1
+pkgver=5.3.p1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
@@ -13,7 +13,7 @@ license=('GPL2')
 depends=('linux>5.1')
 makedepends=('bc' 'git')
 options=('!strip')
-_cfgrel=20cf7ffd1cee13794f20edd26dfa26c73c8ee979
+_cfgrel=82827b2007864d911596542324e992f1cf8817ed
 _patches=(
 	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
 	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
@@ -28,17 +28,17 @@ _patches=(
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('15fbdff95ff98483069ac6e215b9f4f9'
-         '57bad2a103e08d1fae62bee7251debc9'
-         'ada97e1c172cb7e69bec7d274aab0198'
-         '88f7cae8ed7fa1d0f1a18fce99393f83'
-         'cb451fc3f79e4a57d198e214e697350e'
-         'a56e5cbd9c5a30e2743d74abe3979cbf'
-         'f6571335a1ad583f338e5a26e5d22bab'
-         '2862eac7854c45eca80295d6687b1324'
-         '76c8323cf7cf5d02af02807149b8d1e7'
-         'af32c64222d811e8f72354d19d34f9f3'
-         '174a565035583b04f6aeb8971a2a825d')
+md5sums=('c99feaade8047339528fb066ec5f8a49'
+         '3bc2a85a61beb63fc22dcca5168df39d'
+         '8c64ebebaff7fa23db8bef3aa54fce9f'
+         '4df100e21d454c7241e1d8cd02ccfed6'
+         'b20d89547474d4add85158e7bc1ac30e'
+         '2112afa616b83fae3c467bd9f36a6577'
+         '38a3bd74f6def65d65e1031aed2f6132'
+         '366b1007ecc5e72324ead3d53abe6d7f'
+         'ad1625291f5831927a066446eb7d6497'
+         '7d22d05163027d5a35039ffc426a746d'
+         '98eb2eada163f86923622b9fdc260779')
 
 prepare() {
   cd "${srcdir}/${_srcname}"

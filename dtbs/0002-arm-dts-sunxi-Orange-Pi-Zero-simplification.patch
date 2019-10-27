@@ -1,6 +1,6 @@
-From 86e8f35fd250ee682fca3e4ccef4e8cc502d2863 Mon Sep 17 00:00:00 2001
+From 2e6936fc161e719afde3d2d9c6d52c34b97a48fe Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sun, 21 Jan 2018 14:15:36 +0000
+Date: Sun, 29 Sep 2019 08:55:20 +0200
 Subject: [PATCH 2/9] arm: dts: sunxi: Orange Pi Zero - simplification
 
 Do not acitvate ohci0 - USB OTG do not need this.
@@ -11,7 +11,7 @@ Remove (disabled) flash configuration.
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-index 84cd9c061227..a8905051a314 100644
+index f19ed981da9d..8d43826c1c27 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 @@ -68,13 +68,13 @@
@@ -30,7 +30,7 @@ index 84cd9c061227..a8905051a314 100644
  			label = "orangepi:red:status";
  			gpios = <&pio 0 17 GPIO_ACTIVE_HIGH>;
  		};
-@@ -155,47 +155,18 @@
+@@ -154,45 +154,16 @@
  	};
  };
  
@@ -57,7 +57,7 @@ index 84cd9c061227..a8905051a314 100644
 -
  &uart0 {
  	pinctrl-names = "default";
- 	pinctrl-0 = <&uart0_pins_a>;
+ 	pinctrl-0 = <&uart0_pa_pins>;
  	status = "okay";
  };
  
@@ -74,11 +74,8 @@ index 84cd9c061227..a8905051a314 100644
 -};
 -
  &usb_otg {
--	dr_mode = "peripheral";
-+	dr_mode = "otg";
+ 	dr_mode = "peripheral";
  	status = "okay";
- };
- 
 -- 
-2.21.0
+2.23.0
 

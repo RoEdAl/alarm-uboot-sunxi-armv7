@@ -1,6 +1,6 @@
-From b30743b109ecf696b2df94c27ee0d3479a5f0bb2 Mon Sep 17 00:00:00 2001
+From 5747483e0031baef160ca17d1c6e14b8249e4a98 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sat, 19 Jan 2019 17:20:43 +0000
+Date: Sun, 27 Oct 2019 18:48:41 +0100
 Subject: [PATCH 2/7] Add Ethernet on Banana Pi M2 Zero board
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
@@ -64,16 +64,17 @@ index 7d01f93226..5770240a82 100644
  	vmmc-supply = <&reg_vcc3v3>;
  	bus-width = <4>;
 diff --git a/configs/bananapi_m2_zero_defconfig b/configs/bananapi_m2_zero_defconfig
-index 91302eb49c..048b409568 100644
+index 933ec4db43..40b7b434d9 100644
 --- a/configs/bananapi_m2_zero_defconfig
 +++ b/configs/bananapi_m2_zero_defconfig
-@@ -5,9 +5,15 @@ CONFIG_MACH_SUN8I_H3=y
+@@ -3,10 +3,16 @@ CONFIG_ARCH_SUNXI=y
+ CONFIG_SPL=y
+ CONFIG_MACH_SUN8I_H3=y
  CONFIG_DRAM_CLK=408
- CONFIG_DRAM_ZQ=3881979
- CONFIG_DRAM_ODT_EN=y
 +CONFIG_NR_DRAM_BANKS=1
  CONFIG_MMC0_CD_PIN=""
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
+ CONFIG_USE_PREBOOT=y
  # CONFIG_CMD_FLASH is not set
  # CONFIG_SPL_DOS_PARTITION is not set
 +# CONFIG_SPL_ISO_PARTITION is not set
@@ -84,5 +85,5 @@ index 91302eb49c..048b409568 100644
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
 -- 
-2.21.0
+2.23.0
 

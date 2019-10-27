@@ -1,4 +1,4 @@
-From 32383ff6e55f6b895002f2f1123e1e6aeb54c94c Mon Sep 17 00:00:00 2001
+From b0846dc73a711fdf9886423cd3502a44b3a0efc6 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 21 Jan 2018 14:15:10 +0000
 Subject: [PATCH 1/9] arm: dts: sunxi: NanoPi Neo - status LED without
@@ -7,10 +7,10 @@ Subject: [PATCH 1/9] arm: dts: sunxi: NanoPi Neo - status LED without
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi b/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi
-index f110ee382239..ccb286aa5947 100644
+index 4df29a65316d..3ac0b6555461 100644
 --- a/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi
 +++ b/arch/arm/boot/dts/sun8i-h3-nanopi.dtsi
-@@ -65,7 +65,6 @@
+@@ -63,7 +63,6 @@
  		status {
  			label = "nanopi:blue:status";
  			gpios = <&pio 0 10 GPIO_ACTIVE_HIGH>;
@@ -19,5 +19,5 @@ index f110ee382239..ccb286aa5947 100644
  
  		pwr {
 -- 
-2.21.0
+2.23.0
 

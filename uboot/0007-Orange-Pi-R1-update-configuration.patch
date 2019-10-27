@@ -1,23 +1,23 @@
-From 29ef28eebd7d31394a09cbcb0e4c770d9923784b Mon Sep 17 00:00:00 2001
+From 3a1bd00015bfc4f3e3283f67ac2b5e38a6ee8a65 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sun, 20 Jan 2019 08:10:57 +0000
+Date: Sun, 27 Oct 2019 18:54:08 +0100
 Subject: [PATCH 7/7] Orange Pi R1 - update configuration
 
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/configs/orangepi_r1_defconfig b/configs/orangepi_r1_defconfig
-index 05c3b08b76..b595995850 100644
+index e0a530d4b8..6f053fd754 100644
 --- a/configs/orangepi_r1_defconfig
 +++ b/configs/orangepi_r1_defconfig
-@@ -2,7 +2,7 @@ CONFIG_ARM=y
- CONFIG_ARCH_SUNXI=y
+@@ -3,7 +3,7 @@ CONFIG_ARCH_SUNXI=y
+ CONFIG_NR_DRAM_BANKS=1
  CONFIG_SPL=y
  CONFIG_MACH_SUN8I_H3=y
 -CONFIG_DRAM_CLK=624
 +CONFIG_DRAM_CLK=408
- CONFIG_DRAM_ZQ=3881979
- CONFIG_DRAM_ODT_EN=y
  # CONFIG_VIDEO_DE2 is not set
+ CONFIG_SPL_SPI_SUNXI=y
+ # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
 -- 
-2.21.0
+2.23.0
 
