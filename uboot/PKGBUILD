@@ -3,13 +3,13 @@
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
 pkgver=2019.10
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=5.3.p1')
+makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=5.4.p1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 _patches=(

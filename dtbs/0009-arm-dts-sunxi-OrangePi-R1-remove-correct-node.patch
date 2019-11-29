@@ -1,4 +1,4 @@
-From 5272968828e679fb64f652098e15a3342d21d805 Mon Sep 17 00:00:00 2001
+From 82710498890ba9e8f75ddc954a8399ec6c344dd6 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 20 Jan 2019 09:17:34 +0000
 Subject: [PATCH 9/9] arm: dts: sunxi: OrangePi R1 - remove correct node
@@ -33,5 +33,5 @@ index 3356f4210d45..32a79c49eba7 100644
  };
  
 -- 
-2.23.0
+2.24.0
 

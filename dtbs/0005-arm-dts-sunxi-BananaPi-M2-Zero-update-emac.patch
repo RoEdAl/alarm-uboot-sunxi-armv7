@@ -1,4 +1,4 @@
-From 4128d497f91a28c312ca2cbe006f399361ee689e Mon Sep 17 00:00:00 2001
+From 79ea6d6207cfe6df3974893fbd53c3945687574a Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Thu, 1 Nov 2018 11:39:47 +0000
 Subject: [PATCH 5/9] arm: dts: sunxi: BananaPi M2 Zero - update emac
@@ -31,5 +31,5 @@ index d277d043031b..75cb5091bda2 100644
  	vmmc-supply = <&reg_vcc3v3>;
  	bus-width = <4>;
 -- 
-2.23.0
+2.24.0
 

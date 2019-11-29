@@ -1,4 +1,4 @@
-From 2e6936fc161e719afde3d2d9c6d52c34b97a48fe Mon Sep 17 00:00:00 2001
+From 9b5b72d38d71ca1733adee6e84e5ab44f3e63439 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 29 Sep 2019 08:55:20 +0200
 Subject: [PATCH 2/9] arm: dts: sunxi: Orange Pi Zero - simplification
@@ -77,5 +77,5 @@ index f19ed981da9d..8d43826c1c27 100644
  	dr_mode = "peripheral";
  	status = "okay";
 -- 
-2.23.0
+2.24.0
 

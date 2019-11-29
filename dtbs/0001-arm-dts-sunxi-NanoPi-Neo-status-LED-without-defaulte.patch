@@ -1,4 +1,4 @@
-From b0846dc73a711fdf9886423cd3502a44b3a0efc6 Mon Sep 17 00:00:00 2001
+From 7afe5547780ce494e7ba02a156f633612facd65c Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 21 Jan 2018 14:15:10 +0000
 Subject: [PATCH 1/9] arm: dts: sunxi: NanoPi Neo - status LED without
@@ -19,5 +19,5 @@ index 4df29a65316d..3ac0b6555461 100644
  
  		pwr {
 -- 
-2.23.0
+2.24.0
 

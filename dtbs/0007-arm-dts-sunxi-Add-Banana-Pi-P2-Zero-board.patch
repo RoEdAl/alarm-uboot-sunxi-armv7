@@ -1,4 +1,4 @@
-From dbe9e3fd05b88c74e550e5d1f17475dfbfbc4b33 Mon Sep 17 00:00:00 2001
+From eb4ac147703ffbb6d36bedecdff1d98be4656b44 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 29 Sep 2019 09:33:22 +0200
 Subject: [PATCH 7/9] arm: dts: sunxi: Add Banana Pi P2 Zero board
@@ -6,10 +6,10 @@ Subject: [PATCH 7/9] arm: dts: sunxi: Add Banana Pi P2 Zero board
 Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
-index 9159fa2cea90..289e2d0e97a1 100644
+index b21b3a64641a..2b031b2539a6 100644
 --- a/arch/arm/boot/dts/Makefile
 +++ b/arch/arm/boot/dts/Makefile
-@@ -1088,6 +1088,7 @@ dtb-$(CONFIG_MACH_SUN8I) += \
+@@ -1097,6 +1097,7 @@ dtb-$(CONFIG_MACH_SUN8I) += \
  	sun8i-a83t-cubietruck-plus.dtb \
  	sun8i-a83t-tbs-a711.dtb \
  	sun8i-h2-plus-bananapi-m2-zero.dtb \
@@ -205,5 +205,5 @@ index 000000000000..bcc5ab3535b0
 +	status = "okay";
 +};
 -- 
-2.23.0
+2.24.0
 
