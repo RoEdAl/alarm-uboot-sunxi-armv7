@@ -9,7 +9,7 @@ _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=5.4.p1')
+makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=5.6.p1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 _patches=(
