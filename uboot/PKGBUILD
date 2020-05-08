@@ -2,8 +2,8 @@
 
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
-pkgver=2019.10
-pkgrel=2
+pkgver=2020.04
+pkgrel=1
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
@@ -28,18 +28,18 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
 	${_patches[@]}
 )
-sha1sums=('e828f959d2f3e1c09bfceb1456cdfd7fc5f89aeb'
+sha1sums=('0821ce2dac9bbd9ec5883779ddad78b8610366e3'
           '9f5d51937b0dde70b21f84dc93a2f770f3488226'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '9694979451588d031c43a2473b5776623a2ebec1'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          '4cfa1da2014373bce267c063c158f4c250ca671d'
-          '55f49c2cc3d67d4b5e8d77f26c6a42f5ff2e10ae'
-          '820c7904d045b7863a98e561d198b4a3fcb45626'
-          'c6dd9c74ee6c1cf318fd6667f16d54c0c0d80531'
-          '07946943b5f56ae0bd38ddfc6b5aa02734109ee8'
-          '209ea6f9d955bb77ea9d5e2a93bfd38dd40ee2e3'
-          'd1d66afeaee172d2e0af618b50d397abeca5498e')
+          '24e93effb4def0727479ffdeabace46fd55a408a'
+          'd82bd65dc00c48d4827dfc1c95b526c8b58ccc04'
+          '78eda4aff55b275ca011edea3a1ac2dcd37b1261'
+          '70a1172ef490b6769b5661cc34b55a4a8ce0b697'
+          '8166c18df7741d3d895ec4fddc58ea3004fedd09'
+          '60753257ff5dda4b47b0344d59af6c2c2cb3bfef'
+          'e1a0bd094adeedfdbb9d1d6bcef0baad50d69886')
 
 _boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero' 'Sinovoip_BPI_P2_Zero')
 
@@ -75,13 +75,13 @@ package_uboot-orangepi-zero() {
   conflicts=('uboot-sunxi' 'orangepi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_orangepi_zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-orangepi-zero.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_orangepi_zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h2-plus-orangepi-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-orangepi-zero.dtb"
 }
 
 package_uboot-orangepi-one() {
@@ -91,13 +91,13 @@ package_uboot-orangepi-one() {
   conflicts=('uboot-sunxi' 'orangepi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_orangepi_one/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun8i-h3-orangepi-one.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-orangepi-one.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_orangepi_one/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h3-orangepi-one.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-orangepi-one.dtb"
 }
 
 package_uboot-orangepi-r1() {
@@ -107,13 +107,13 @@ package_uboot-orangepi-r1() {
   conflicts=('uboot-sunxi' 'orangepi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_orangepi_r1/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun8i-h2-plus-orangepi-r1.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-orangepi-r1.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_orangepi_r1/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h2-plus-orangepi-r1.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-orangepi-r1.dtb"
 }
 
 package_uboot-nanopi-neo() {
@@ -123,13 +123,13 @@ package_uboot-nanopi-neo() {
   conflicts=('uboot-sunxi' 'nanopi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_nanopi_neo/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-nanopi-neo.dtb"
+  install -dm0775 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_nanopi_neo/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-nanopi-neo.dtb"
 }
 
 package_uboot-a10-olinuxino-lime-dto() {
@@ -139,13 +139,13 @@ package_uboot-a10-olinuxino-lime-dto() {
   conflicts=('uboot-sunxi' 'olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun4i-a10-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_A10-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra/sun4i-a10-olinuxino-lime.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_A10-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun4i-a10-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra/sun4i-a10-olinuxino-lime.dtb"
 }
 
 package_uboot-a20-olinuxino-lime-dto() {
@@ -155,13 +155,13 @@ package_uboot-a20-olinuxino-lime-dto() {
   conflicts=('uboot-sunxi' 'olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun7i-a20-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_A20-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra/sun7i-a20-olinuxino-lime.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_A20-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra/sun7i-a20-olinuxino-lime.dtb"
 }
 
 package_uboot-bananapi-m2-zero() {
@@ -171,13 +171,13 @@ package_uboot-bananapi-m2-zero() {
   conflicts=('uboot-sunxi' 'bananapi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_bananapi_m2_zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-bananapi-m2-zero.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_bananapi_m2_zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-bananapi-m2-zero.dtb"
 }
 
 package_uboot-bananapi-p2-zero() {
@@ -187,11 +187,11 @@ package_uboot-bananapi-p2-zero() {
   conflicts=('uboot-sunxi' 'bananapi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -d "${pkgdir}/boot/dtbs-extra"
-  install -Dm644 bin_Sinovoip_BPI_P2_Zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm644 /usr/share/sunxi-dtbs/sun8i-h2-plus-bananapi-p2-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-bananapi-p2-zero.dtb"
+  install -dm0755 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_Sinovoip_BPI_P2_Zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h2-plus-bananapi-p2-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-bananapi-p2-zero.dtb"
 }

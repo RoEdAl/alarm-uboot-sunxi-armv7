@@ -1,12 +1,11 @@
-From 5747483e0031baef160ca17d1c6e14b8249e4a98 Mon Sep 17 00:00:00 2001
+From 468a5d8b5bac4ce9f8a795209af199a60feb3b6d Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sun, 27 Oct 2019 18:48:41 +0100
+Date: Fri, 8 May 2020 10:40:30 +0200
 Subject: [PATCH 2/7] Add Ethernet on Banana Pi M2 Zero board
 
-Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
-index 7d01f93226..5770240a82 100644
+index d277d04303..489a7669d9 100644
 --- a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
 +++ b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
 @@ -20,6 +20,7 @@
@@ -17,39 +16,7 @@ index 7d01f93226..5770240a82 100644
  	};
  
  	chosen {
-@@ -48,6 +49,23 @@
- 		};
- 	};
- 
-+	reg_vdd_cpux: vdd-cpux-regulator {
-+		compatible = "regulator-gpio";
-+		regulator-name = "vdd-cpux";
-+		regulator-type = "voltage";
-+		regulator-boot-on;
-+		regulator-always-on;
-+		regulator-min-microvolt = <1100000>;
-+		regulator-max-microvolt = <1300000>;
-+		regulator-ramp-delay = <50>; /* 4ms */
-+
-+		gpios = <&r_pio 0 1 GPIO_ACTIVE_HIGH>; /* PL1 */
-+		enable-active-high;
-+		gpios-states = <0x1>;
-+		states = <1100000 0x0
-+			  1300000 0x1>;
-+	};
-+
- 	wifi_pwrseq: wifi_pwrseq {
- 		compatible = "mmc-pwrseq-simple";
- 		pinctrl-names = "default";
-@@ -55,10 +73,21 @@
- 	};
- };
- 
-+&cpu0 {
-+	cpu-supply = <&reg_vdd_cpux>;
-+};
-+
- &ehci0 {
+@@ -78,6 +79,13 @@
  	status = "okay";
  };
  
@@ -64,26 +31,21 @@ index 7d01f93226..5770240a82 100644
  	vmmc-supply = <&reg_vcc3v3>;
  	bus-width = <4>;
 diff --git a/configs/bananapi_m2_zero_defconfig b/configs/bananapi_m2_zero_defconfig
-index 933ec4db43..40b7b434d9 100644
+index f95c7faf7e..126b94f391 100644
 --- a/configs/bananapi_m2_zero_defconfig
 +++ b/configs/bananapi_m2_zero_defconfig
-@@ -3,10 +3,16 @@ CONFIG_ARCH_SUNXI=y
+@@ -3,6 +3,11 @@ CONFIG_ARCH_SUNXI=y
  CONFIG_SPL=y
  CONFIG_MACH_SUN8I_H3=y
  CONFIG_DRAM_CLK=408
 +CONFIG_NR_DRAM_BANKS=1
  CONFIG_MMC0_CD_PIN=""
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
- CONFIG_USE_PREBOOT=y
- # CONFIG_CMD_FLASH is not set
- # CONFIG_SPL_DOS_PARTITION is not set
-+# CONFIG_SPL_ISO_PARTITION is not set
- # CONFIG_SPL_EFI_PARTITION is not set
  CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-bananapi-m2-zero"
 +CONFIG_CONSOLE_MUX=y
 +CONFIG_SUN8I_EMAC=y
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
 -- 
-2.23.0
+2.26.2
 

@@ -1,16 +1,15 @@
-From f709ad05ddae4a702743bd914c6db8413ee8b275 Mon Sep 17 00:00:00 2001
+From 7f83b98ae3589f743d4a95e69e3d9028200145e4 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sun, 27 Oct 2019 18:49:52 +0100
+Date: Fri, 8 May 2020 10:42:11 +0200
 Subject: [PATCH 3/7] Update configuration for Orange Pi Zero
 
-Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
-index f8dda05c08..f10c25822d 100644
+index c989f0dcf7..cc3b34cd07 100644
 --- a/configs/orangepi_zero_defconfig
 +++ b/configs/orangepi_zero_defconfig
-@@ -3,7 +3,7 @@ CONFIG_ARCH_SUNXI=y
- CONFIG_NR_DRAM_BANKS=1
+@@ -2,7 +2,7 @@ CONFIG_ARM=y
+ CONFIG_ARCH_SUNXI=y
  CONFIG_SPL=y
  CONFIG_MACH_SUN8I_H3=y
 -CONFIG_DRAM_CLK=624
@@ -19,5 +18,5 @@ index f8dda05c08..f10c25822d 100644
  CONFIG_SPL_SPI_SUNXI=y
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
 -- 
-2.23.0
+2.26.2
 
