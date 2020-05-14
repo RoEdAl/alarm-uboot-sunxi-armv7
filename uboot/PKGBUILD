@@ -9,7 +9,7 @@ _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python2' 'swig' 'dtc' 'sunxi-dtbs=5.6.p1')
+makedepends=('bc' 'python' 'python-setuptools' 'swig' 'dtc' 'sunxi-dtbs=5.6.p1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 _patches=(
@@ -61,7 +61,7 @@ build() {
     make distclean
     make ${i}_config
     scripts/kconfig/merge_config.sh .config ${srcdir}/config-fragment
-    make EXTRAVERSION=-${pkgrel} PYTHON=python2 V=0
+    make EXTRAVERSION=-${pkgrel}  V=0
     mv u-boot-sunxi-with-spl.bin ../bin_${i}
   done
 
