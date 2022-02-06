@@ -1,11 +1,11 @@
-From 468a5d8b5bac4ce9f8a795209af199a60feb3b6d Mon Sep 17 00:00:00 2001
+From f94d23efbdfd9c1eb5d1ce31b8a818325c4a050c Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Fri, 8 May 2020 10:40:30 +0200
+Date: Sun, 6 Feb 2022 13:23:00 +0100
 Subject: [PATCH 2/7] Add Ethernet on Banana Pi M2 Zero board
 
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
-index d277d04303..489a7669d9 100644
+index f3f7a2c912..578b4e685f 100644
 --- a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
 +++ b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts
 @@ -20,6 +20,7 @@
@@ -16,36 +16,27 @@ index d277d04303..489a7669d9 100644
  	};
  
  	chosen {
-@@ -78,6 +79,13 @@
+@@ -245,3 +246,10 @@
+ 	 */
  	status = "okay";
  };
- 
++
 +&emac {
 +	phy-handle = <&int_mii_phy>;
 +	phy-mode = "mii";
 +	allwinner,leds-active-low;
 +	status = "okay";
 +};
-+
- &mmc0 {
- 	vmmc-supply = <&reg_vcc3v3>;
- 	bus-width = <4>;
 diff --git a/configs/bananapi_m2_zero_defconfig b/configs/bananapi_m2_zero_defconfig
-index f95c7faf7e..126b94f391 100644
+index ac3f8f5ab8..6d1f75a6b6 100644
 --- a/configs/bananapi_m2_zero_defconfig
 +++ b/configs/bananapi_m2_zero_defconfig
-@@ -3,6 +3,11 @@ CONFIG_ARCH_SUNXI=y
- CONFIG_SPL=y
- CONFIG_MACH_SUN8I_H3=y
+@@ -6,3 +6,8 @@ CONFIG_MACH_SUN8I_H3=y
  CONFIG_DRAM_CLK=408
-+CONFIG_NR_DRAM_BANKS=1
  CONFIG_MMC0_CD_PIN=""
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
- CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-bananapi-m2-zero"
++CONFIG_NR_DRAM_BANKS=1
 +CONFIG_CONSOLE_MUX=y
 +CONFIG_SUN8I_EMAC=y
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
--- 
-2.26.2
-

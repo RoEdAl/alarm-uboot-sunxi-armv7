@@ -1,22 +1,19 @@
-From 279f6046d61cbb5b103065428b8627f39588431e Mon Sep 17 00:00:00 2001
+From 4a9ef1c3c487dac5168a731a8c616106e4f95fe6 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Fri, 8 May 2020 10:46:52 +0200
+Date: Sun, 6 Feb 2022 13:31:04 +0100
 Subject: [PATCH 6/7] Orange Pi One - update configuration
 
 
 diff --git a/configs/orangepi_one_defconfig b/configs/orangepi_one_defconfig
-index 75bccd03b9..35d21fbfb7 100644
+index 1064b4a39d..f729fc8cf5 100644
 --- a/configs/orangepi_one_defconfig
 +++ b/configs/orangepi_one_defconfig
-@@ -2,7 +2,7 @@ CONFIG_ARM=y
- CONFIG_ARCH_SUNXI=y
+@@ -3,7 +3,7 @@ CONFIG_ARCH_SUNXI=y
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-h3-orangepi-one"
  CONFIG_SPL=y
  CONFIG_MACH_SUN8I_H3=y
 -CONFIG_DRAM_CLK=672
 +CONFIG_DRAM_CLK=408
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
- CONFIG_DEFAULT_DEVICE_TREE="sun8i-h3-orangepi-one"
  CONFIG_SUN8I_EMAC=y
--- 
-2.26.2
-
+ CONFIG_USB_EHCI_HCD=y

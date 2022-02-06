@@ -1,15 +1,15 @@
-From 7f83b98ae3589f743d4a95e69e3d9028200145e4 Mon Sep 17 00:00:00 2001
+From 18c29abd05d9a3fff00fd999d64affd067c857cc Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Fri, 8 May 2020 10:42:11 +0200
+Date: Sun, 6 Feb 2022 13:24:38 +0100
 Subject: [PATCH 3/7] Update configuration for Orange Pi Zero
 
 
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig
-index c989f0dcf7..cc3b34cd07 100644
+index 332cd4739e..3c5c75d74c 100644
 --- a/configs/orangepi_zero_defconfig
 +++ b/configs/orangepi_zero_defconfig
-@@ -2,7 +2,7 @@ CONFIG_ARM=y
- CONFIG_ARCH_SUNXI=y
+@@ -3,7 +3,7 @@ CONFIG_ARCH_SUNXI=y
+ CONFIG_DEFAULT_DEVICE_TREE="sun8i-h2-plus-orangepi-zero"
  CONFIG_SPL=y
  CONFIG_MACH_SUN8I_H3=y
 -CONFIG_DRAM_CLK=624
@@ -17,6 +17,3 @@ index c989f0dcf7..cc3b34cd07 100644
  # CONFIG_VIDEO_DE2 is not set
  CONFIG_SPL_SPI_SUNXI=y
  # CONFIG_SYS_MALLOC_CLEAR_ON_INIT is not set
--- 
-2.26.2
-

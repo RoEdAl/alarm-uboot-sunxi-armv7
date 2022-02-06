@@ -1,15 +1,14 @@
-From 9c475d956b628d5ba0d66f6b884d0c7da8737f7a Mon Sep 17 00:00:00 2001
+From b47a2def29b80135ca4a09eaaa82a6dc0fa48bff Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Sun, 4 Nov 2018 08:45:38 +0000
-Subject: [PATCH 6/9] ARM: dts: sun8i: Enable HDMI on Banana Pi M2 Zero board
+Date: Sun, 6 Feb 2022 17:00:39 +0100
+Subject: [PATCH 5/8] ARM: dts: sun8i: Enable HDMI on Banana Pi M2 Zero board
 
-Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
-index 75cb5091bda2..de7baeeee5cc 100644
+index 95b006cf693b..36b53870d483 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
-@@ -23,6 +23,17 @@
+@@ -23,6 +23,17 @@ aliases {
  		ethernet0 = &emac;
  	};
  
@@ -27,8 +26,8 @@ index 75cb5091bda2..de7baeeee5cc 100644
  	chosen {
  		stdout-path = "serial0:115200n8";
  	};
-@@ -75,6 +86,10 @@
- 	cpu-supply = <&reg_vdd_cpux>;
+@@ -119,6 +130,10 @@ &de {
+ 	status = "okay";
  };
  
 +&de {
@@ -38,23 +37,3 @@ index 75cb5091bda2..de7baeeee5cc 100644
  &ehci0 {
  	status = "okay";
  };
-@@ -85,6 +100,16 @@
- 	allwinner,leds-active-low;
- };
- 
-+&hdmi {
-+	status = "okay";
-+};
-+
-+&hdmi_out {
-+	hdmi_out_con: endpoint {
-+		remote-endpoint = <&hdmi_con_in>;
-+	};
-+};
-+
- &mmc0 {
- 	vmmc-supply = <&reg_vcc3v3>;
- 	bus-width = <4>;
--- 
-2.24.0
-

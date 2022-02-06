@@ -1,7 +1,7 @@
-From 82710498890ba9e8f75ddc954a8399ec6c344dd6 Mon Sep 17 00:00:00 2001
+From 5b502200c21025a100fb04288253157d7c44f4db Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 20 Jan 2019 09:17:34 +0000
-Subject: [PATCH 9/9] arm: dts: sunxi: OrangePi R1 - remove correct node
+Subject: [PATCH 8/8] arm: dts: sunxi: OrangePi R1 - remove correct node
 
 Correct flash configuration.
 
@@ -11,7 +11,7 @@ diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-r1.dts b/arch/arm/boot/dts
 index 3356f4210d45..32a79c49eba7 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-r1.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-r1.dts
-@@ -47,7 +47,7 @@
+@@ -47,7 +47,7 @@ / {
  	model = "Xunlong Orange Pi R1";
  	compatible = "xunlong,orangepi-r1", "allwinner,sun8i-h2-plus";
  
@@ -20,7 +20,7 @@ index 3356f4210d45..32a79c49eba7 100644
  
  	/*
  	 * Ths pin of this regulator is the same with the Wi-Fi extra
-@@ -72,7 +72,11 @@
+@@ -72,7 +72,11 @@ &spi0 {
  	status = "okay";
  
  	flash@0 {
@@ -32,6 +32,3 @@ index 3356f4210d45..32a79c49eba7 100644
  	};
  };
  
--- 
-2.24.0
-

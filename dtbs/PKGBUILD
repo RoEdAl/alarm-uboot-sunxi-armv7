@@ -1,44 +1,41 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgname='sunxi-dtbs'
-_srcname=linux-5.6
+_srcname=linux-5.16
 pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs')
-pkgver=5.6.p1
+pkgver=5.16.p1
 pkgrel=1
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
-depends=('linux>5.1')
 makedepends=('bc' 'git')
 options=('!strip')
-_cfgrel=9da5384078b7f6285429a0f7ff16e78a1a5bb456
+_cfgrel=21a8463b907e050953557abc796f5f235f1ba3eb
 _patches=(
-	'0001-arm-dts-sunxi-NanoPi-Neo-status-LED-without-defaulte.patch'
-	'0002-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
-	'0003-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
-	'0004-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch'
-	'0005-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch'
-	'0006-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
-	'0007-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch'
-	'0008-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch'
-	'0009-arm-dts-sunxi-OrangePi-R1-remove-correct-node.patch'
+	'0001-arm-dts-sunxi-Orange-Pi-Zero-simplification.patch'
+	'0002-ARM-dts-sun4i-Correct-pinctrl-nodes.patch'
+	'0003-arm-dts-sunxi-NanoPi-Neo-add-missing-ethernet0-alias.patch'
+	'0004-arm-dts-sunxi-BananaPi-M2-Zero-update-emac.patch'
+	'0005-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
+	'0006-arm-dts-sunxi-Add-Banana-Pi-P2-Zero-board.patch'
+	'0007-arm-dts-sunxi-OrangePi-Zero-improve-WiFi-bindings.patch'
+	'0008-arm-dts-sunxi-OrangePi-R1-remove-correct-node.patch'
 )
 source=("http://www.kernel.org/pub/linux/kernel/v5.x/${_srcname}.tar.xz"
 	${_patches[@]}
 	"config-${pkgver}::http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_cfgrel}/core/linux-armv7/config")
-md5sums=('7b9199ec5fa563ece9ed585ffb17798f'
-         '4131800ef3acba2ba3e007a195c3c36f'
-         '5d3c8c812626860fff857844fb14753a'
-         '3d21077f81bc4cd3216fd17b8ab03ebc'
-         'a3208ac0ab9a956bcd04f59822b945da'
-         '394804969ae8d0aa6f020e23df8792e7'
-         '0840896dc77277329f9d812667bdeced'
-         '678a6ed87164d7e1943e03f9a2c37114'
-         '1018536df680ab71afab86313126b721'
-         '06595d1cbdfc8db166ac517033e6fa9b'
-         'a22a1ce901976e56c5cd0456cc620ebf')
+md5sums=('e6680ce7c989a3efe58b51e3f3f0bf93'
+         'ccb95f02e8c09a09e99ca53f3d85901e'
+         'fed4f4eb458c0e970a379ac303d10565'
+         '64161b2970e49dde4496a25a5238efd6'
+         '3ac726179b4d772f2de6c482df6bc4a8'
+         '0b598ca5c32eacf2c1f02d520a1f6395'
+         '1e86097ef4cdd7c08c71e3c68ef9fac1'
+         '66419743ff8522d62328a33dba51f6b6'
+         'd5a695c7f9c734ad267b149f28ba0153'
+         '36acf353676e9016b34cb9f866c9b10f')
 
 prepare() {
   cd "${srcdir}/${_srcname}"

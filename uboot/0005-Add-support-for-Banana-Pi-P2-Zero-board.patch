@@ -1,14 +1,15 @@
-From 63eb9cf48ccb3435a29eea9a37364348a8844c68 Mon Sep 17 00:00:00 2001
+From caa5bf9723370506251265ceea625762441eedb4 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
-Date: Fri, 8 May 2020 11:10:02 +0200
+Date: Fri, 16 Nov 2018 20:23:17 +0000
 Subject: [PATCH 5/7] Add support for Banana Pi P2 Zero board
 
+Signed-off-by: Edmunt Pienkowsky <roed@onet.eu>
 
 diff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile
-index 820ee9733a..443d36f984 100644
+index b3e2a9c9d7..5e8f547067 100644
 --- a/arch/arm/dts/Makefile
 +++ b/arch/arm/dts/Makefile
-@@ -516,6 +516,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
+@@ -610,6 +610,7 @@ dtb-$(CONFIG_MACH_SUN8I_A83T) += \
  	sun8i-a83t-tbs-a711.dtb
  dtb-$(CONFIG_MACH_SUN8I_H3) += \
  	sun8i-h2-plus-bananapi-m2-zero.dtb \
@@ -18,10 +19,10 @@ index 820ee9733a..443d36f984 100644
  	sun8i-h2-plus-orangepi-zero.dtb \
 diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-p2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-p2-zero.dts
 new file mode 100644
-index 0000000000..14f2589413
+index 0000000000..d234506501
 --- /dev/null
 +++ b/arch/arm/dts/sun8i-h2-plus-bananapi-p2-zero.dts
-@@ -0,0 +1,182 @@
+@@ -0,0 +1,181 @@
 +// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +/*
 + * Based on sun8i-h2-plus-bananapi-m2-zero.dts, which is:
@@ -178,14 +179,13 @@ index 0000000000..14f2589413
 +
 +&uart0 {
 +	pinctrl-names = "default";
-+	pinctrl-0 = <&uart0_pa_pins>;
++	pinctrl-0 = <&uart0_pins_a>;
 +	status = "okay";
 +};
 +
 +&uart1 {
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&uart1_pins>, <&uart1_rts_cts_pins>;
-+	uart-has-rtscts;
 +	status = "okay";
 +};
 +
@@ -229,6 +229,3 @@ index 0000000000..c8206d9d93
 +CONFIG_SUN8I_EMAC=y
 +CONFIG_USB_EHCI_HCD=y
 +CONFIG_SYS_USB_EVENT_POLL_VIA_INT_QUEUE=y
--- 
-2.26.2
-

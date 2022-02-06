@@ -2,14 +2,14 @@
 
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
-pkgver=2020.04
+pkgver=2022.01
 pkgrel=1
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python' 'python-setuptools' 'swig' 'dtc' 'sunxi-dtbs=5.6.p1')
+makedepends=('bc' 'python' 'python-setuptools' 'swig' 'dtc' 'sunxi-dtbs=5.16.p1')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 _patches=(
@@ -28,18 +28,18 @@ source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	"http://raw.githubusercontent.com/archlinuxarm/PKGBUILDs/${_baserel}/alarm/uboot-sunxi/mkscr"
 	${_patches[@]}
 )
-sha1sums=('0821ce2dac9bbd9ec5883779ddad78b8610366e3'
+sha1sums=('3371c1d58966e9000b4680e90cd29caa212969d2'
           '9f5d51937b0dde70b21f84dc93a2f770f3488226'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '9694979451588d031c43a2473b5776623a2ebec1'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          '24e93effb4def0727479ffdeabace46fd55a408a'
-          'd82bd65dc00c48d4827dfc1c95b526c8b58ccc04'
-          '78eda4aff55b275ca011edea3a1ac2dcd37b1261'
-          '70a1172ef490b6769b5661cc34b55a4a8ce0b697'
-          '8166c18df7741d3d895ec4fddc58ea3004fedd09'
-          '60753257ff5dda4b47b0344d59af6c2c2cb3bfef'
-          'e1a0bd094adeedfdbb9d1d6bcef0baad50d69886')
+          '9f16614ed9284b01606a9a7a0823ebb67f6cf524'
+          '68bd8c11ebb2f0990c4d5d46fd3a475aeadd6a9e'
+          '04f6c0ac9eae8113bed9b10bf3b8e37b43c3f916'
+          'dadd18b347a2581efaa6a9af1b1e688ffab3dac3'
+          'a02ea09dbca3a7cd2060dc87930e4ce8d401d794'
+          '5cd77393feba8de69013293d089f7eab0b3b15ff'
+          '9db647edfb9731e214c3ce7a0b2ae8e65d9a758d')
 
 _boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero' 'Sinovoip_BPI_P2_Zero')
 

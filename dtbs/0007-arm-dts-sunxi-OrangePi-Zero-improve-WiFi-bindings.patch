@@ -1,7 +1,7 @@
-From cbf4bfe49fda57d5cd0edd37c55bee8ad55ef64a Mon Sep 17 00:00:00 2001
+From 3fb0c724333a2c4e20be9a9b23faf7228346961e Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Wed, 21 Nov 2018 14:37:19 +0100
-Subject: [PATCH 8/9] arm: dts: sunxi: OrangePi Zero - improve WiFi bindings
+Subject: [PATCH 7/8] arm: dts: sunxi: OrangePi Zero - improve WiFi bindings
 
 Based on DTC from http://github.com/fifteenhex/xradio
 
@@ -11,7 +11,7 @@ diff --git a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts b/arch/arm/boot/d
 index 8d43826c1c27..f37ca6a01bd9 100644
 --- a/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
 +++ b/arch/arm/boot/dts/sun8i-h2-plus-orangepi-zero.dts
-@@ -70,23 +70,24 @@
+@@ -70,23 +70,24 @@ leds {
  
  		pwr {
  			label = "orangepi:green:pwr";
@@ -42,7 +42,7 @@ index 8d43826c1c27..f37ca6a01bd9 100644
  	};
  
  	reg_vdd_cpux: vdd-cpux-regulator {
-@@ -107,7 +108,8 @@
+@@ -107,7 +108,8 @@ reg_vdd_cpux: vdd-cpux-regulator {
  
  	wifi_pwrseq: wifi_pwrseq {
  		compatible = "mmc-pwrseq-simple";
@@ -52,7 +52,7 @@ index 8d43826c1c27..f37ca6a01bd9 100644
  		post-power-on-delay-ms = <200>;
  	};
  };
-@@ -139,9 +141,11 @@
+@@ -139,9 +141,11 @@ &mmc0 {
  };
  
  &mmc1 {
@@ -65,7 +65,7 @@ index 8d43826c1c27..f37ca6a01bd9 100644
  	non-removable;
  	status = "okay";
  
-@@ -149,8 +153,12 @@
+@@ -149,8 +153,12 @@ &mmc1 {
  	 * Explicitly define the sdio device, so that we can add an ethernet
  	 * alias for it (which e.g. makes u-boot set a mac-address).
  	 */
@@ -79,6 +79,3 @@ index 8d43826c1c27..f37ca6a01bd9 100644
  	};
  };
  
--- 
-2.24.0
-
