@@ -1,7 +1,7 @@
-From 5b502200c21025a100fb04288253157d7c44f4db Mon Sep 17 00:00:00 2001
+From 61162101f40fc44e89c61a64d52b3c9192ee86dc Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 20 Jan 2019 09:17:34 +0000
-Subject: [PATCH 8/8] arm: dts: sunxi: OrangePi R1 - remove correct node
+Subject: [PATCH 7/7] arm: dts: sunxi: OrangePi R1 - remove correct node
 
 Correct flash configuration.
 

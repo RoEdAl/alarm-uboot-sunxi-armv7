@@ -1,7 +1,7 @@
-From 3fb0c724333a2c4e20be9a9b23faf7228346961e Mon Sep 17 00:00:00 2001
+From c373972d73d1a86631c1b1e24cc52b69de8a50a7 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Wed, 21 Nov 2018 14:37:19 +0100
-Subject: [PATCH 7/8] arm: dts: sunxi: OrangePi Zero - improve WiFi bindings
+Subject: [PATCH 6/7] arm: dts: sunxi: OrangePi Zero - improve WiFi bindings
 
 Based on DTC from http://github.com/fifteenhex/xradio
 

@@ -1,7 +1,7 @@
-From 18c29abd05d9a3fff00fd999d64affd067c857cc Mon Sep 17 00:00:00 2001
+From fe80bf640ae3f1a8045d069b7e298ed972e2b867 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 6 Feb 2022 13:24:38 +0100
-Subject: [PATCH 3/7] Update configuration for Orange Pi Zero
+Subject: [PATCH 3/6] Update configuration for Orange Pi Zero
 
 
 diff --git a/configs/orangepi_zero_defconfig b/configs/orangepi_zero_defconfig

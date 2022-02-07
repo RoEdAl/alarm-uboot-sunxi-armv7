@@ -1,7 +1,7 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='uboot-sunxi-dto'
-pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero' 'uboot-bananapi-p2-zero')
+pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero')
 pkgver=2022.01
 pkgrel=1
 arch=('armv7h')
@@ -17,9 +17,8 @@ _patches=(
 	'0002-Add-Ethernet-on-Banana-Pi-M2-Zero-board.patch'
 	'0003-Update-configuration-for-Orange-Pi-Zero.patch'
 	'0004-ARM-dts-sun8i-Enable-HDMI-on-Banana-Pi-M2-Zero-board.patch'
-	'0005-Add-support-for-Banana-Pi-P2-Zero-board.patch'
-	'0006-Orange-Pi-One-update-configuration.patch'
-        '0007-Orange-Pi-R1-update-configuration.patch'
+	'0005-Orange-Pi-One-update-configuration.patch'
+        '0006-Orange-Pi-R1-update-configuration.patch'
 )
 source=("ftp://ftp.denx.de/pub/u-boot/u-boot-${pkgver}.tar.bz2"
 	'boot.txt'
@@ -33,15 +32,14 @@ sha1sums=('3371c1d58966e9000b4680e90cd29caa212969d2'
           'a49a8c18e1b0f920a430cf57990c0c42dc864f59'
           '9694979451588d031c43a2473b5776623a2ebec1'
           '008b9ce4fcf64c939868148ca387fa733c8b7e69'
-          '9f16614ed9284b01606a9a7a0823ebb67f6cf524'
-          '68bd8c11ebb2f0990c4d5d46fd3a475aeadd6a9e'
-          '04f6c0ac9eae8113bed9b10bf3b8e37b43c3f916'
-          'dadd18b347a2581efaa6a9af1b1e688ffab3dac3'
-          'a02ea09dbca3a7cd2060dc87930e4ce8d401d794'
-          '5cd77393feba8de69013293d089f7eab0b3b15ff'
-          '9db647edfb9731e214c3ce7a0b2ae8e65d9a758d')
+          'a16c4789d4f263a60c52152db29c779639cd42ce'
+          '384f41a71cf6a1bd3b9a31cf6181f89e438a8ba5'
+          '25c2110ef5248e6eacecb1bb068e3818da52fe76'
+          '33489d32e31dd55f1085ad9cdefd9af3d3efbe14'
+          '381faa91c289aae5eb0cb7de1a40c2a638411b94'
+          '1af9869060a476c87b300fe04e85da2a85a5f6e1')
 
-_boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero' 'Sinovoip_BPI_P2_Zero')
+_boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero')
 
 prepare() {
   cd u-boot-${pkgver}
@@ -178,20 +176,4 @@ package_uboot-bananapi-m2-zero() {
   install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
   install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h2-plus-bananapi-m2-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-bananapi-m2-zero.dtb"
-}
-
-package_uboot-bananapi-p2-zero() {
-  pkgdesc='U-Boot for Banana Pi P2 Zero (with device tree overlays support)'
-  install=${pkgbase}.install
-  provides=('uboot-sunxi')
-  conflicts=('uboot-sunxi' 'bananapi-dtbs')
-  optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
-
-  install -dm0755 "${pkgdir}/boot/dtbs-extra"
-  install -Dm0644 bin_Sinovoip_BPI_P2_Zero/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
-  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
-  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
-  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
-  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h2-plus-bananapi-p2-zero.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h2-plus-bananapi-p2-zero.dtb"
 }

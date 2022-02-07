@@ -1,7 +1,7 @@
-From 4a9ef1c3c487dac5168a731a8c616106e4f95fe6 Mon Sep 17 00:00:00 2001
+From 6f2a437b38bd497aeee4076ea3652c3cdd405258 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 6 Feb 2022 13:31:04 +0100
-Subject: [PATCH 6/7] Orange Pi One - update configuration
+Subject: [PATCH 5/6] Orange Pi One - update configuration
 
 
 diff --git a/configs/orangepi_one_defconfig b/configs/orangepi_one_defconfig

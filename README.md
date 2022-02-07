@@ -11,7 +11,6 @@
 [A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware)|`uboot-a10-olinuxino-lime-dt`|N/A|[here](bootlog/a10-olinuxino-lime.log)
 [A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware)|`uboot-a20-olinuxino-lime-dt`|N/A|[here](bootlog/a20-olinuxino-lime.log)
 [BananaPi M2 Zero](http://www.banana-pi.org/bpi-zero.html)|`uboot-bananapi-m2-zero`|[`ap6212-wifi-firmware`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/ap6212-wifi-firmware)|[here](bootlog/bananapi-m2-zero.log)
-[BananaPi P2 Zero](http://www.banana-pi.org/p2-zero.html)|`uboot-bananapi-p2-zero`|[`ap6212-wifi-firmware`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/ap6212-wifi-firmware)|[here](bootlog/bananapi-p2-zero.log)
 
 Theese bootloaders are ready to apply additional DT overlays from [Armbian's Device Tree overlays for sunxi devices](//github.com/armbian/sunxi-DT-overlays).
 See [this](//github.com/RoEdAl/alarm-sunxi-dt-overlays-armv7) repository for more info.

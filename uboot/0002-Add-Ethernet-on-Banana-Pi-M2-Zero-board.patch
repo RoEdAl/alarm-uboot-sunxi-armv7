@@ -1,7 +1,7 @@
-From f94d23efbdfd9c1eb5d1ce31b8a818325c4a050c Mon Sep 17 00:00:00 2001
+From 154c7240a942a6f229b80a41eba9a8f9c0f107d1 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 6 Feb 2022 13:23:00 +0100
-Subject: [PATCH 2/7] Add Ethernet on Banana Pi M2 Zero board
+Subject: [PATCH 2/6] Add Ethernet on Banana Pi M2 Zero board
 
 
 diff --git a/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/dts/sun8i-h2-plus-bananapi-m2-zero.dts

@@ -1,7 +1,7 @@
-From f8443913663d33ea178c6f740dd4c96f90a1d303 Mon Sep 17 00:00:00 2001
+From 8c41c3e07013fb017aec243ef1f9130d053da1b7 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 6 Feb 2022 13:32:25 +0100
-Subject: [PATCH 7/7] Orange Pi R1 - update configuration
+Subject: [PATCH 6/6] Orange Pi R1 - update configuration
 
 
 diff --git a/configs/orangepi_r1_defconfig b/configs/orangepi_r1_defconfig

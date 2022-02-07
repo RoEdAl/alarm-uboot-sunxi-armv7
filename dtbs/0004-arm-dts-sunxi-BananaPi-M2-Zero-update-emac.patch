@@ -1,7 +1,7 @@
-From b5759c1051beca209080b0309c3c09f8f8703254 Mon Sep 17 00:00:00 2001
+From a70be61f459d2d335bfe0b09dd017aca3a20c842 Mon Sep 17 00:00:00 2001
 From: Edmunt Pienkowsky <roed@onet.eu>
 Date: Sun, 6 Feb 2022 16:57:11 +0100
-Subject: [PATCH 4/8] arm: dts: sunxi: BananaPi M2 Zero - update emac
+Subject: [PATCH 4/7] arm: dts: sunxi: BananaPi M2 Zero - update emac
 
 
 diff --git a/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts b/arch/arm/boot/dts/sun8i-h2-plus-bananapi-m2-zero.dts
