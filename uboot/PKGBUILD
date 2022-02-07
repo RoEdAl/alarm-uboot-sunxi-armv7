@@ -1,15 +1,15 @@
 # Maintainer: Edmunt Pienkowsky <roed@onet.eu>
 
 pkgbase='uboot-sunxi-dto'
-pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero')
+pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-zeropi' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero')
 pkgver=2022.01
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
 license=('GPL')
 options=('!strip')
-makedepends=('bc' 'python' 'python-setuptools' 'swig' 'dtc' 'sunxi-dtbs=5.16.p1')
+makedepends=('bc' 'python' 'python-setuptools' 'swig' 'dtc' 'sunxi-dtbs=5.16.p2')
 backup=('boot/boot.txt'
 	'boot/boot.scr')
 _patches=(
@@ -39,7 +39,7 @@ sha1sums=('3371c1d58966e9000b4680e90cd29caa212969d2'
           '381faa91c289aae5eb0cb7de1a40c2a638411b94'
           '1af9869060a476c87b300fe04e85da2a85a5f6e1')
 
-_boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero')
+_boards=('orangepi_zero' 'orangepi_one' 'orangepi_r1' 'nanopi_neo' 'zeropi' 'A10-OLinuXino-Lime' 'A20-OLinuXino-Lime' 'bananapi_m2_zero')
 
 prepare() {
   cd u-boot-${pkgver}
@@ -128,6 +128,22 @@ package_uboot-nanopi-neo() {
   install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
   install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h3-nanopi-neo.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-nanopi-neo.dtb"
+}
+
+package_uboot-zeropi() {
+  pkgdesc='U-Boot for ZeroPi (with device tree overlays support)'
+  install=${pkgbase}.install
+  provides=('uboot-sunxi')
+  conflicts=('uboot-sunxi' 'nanopi-dtbs')
+  optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
+
+  install -dm0775 "${pkgdir}/boot/dtbs-extra"
+  install -Dm0644 bin_nanopi_neo/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
+  install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
+  install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
+  install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
+  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h3-zeropi.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-zeropi.dtb"
 }
 
 package_uboot-a10-olinuxino-lime-dto() {

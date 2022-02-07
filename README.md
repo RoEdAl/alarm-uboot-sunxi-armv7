@@ -62,10 +62,6 @@ Replace **sdX** in the following instructions with the device name for the SD ca
    ```
    bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
    ```
-   For *BananaPi P2 Zero* board you must also extract DTB:
-   ```
-   bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/dtbs-extra
-   ```
 1. Install the U-Boot bootloader:
    ```
    mv boot/boot.scr root/boot
@@ -140,10 +136,6 @@ Replace **sdX** in the following instructions with the device name for the SD ca
 1. Extract required U-Boot binary and compiled script from package:
    ```
    bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/u-boot-sunxi-with-spl.bin boot/boot.scr
-   ```
-   For *BananaPi P2 Zero* board you must also extract DTB:
-   ```
-   bsdtar -xf uboot-<your board name>-yyyy.mm-r-armv7h.pkg.tar.xz boot/dtbs-extra
    ```
 1. Install the U-Boot bootloader:
    ```
