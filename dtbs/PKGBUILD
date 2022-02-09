@@ -6,7 +6,7 @@ pkgdesc='Additional DTBs for Allwinder-based boards'
 conflicts=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs' 'zeropi-dtbs')
 replaces=('orangepi-dtbs' 'nanopi-dtbs' 'olinuxino-lime-dtbs' 'bananapi-dtbs' 'zeropi-dtbs')
 pkgver=5.16.p2
-pkgrel=1
+pkgrel=2
 arch=('armv7h')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -62,12 +62,9 @@ package() {
 
   local -a _dtbs=(
     'sun8i-h2-plus-orangepi-zero.dtb'
-    'sun8i-h3-orangepi-one.dtb'
     'sun8i-h2-plus-orangepi-r1.dtb'
     'sun8i-h3-nanopi-neo.dtb'
-    'sun8i-h3-zeropi.dtb'
     'sun4i-a10-olinuxino-lime.dtb'
-    'sun7i-a20-olinuxino-lime.dtb'
     'sun8i-h2-plus-bananapi-m2-zero.dtb'
   )
 

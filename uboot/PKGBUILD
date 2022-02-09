@@ -3,7 +3,7 @@
 pkgbase='uboot-sunxi-dto'
 pkgname=('uboot-orangepi-zero' 'uboot-orangepi-one' 'uboot-orangepi-r1' 'uboot-nanopi-neo' 'uboot-zeropi' 'uboot-a10-olinuxino-lime-dto' 'uboot-a20-olinuxino-lime-dto' 'uboot-bananapi-m2-zero')
 pkgver=2022.01
-pkgrel=2
+pkgrel=3
 arch=('armv7h')
 _baserel=62ceb441bfe96eba0aa467c07516df8c5947aeeb
 url='http://git.denx.de/u-boot.git/'
@@ -67,7 +67,7 @@ build() {
 }
 
 package_uboot-orangepi-zero() {
-  pkgdesc='U-Boot for Orange Pi Zero (with device tree overlays support)'
+  pkgdesc='U-Boot for Orange Pi Zero'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'orangepi-dtbs')
@@ -83,23 +83,21 @@ package_uboot-orangepi-zero() {
 }
 
 package_uboot-orangepi-one() {
-  pkgdesc='U-Boot for Orange Pi One (with device tree overlays support)'
+  pkgdesc='U-Boot for Orange Pi One'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'orangepi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -dm0755 "${pkgdir}/boot/dtbs-extra"
   install -Dm0644 bin_orangepi_one/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
   install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
   install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
   install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h3-orangepi-one.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-orangepi-one.dtb"
 }
 
 package_uboot-orangepi-r1() {
-  pkgdesc='U-Boot for Orange Pi R1 (with device tree overlays support)'
+  pkgdesc='U-Boot for Orange Pi R1'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'orangepi-dtbs')
@@ -115,7 +113,7 @@ package_uboot-orangepi-r1() {
 }
 
 package_uboot-nanopi-neo() {
-  pkgdesc='U-Boot for NanoPi Neo (with device tree overlays support)'
+  pkgdesc='U-Boot for NanoPi Neo'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'nanopi-dtbs')
@@ -131,23 +129,21 @@ package_uboot-nanopi-neo() {
 }
 
 package_uboot-zeropi() {
-  pkgdesc='U-Boot for ZeroPi (with device tree overlays support)'
+  pkgdesc='U-Boot for ZeroPi'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
-  conflicts=('uboot-sunxi' 'nanopi-dtbs')
+  conflicts=('uboot-sunxi' 'zeropi-dtbs')
   optdepends=('uboot-tools' 'sun8i-h3-dt-overlays')
 
-  install -dm0775 "${pkgdir}/boot/dtbs-extra"
-  install -Dm0644 bin_nanopi_neo/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
+  install -Dm0644 bin_zeropi/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
   install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
   install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
   install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm0644 /usr/share/sunxi-dtbs/sun8i-h3-zeropi.dtb "${pkgdir}/boot/dtbs-extra/sun8i-h3-zeropi.dtb"
 }
 
 package_uboot-a10-olinuxino-lime-dto() {
-  pkgdesc='U-Boot for A10 OLinuXino Lime (with device tree overlays support)'
+  pkgdesc='U-Boot for A10 OLinuXino Lime'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'olinuxino-lime-dtbs')
@@ -163,23 +159,21 @@ package_uboot-a10-olinuxino-lime-dto() {
 }
 
 package_uboot-a20-olinuxino-lime-dto() {
-  pkgdesc='U-Boot for A20 OLinuXino Lime (with device tree overlays support)'
+  pkgdesc='U-Boot for A20 OLinuXino Lime'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'olinuxino-lime-dtbs')
   optdepends=('uboot-tools' 'sun7i-a20-dt-overlays')
 
-  install -dm0755 "${pkgdir}/boot/dtbs-extra"
   install -Dm0644 bin_A20-OLinuXino-Lime/u-boot-sunxi-with-spl.bin "${pkgdir}/boot/u-boot-sunxi-with-spl.bin"
   install -Dm0644 boot.txt "${pkgdir}/boot/boot.txt"
   install -Dm0644 boot.scr "${pkgdir}/boot/boot.scr"
   install -Dm0755 mkscr "${pkgdir}/boot/mkscr"
   install -Dm0755 flash-uboot.sh "${pkgdir}/boot/flash-uboot"
-  install -Dm0644 /usr/share/sunxi-dtbs/sun7i-a20-olinuxino-lime.dtb "${pkgdir}/boot/dtbs-extra/sun7i-a20-olinuxino-lime.dtb"
 }
 
 package_uboot-bananapi-m2-zero() {
-  pkgdesc='U-Boot for Banana Pi M2 Zero (with device tree overlays support)'
+  pkgdesc='U-Boot for Banana Pi M2 Zero'
   install=${pkgbase}.install
   provides=('uboot-sunxi')
   conflicts=('uboot-sunxi' 'bananapi-dtbs')
