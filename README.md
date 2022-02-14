@@ -8,6 +8,7 @@
 [OrangePi One](http://www.orangepi.org/orangepione/)|`uboot-orangepi-one`|N/A|[here](bootlog/orangepi-one.log)
 [OrangePi R1](http://www.orangepi.org/OrangePiR1)|`uboot-orangepi-r1`|[TODO]|[here](bootlog/orangepi-r1.log)
 [NanoPi Neo](http://www.friendlyarm.com/index.php?route=product/product&product_id=132)|`uboot-nanopi-neo`|N/A|[here](bootlog/nanopi-neo.log)
+[ZeroPi](http://www.friendlyarm.com/index.php?route=product/product&product_id=266)|N/A|
 [A10 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A10/A10-OLinuXino-LIME-n4GB/open-source-hardware)|`uboot-a10-olinuxino-lime-dt`|N/A|[here](bootlog/a10-olinuxino-lime.log)
 [A20 oLinuXino Lime](http://www.olimex.com/Products/OLinuXino/A20/A20-OLinuXino-LIME/open-source-hardware)|`uboot-a20-olinuxino-lime-dt`|N/A|[here](bootlog/a20-olinuxino-lime.log)
 [BananaPi M2 Zero](http://www.banana-pi.org/bpi-zero.html)|`uboot-bananapi-m2-zero`|[`ap6212-wifi-firmware`](//github.com/RoEdAl/alarm-wifi-dkms/tree/master/ap6212-wifi-firmware)|[here](bootlog/bananapi-m2-zero.log)
@@ -65,7 +66,6 @@ Replace **sdX** in the following instructions with the device name for the SD ca
 1. Install the U-Boot bootloader:
    ```
    mv boot/boot.scr root/boot
-   [ -d boot/dtbs-extra ] && mv boot/dtbs-extra root/boot
    umount root
    dd if=boot/u-boot-sunxi-with-spl.bin of=/dev/sdX bs=1024 seek=8
    ```
